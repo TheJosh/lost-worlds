@@ -99,7 +99,9 @@ $(document).ready(function() {
         var idx = 0;
         for (var y = 0; y < mapHeight; ++y) {
             for (var x = 0; x < mapWidth; x += 4, idx += 4) {
-                var byte = data[idx] + (data[idx+1] << 2) + (data[idx+2] << 4) + (data[idx+3] << 6);
+                var byte =
+                    (data[idx] << 6) | (data[idx+1] << 4) | (data[idx+2] << 2) | data[idx+3];
+                
                 var hex = byte.toString(16);
                 ctx.fillStyle = '#' + hex + hex + hex;
                 ctx.fillRect(x / 4, y, 1, 1);
@@ -107,6 +109,40 @@ $(document).ready(function() {
         }
     }
 
+    function load() {
+        var img = document.createElement('img');
+        img.src = 'map.png';
+
+        var ctx = $canvas[0].getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        var pixels = ctx.getImageData(0, 0, mapWidth / 4, mapHeight);
+
+        var data = [];
+        var x = 0;
+        var y = 0;
+        for (var i = 0; i < pixels.data.length; i += 4) {
+            var byte = pixels.data[i];
+
+            var cell4 = (byte & 0b11000000) >>> 6;
+            var cell3 = (byte & 0b00110000) >>> 4;
+            var cell2 = (byte & 0b00001100) >>> 2;
+            var cell1 = (byte & 0b00000011);
+
+            data.push(cell4);
+            data.push(cell3);
+            data.push(cell2);
+            data.push(cell1);
+        }
+
+        var idx = 0;
+        $table.find('tr').each(function() {
+            $(this).find('td').each(function() {
+                $(this).attr('data-val', data[idx++]);
+            });
+        });
+    }
+
 
     setup();
+    load();
 });
