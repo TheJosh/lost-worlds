@@ -142,6 +142,7 @@ $(document).ready(function() {
             });
         };
 
+        img.crossOrigin = 'anonymous';
         img.src = 'map.png';
     }
 

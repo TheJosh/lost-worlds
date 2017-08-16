@@ -85,5 +85,6 @@ function load() {
 		// TODO: Actually use the data array!
 	};
 
+	img.crossOrigin = 'anonymous';
 	img.src = 'map.png';
 }
