@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+}
+.toolbar {
+    background: #eee;
+    position: fixed;
+    width: 100%;
+    height: 45px;
+}
+.tool {
+    box-sizing: border-box;
+    height: 35px;
+    padding: 5px;
+    margin: 5px;
+    float: left;
+    border: 1px #333 solid;
+    background: #CCC;
+}
+.tool.on {
+    background: #999;
+}
+
+.map-container {
+    padding-top: 50px;
+}
+.map {
+    border-collapse: collapse;
+    empty-cells: show;
+    cursor: pointer;
+}
+.map .tile[data-val="0"] {
+    background: #000;
+}
+.map .tile[data-val="1"] {
+    background: #653;
+}
+.map .tile[data-val="2"] {
+    background: #99C;
+}
+.map .tile[data-val="3"] {
+    background: #900;
+}
+
+.map .spawn {
+    background: #FFF;
+}
+.map .spawn:after {
+    content: "S";
+}
