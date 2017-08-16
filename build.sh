@@ -6,9 +6,9 @@
 
 mkdir -p tmp
 
-closure-compiler --compilation_level ADVANCED_OPTIMIZATIONS source.js >tmp/a.js
+closure-compiler --compilation_level ADVANCED_OPTIMIZATIONS src/source.js >tmp/a.js
 
-sed 's/source.js/a.js/' index.html >tmp/index.html
+sed 's/source.js/a.js/' src/index.html >tmp/index.html
 
 rm build.zip
 
