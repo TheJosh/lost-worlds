@@ -111,35 +111,38 @@ $(document).ready(function() {
 
     function load() {
         var img = document.createElement('img');
-        img.src = 'map.png';
 
-        var ctx = $canvas[0].getContext('2d');
-        ctx.drawImage(img, 0, 0);
-        var pixels = ctx.getImageData(0, 0, mapWidth / 4, mapHeight);
+        img.onload = function() {
+            var ctx = $canvas[0].getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            var pixels = ctx.getImageData(0, 0, mapWidth / 4, mapHeight);
 
-        var data = [];
-        var x = 0;
-        var y = 0;
-        for (var i = 0; i < pixels.data.length; i += 4) {
-            var byte = pixels.data[i];
+            var data = [];
+            var x = 0;
+            var y = 0;
+            for (var i = 0; i < pixels.data.length; i += 4) {
+                var byte = pixels.data[i];
 
-            var cell4 = (byte & 0b11000000) >>> 6;
-            var cell3 = (byte & 0b00110000) >>> 4;
-            var cell2 = (byte & 0b00001100) >>> 2;
-            var cell1 = (byte & 0b00000011);
+                var cell4 = (byte & 0b11000000) >>> 6;
+                var cell3 = (byte & 0b00110000) >>> 4;
+                var cell2 = (byte & 0b00001100) >>> 2;
+                var cell1 = (byte & 0b00000011);
 
-            data.push(cell4);
-            data.push(cell3);
-            data.push(cell2);
-            data.push(cell1);
-        }
+                data.push(cell4);
+                data.push(cell3);
+                data.push(cell2);
+                data.push(cell1);
+            }
 
-        var idx = 0;
-        $table.find('tr').each(function() {
-            $(this).find('td').each(function() {
-                $(this).attr('data-val', data[idx++]);
+            var idx = 0;
+            $table.find('tr').each(function() {
+                $(this).find('td').each(function() {
+                    $(this).attr('data-val', data[idx++]);
+                });
             });
-        });
+        };
+
+        img.src = 'map.png';
     }
 
 
