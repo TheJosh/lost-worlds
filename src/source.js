@@ -56,3 +56,34 @@ function render() {
 		ctx.fillText(src.x + ' ' + src.y + ' ' + src.dist + ' ' + src.strength, gravSource[i].x - 50, gravSource[i].y - 30);
 	}
 }
+
+function load() {
+	var img = document.createElement('img');
+
+	img.onload = function() {
+		var ctx = $canvas[0].getContext('2d');
+		ctx.drawImage(img, 0, 0);
+		var pixels = ctx.getImageData(0, 0, mapWidth / 4, mapHeight);
+
+		var data = [];
+		var x = 0;
+		var y = 0;
+		for (var i = 0; i < pixels.data.length; i += 4) {
+			var byte = pixels.data[i];
+
+			var cell4 = (byte & 0b11000000) >>> 6;
+			var cell3 = (byte & 0b00110000) >>> 4;
+			var cell2 = (byte & 0b00001100) >>> 2;
+			var cell1 = (byte & 0b00000011);
+
+			data.push(cell4);
+			data.push(cell3);
+			data.push(cell2);
+			data.push(cell1);
+		}
+
+		// TODO: Actually use the data array!
+	};
+
+	img.src = 'map.png';
+}
