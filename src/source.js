@@ -14,8 +14,8 @@ var ctx = document.getElementById('c').getContext('2d');
 
 var player = { x: 550, y: 550 };
 var gravSource = [
-	{ x: 200, y: 200, dist: 0, strength: 0, dirY: 2 },
-	{ x: 600, y: 200, dist: 0, strength: 0, dirY: 2 }
+	{ x: 4630, y: 70, dist: 0, strength: 0, dirY: 2 },
+	{ x: 4110, y: 1030, dist: 0, strength: 0, dirY: 2 }
 ];
 
 var mapTiles = [];
