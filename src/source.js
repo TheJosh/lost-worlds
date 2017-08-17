@@ -67,7 +67,7 @@ function physics() {
 	var tileY = Math.round(possPos.y / 32);
 	var tileType = getTile(tileX, tileY);
 
-	if (tileType == 0) {
+	if (tileType <= 0) {
 		player.x = possPos.x;
 		player.y = possPos.y;
 	}
@@ -178,7 +178,7 @@ function load() {
 				var tile = getTile(x, y);
 				if (tile == 1) {
 					if (getTile(x - 1, y) == 0 || getTile(x + 1, y) == 0 || getTile(x, y - 1) == 0 || getTile(x, y + 1) == 0) {
-						setTile(x, y, 4);
+						setTile(x, y, -1);
 					}
 				}
 			}
