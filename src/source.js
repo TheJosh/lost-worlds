@@ -6,11 +6,16 @@ var gravSource = [
 	{ x: 600, y: 200, dirY: 2 }
 ];
 
+var mapTiles = [];
+
+
 function frame(timestamp) {
 	physics();
 	render();
 	requestAnimationFrame(frame);
 }
+
+load();
 requestAnimationFrame(frame);
 
 
@@ -38,8 +43,21 @@ function physics() {
 }
 
 function render() {
-	ctx.fillStyle = '#000';
+	ctx.fillStyle = '#180B00';
 	ctx.fillRect(0, 0, 800, 800);
+
+	for (var y = 0; y <= 64; ++y) {
+		for (var x = 0; x <= 256; ++x) {
+			var tile = mapTiles[256 * y + x];
+			switch (tile) {
+				case 0: continue;
+				case 1: ctx.fillStyle = '#34190A'; break;
+				case 2: ctx.fillStyle = '#C0C8CF'; break;
+				case 3: ctx.fillStyle = '#630E1B'; break;
+			}
+			ctx.fillRect(x * 32, y * 32, 32, 32);
+		}
+	}
 
 	ctx.fillStyle = '#f00';
 	ctx.beginPath();
@@ -61,11 +79,15 @@ function load() {
 	var img = document.createElement('img');
 
 	img.onload = function() {
-		var ctx = $canvas[0].getContext('2d');
+		console.log('onload');
+		
+		var canvas = document.createElement('canvas');
+		canvas.width = canvas.height = 64;
+		var ctx = canvas.getContext('2d');
 		ctx.drawImage(img, 0, 0);
-		var pixels = ctx.getImageData(0, 0, mapWidth / 4, mapHeight);
+		var pixels = ctx.getImageData(0, 0, 64, 64);
 
-		var data = [];
+		mapTiles = [];
 		var x = 0;
 		var y = 0;
 		for (var i = 0; i < pixels.data.length; i += 4) {
@@ -76,13 +98,11 @@ function load() {
 			var cell2 = (byte & 0b00001100) >>> 2;
 			var cell1 = (byte & 0b00000011);
 
-			data.push(cell4);
-			data.push(cell3);
-			data.push(cell2);
-			data.push(cell1);
+			mapTiles.push(cell4);
+			mapTiles.push(cell3);
+			mapTiles.push(cell2);
+			mapTiles.push(cell1);
 		}
-
-		// TODO: Actually use the data array!
 	};
 
 	img.crossOrigin = 'anonymous';
