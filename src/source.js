@@ -98,7 +98,7 @@ function render() {
 
 	var offset = {
 		x: 0 - player.x + (canvas.width / 2),
-		y: 0 - player.y + (canvas.height / 2),
+		y: 0 - player.y + (canvas.height / 2)
 	};
 	offset.x = Math.round(offset.x);
 	offset.y = Math.round(offset.y);
@@ -152,12 +152,12 @@ function load() {
 		var x = 0;
 		var y = 0;
 		for (var i = 0; i < pixels.data.length; i += 4) {
-			var byte = pixels.data[i];
+			var pxl = pixels.data[i];
 
-			var cell4 = (byte & 0b11000000) >>> 6;
-			var cell3 = (byte & 0b00110000) >>> 4;
-			var cell2 = (byte & 0b00001100) >>> 2;
-			var cell1 = (byte & 0b00000011);
+			var cell4 = (pxl & parseInt('11000000', 2)) >>> 6;
+			var cell3 = (pxl & parseInt('00110000', 2)) >>> 4;
+			var cell2 = (pxl & parseInt('00001100', 2)) >>> 2;
+			var cell1 = (pxl & parseInt('00000011', 2));
 
 			mapTiles.push(cell4);
 			mapTiles.push(cell3);
