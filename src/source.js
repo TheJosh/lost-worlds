@@ -114,11 +114,11 @@ function render() {
 		for (var x = 0; x <= 256; ++x) {
 			var tile = getTile(x, y);
 			switch (tile) {
-				case 1: continue;
-				case 0: ctx.fillStyle = '#180B00'; break;   // none
-				case 2: ctx.fillStyle = '#C0C8CF'; break;   // steel
-				case 3: ctx.fillStyle = '#630E1B'; break;   // lava
-				case 4: ctx.fillStyle = '#422105'; break;   // dirt edge
+				case -1: ctx.fillStyle = '#422105'; break;   // dirt edge
+				case  0: ctx.fillStyle = '#180B00'; break;   // none
+				case  1: continue;
+				case  2: ctx.fillStyle = '#C0C8CF'; break;   // steel
+				case  3: ctx.fillStyle = '#630E1B'; break;   // lava
 			}
 			ctx.fillRect(x * 32 + offset.x, y * 32 + offset.y, 32, 32);
 		}
