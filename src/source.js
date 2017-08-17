@@ -1,3 +1,6 @@
+var canvas = document.getElementById('c');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 var ctx = document.getElementById('c').getContext('2d');
 
 var player = { x: 400, y: 400 };
@@ -44,7 +47,7 @@ function physics() {
 
 function render() {
 	ctx.fillStyle = '#180B00';
-	ctx.fillRect(0, 0, 800, 800);
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	for (var y = 0; y <= 64; ++y) {
 		for (var x = 0; x <= 256; ++x) {
