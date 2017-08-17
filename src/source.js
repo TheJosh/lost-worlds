@@ -120,9 +120,7 @@ function render() {
 	}
 
 	ctx.fillStyle = '#f00';
-	ctx.beginPath();
-	ctx.arc(player.x + offset.x, player.y + offset.y, 20, 0, 2 * Math.PI);
-	ctx.fill();
+	ctx.fillRect(player.x + offset.x - 16, player.y + offset.y - 16, 32, 32);
 	ctx.fillText(
 		player.x.toFixed(2) + 'x' + player.y.toFixed(2),
 		player.x - 35 + offset.x, player.y - 30 + offset.y
