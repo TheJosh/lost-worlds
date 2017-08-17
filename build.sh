@@ -10,6 +10,8 @@ closure-compiler --compilation_level ADVANCED_OPTIMIZATIONS src/source.js >tmp/a
 
 sed 's/source.js/a.js/' src/index.html >tmp/index.html
 
+cp src/map.png tmp/map.png
+
 rm build.zip
 
 echo "Would you like 50 more bytes? Remove this comment!" >archcomment
