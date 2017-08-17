@@ -65,7 +65,7 @@ function physics() {
 
 	var tileX = Math.round(possPos.x / 32);
 	var tileY = Math.round(possPos.y / 32);
-	var tileType = mapTiles[256 * tileY + tileX];
+	var tileType = getTile(tileX, tileY);
 
 	if (tileType == 0) {
 		player.x = possPos.x;
@@ -91,9 +91,16 @@ function keyup(e) {
 	}
 }
 
+function getTile(x, y) {
+	return mapTiles[256 * y + x];
+}
+
+function setTile(x, y, val) {
+	mapTiles[256 * y + x] = val;
+}
+
 function render() {
 	ctx.fillStyle = '#34190A';
-	
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	var offset = {
@@ -105,7 +112,7 @@ function render() {
 
 	for (var y = 0; y <= 64; ++y) {
 		for (var x = 0; x <= 256; ++x) {
-			var tile = mapTiles[256 * y + x];
+			var tile = getTile(x, y);
 			switch (tile) {
 				case 1: continue;
 				case 0: ctx.fillStyle = '#180B00'; break;
