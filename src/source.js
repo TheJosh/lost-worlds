@@ -7,20 +7,28 @@ function size() {
 }
 size();
 window.onresize = size;
+window.onkeydown = keydown;
+window.onkeyup = keyup;
 
 var ctx = document.getElementById('c').getContext('2d');
 
-var player = { x: 400, y: 400 };
+var player = { x: 550, y: 550 };
 var gravSource = [
-	{ x: 200, y: 200, dirY: 2 },
-	{ x: 600, y: 200, dirY: 2 }
+	{ x: 200, y: 200, dist: 0, strength: 0, dirY: 2 },
+	{ x: 600, y: 200, dist: 0, strength: 0, dirY: 2 }
 ];
 
 var mapTiles = [];
 
+var keys = {
+	x: 0,
+	y: 0
+};
+
 
 function frame(timestamp) {
-	physics();
+	movePlayer();
+	//physics();
 	render();
 	requestAnimationFrame(frame);
 }
@@ -28,6 +36,11 @@ function frame(timestamp) {
 load();
 requestAnimationFrame(frame);
 
+
+function movePlayer() {
+	player.x += (keys.x * 10);
+	player.y += (keys.y * 10);
+}
 
 function physics() {
 	var force = { x: 0.0, y: 0.0 }
@@ -50,6 +63,24 @@ function physics() {
 
 	player.x += force.x;
 	player.y += force.y;
+}
+
+function keydown(e) {
+	switch (e.key) {
+		case 'ArrowDown': keys.y = 1; break;
+		case 'ArrowUp': keys.y = -1; break;
+		case 'ArrowLeft': keys.x = -1; break;
+		case 'ArrowRight': keys.x = 1; break;
+	}
+}
+
+function keyup(e) {
+	switch (e.key) {
+		case 'ArrowDown':
+		case 'ArrowUp': keys.y = 0; break;
+		case 'ArrowLeft':
+		case 'ArrowRight': keys.x = 0; break;
+	}
 }
 
 function render() {
