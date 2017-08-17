@@ -27,8 +27,7 @@ var keys = {
 
 
 function frame(timestamp) {
-	movePlayer();
-	//physics();
+	physics();
 	render();
 	requestAnimationFrame(frame);
 }
@@ -37,24 +36,12 @@ load();
 requestAnimationFrame(frame);
 
 
-function movePlayer() {
-	var possPos = {};
-
-	possPos.x = player.x + (keys.x * 10);
-	possPos.y = player.y + (keys.y * 10);
-
-	var tileX = Math.round(possPos.x / 32);
-	var tileY = Math.round(possPos.y / 32);
-	var tileType = mapTiles[256 * tileY + tileX];
-
-	if (tileType == 0) {
-		player.x = possPos.x;
-		player.y = possPos.y;
-	}
-}
-
 function physics() {
 	var force = { x: 0.0, y: 0.0 }
+
+	force.x += (keys.x * 10);
+	force.y += (keys.y * 10);
+
 	for (var i = 0; i < gravSource.length; ++i) {
 		var src = gravSource[i];
 		src.dist = Math.sqrt(Math.pow(player.x - src.x, 2) + Math.pow(player.y - src.y, 2));
@@ -72,8 +59,18 @@ function physics() {
 		}
 	}
 
-	player.x += force.x;
-	player.y += force.y;
+	var possPos = {};
+	possPos.x = player.x + force.x;
+	possPos.y = player.y + force.y;
+
+	var tileX = Math.round(possPos.x / 32);
+	var tileY = Math.round(possPos.y / 32);
+	var tileType = mapTiles[256 * tileY + tileX];
+
+	if (tileType == 0) {
+		player.x = possPos.x;
+		player.y = possPos.y;
+	}
 }
 
 function keydown(e) {
