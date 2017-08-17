@@ -1,6 +1,13 @@
-var canvas = document.getElementById('c');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+var canvas;
+
+function size() {
+	canvas = document.getElementById('c');
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+}
+size();
+window.onresize = size;
+
 var ctx = document.getElementById('c').getContext('2d');
 
 var player = { x: 400, y: 400 };
