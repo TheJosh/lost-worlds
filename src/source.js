@@ -92,6 +92,8 @@ function render() {
 		x: 0 - player.x + (canvas.width / 2),
 		y: 0 - player.y + (canvas.height / 2),
 	};
+	offset.x = Math.round(offset.x);
+	offset.y = Math.round(offset.y);
 
 	for (var y = 0; y <= 64; ++y) {
 		for (var x = 0; x <= 256; ++x) {
