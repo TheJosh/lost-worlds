@@ -38,8 +38,19 @@ requestAnimationFrame(frame);
 
 
 function movePlayer() {
-	player.x += (keys.x * 10);
-	player.y += (keys.y * 10);
+	var possPos = {};
+
+	possPos.x = player.x + (keys.x * 10);
+	possPos.y = player.y + (keys.y * 10);
+
+	var tileX = Math.round(possPos.x / 32);
+	var tileY = Math.round(possPos.y / 32);
+	var tileType = mapTiles[256 * tileY + tileX];
+
+	if (tileType == 0) {
+		player.x = possPos.x;
+		player.y = possPos.y;
+	}
 }
 
 function physics() {
