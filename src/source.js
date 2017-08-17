@@ -73,15 +73,21 @@ function render() {
 	ctx.beginPath();
 	ctx.arc(player.x, player.y, 20, 0, 2 * Math.PI);
 	ctx.fill();
-	ctx.fillText(player.x + ' ' + player.y, player.x - 50, player.y - 30);
+	ctx.fillText(
+		player.x.toFixed(2) + 'x' + player.y.toFixed(2),
+		player.x - 35, player.y - 30
+	);
 
-	ctx.fillStyle = '#00f';
+	ctx.fillStyle = '#fff';
 	for (var i = 0; i < gravSource.length; ++i) {
 		var src = gravSource[i];
 		ctx.beginPath();
 		ctx.arc(src.x, src.y, 20, 0, 2 * Math.PI);
 		ctx.fill();
-		ctx.fillText(src.x + ' ' + src.y + ' ' + src.dist + ' ' + src.strength, gravSource[i].x - 50, gravSource[i].y - 30);
+		ctx.fillText(
+			src.x.toFixed(2) + 'x' + src.y.toFixed(2) + ' -- ' + src.dist.toFixed(2) + ' -- ' + src.strength.toFixed(2),
+			gravSource[i].x - 80, gravSource[i].y - 30
+		);
 	}
 }
 
