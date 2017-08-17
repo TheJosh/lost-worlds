@@ -87,6 +87,11 @@ function render() {
 	ctx.fillStyle = '#180B00';
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+	var offset = {
+		x: 0 - player.x + (canvas.width / 2),
+		y: 0 - player.y + (canvas.height / 2),
+	};
+
 	for (var y = 0; y <= 64; ++y) {
 		for (var x = 0; x <= 256; ++x) {
 			var tile = mapTiles[256 * y + x];
@@ -96,28 +101,28 @@ function render() {
 				case 2: ctx.fillStyle = '#C0C8CF'; break;
 				case 3: ctx.fillStyle = '#630E1B'; break;
 			}
-			ctx.fillRect(x * 32, y * 32, 32, 32);
+			ctx.fillRect(x * 32 + offset.x, y * 32 + offset.y, 32, 32);
 		}
 	}
 
 	ctx.fillStyle = '#f00';
 	ctx.beginPath();
-	ctx.arc(player.x, player.y, 20, 0, 2 * Math.PI);
+	ctx.arc(player.x + offset.x, player.y + offset.y, 20, 0, 2 * Math.PI);
 	ctx.fill();
 	ctx.fillText(
 		player.x.toFixed(2) + 'x' + player.y.toFixed(2),
-		player.x - 35, player.y - 30
+		player.x - 35 + offset.x, player.y - 30 + offset.y
 	);
 
 	ctx.fillStyle = '#fff';
 	for (var i = 0; i < gravSource.length; ++i) {
 		var src = gravSource[i];
 		ctx.beginPath();
-		ctx.arc(src.x, src.y, 20, 0, 2 * Math.PI);
+		ctx.arc(src.x + offset.x, src.y + offset.y, 20, 0, 2 * Math.PI);
 		ctx.fill();
 		ctx.fillText(
 			src.x.toFixed(2) + 'x' + src.y.toFixed(2) + ' -- ' + src.dist.toFixed(2) + ' -- ' + src.strength.toFixed(2),
-			gravSource[i].x - 80, gravSource[i].y - 30
+			gravSource[i].x - 80 + offset.x, gravSource[i].y - 30 + offset.y
 		);
 	}
 }
