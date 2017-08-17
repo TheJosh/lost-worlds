@@ -84,7 +84,8 @@ function keyup(e) {
 }
 
 function render() {
-	ctx.fillStyle = '#180B00';
+	ctx.fillStyle = '#34190A';
+	
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	var offset = {
@@ -96,8 +97,8 @@ function render() {
 		for (var x = 0; x <= 256; ++x) {
 			var tile = mapTiles[256 * y + x];
 			switch (tile) {
-				case 0: continue;
-				case 1: ctx.fillStyle = '#34190A'; break;
+				case 1: continue;
+				case 0: ctx.fillStyle = '#180B00'; break;
 				case 2: ctx.fillStyle = '#C0C8CF'; break;
 				case 3: ctx.fillStyle = '#630E1B'; break;
 			}
