@@ -1,5 +1,9 @@
 var canvas;
 
+var TILE_SIZE = 32;
+var PLAYER_SIZE = 20;
+var HALF_PLAYER_SIZE = 10;
+
 function size() {
 	canvas = document.getElementById('c');
 	canvas.width = window.innerWidth;
@@ -120,12 +124,12 @@ function render() {
 				case  2: ctx.fillStyle = '#D3D7DB'; break;   // steel
 				case  3: ctx.fillStyle = '#630E1B'; break;   // lava
 			}
-			ctx.fillRect(x * 32 + offset.x, y * 32 + offset.y, 32, 32);
+			ctx.fillRect(x * TILE_SIZE + offset.x, y * TILE_SIZE + offset.y, TILE_SIZE, TILE_SIZE);
 		}
 	}
 
 	ctx.fillStyle = '#f00';
-	ctx.fillRect(player.x + offset.x - 16, player.y + offset.y - 16, 32, 32);
+	ctx.fillRect(player.x + offset.x - HALF_PLAYER_SIZE, player.y + offset.y - HALF_PLAYER_SIZE, PLAYER_SIZE, PLAYER_SIZE);
 	ctx.fillText(
 		player.x.toFixed(2) + 'x' + player.y.toFixed(2),
 		player.x - 35 + offset.x, player.y - 30 + offset.y
