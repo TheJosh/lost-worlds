@@ -17,6 +17,7 @@ window.onkeyup = keyup;
 var ctx = document.getElementById('c').getContext('2d');
 
 var player = { x: 550, y: 550 };
+var accel = { x: 0, y: 0 };
 var gravSource = [
 	{ x: 4630, y: 70, dist: 0, strength: 0, dirY: 2 },
 	{ x: 4110, y: 1030, dist: 0, strength: 0, dirY: 2 }
@@ -43,8 +44,24 @@ requestAnimationFrame(frame);
 function physics() {
 	var force = { x: 0.0, y: 0.0 }
 
-	force.x += (keys.x * 10);
-	force.y += (keys.y * 10);
+	if (keys.x != 0) {
+		accel.x += (keys.x * 0.5);
+		if (accel.x > 10) accel.x = 10;
+		if (accel.x < -10) accel.x = -10;
+	} else {
+		accel.x /= 1.2;
+	}
+
+	if (keys.y != 0) {
+		accel.y += (keys.y * 0.5);
+		if (accel.y > 10) accel.y = 10;
+		if (accel.y < -10) accel.y = -10;
+	} else {
+		accel.y /= 1.2;
+	}
+
+	force.x += accel.x;
+	force.y += accel.y;
 
 	for (var i = 0; i < gravSource.length; ++i) {
 		var src = gravSource[i];
