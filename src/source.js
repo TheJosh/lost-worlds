@@ -66,22 +66,31 @@ function physics() {
 	player.x += force.x;
 	player.y += force.y;
 
-	collidePlayer(-1.0);
-	collidePlayer(+1.0);
+	collidePlayer(-1.0, 0.0);
+	collidePlayer(+1.0, 0.0);
+	collidePlayer(0.0, -1.0);
+	collidePlayer(0.0, +1.0);
 }
 
-function collidePlayer(xSign) {
+
+function collidePlayer(xSign, ySign) {
 	var tileX = Math.floor((player.x + HALF_PLAYER_SIZE * xSign) / TILE_SIZE);
-	var tileY = Math.floor(player.y / TILE_SIZE);
+	var tileY = Math.floor((player.y + HALF_PLAYER_SIZE * ySign) / TILE_SIZE);
 
 	var tileType = getTile(tileX, tileY);
 
 	if (tileType > 0) {
-		setTile(tileX, tileY, 3);
+		if (xSign != 0) {
+			var tileXpx = tileX * TILE_SIZE;
+			if (xSign < 0) tileXpx += TILE_SIZE;
+			player.x =  tileXpx - (HALF_PLAYER_SIZE * xSign);
+		}
 
-		var tileXpx = tileX * TILE_SIZE;
-		if (xSign < 0) tileXpx += TILE_SIZE;
-		player.x =  tileXpx - (HALF_PLAYER_SIZE * xSign);
+		if (ySign != 0) {
+			var tileYpx = tileY * TILE_SIZE;
+			if (ySign < 0) tileYpx += TILE_SIZE;
+			player.y =  tileYpx - (HALF_PLAYER_SIZE * ySign);
+		}
 	}
 }
 
@@ -162,7 +171,7 @@ function load() {
 
 	img.onload = function() {
 		console.log('onload');
-		
+
 		var canvas = document.createElement('canvas');
 		canvas.width = canvas.height = 64;
 		var ctx = canvas.getContext('2d');
