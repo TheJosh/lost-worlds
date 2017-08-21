@@ -63,19 +63,28 @@ function physics() {
 		}
 	}
 
-	var possPos = {};
-	possPos.x = player.x + force.x;
-	possPos.y = player.y + force.y;
+	player.x += force.x;
+	player.y += force.y;
 
-	var tileX = Math.round(possPos.x / 32);
-	var tileY = Math.round(possPos.y / 32);
+	collidePlayer(-1.0);
+	collidePlayer(+1.0);
+}
+
+function collidePlayer(xSign) {
+	var tileX = Math.floor((player.x + HALF_PLAYER_SIZE * xSign) / TILE_SIZE);
+	var tileY = Math.floor(player.y / TILE_SIZE);
+
 	var tileType = getTile(tileX, tileY);
 
-	if (tileType <= 0) {
-		player.x = possPos.x;
-		player.y = possPos.y;
+	if (tileType > 0) {
+		setTile(tileX, tileY, 3);
+
+		var tileXpx = tileX * TILE_SIZE;
+		if (xSign < 0) tileXpx += TILE_SIZE;
+		player.x =  tileXpx - (HALF_PLAYER_SIZE * xSign);
 	}
 }
+
 
 function keydown(e) {
 	switch (e.key) {
