@@ -139,8 +139,12 @@ function setTile(x, y, val) {
 }
 
 function render() {
+	ctx.setTransform(1, 0, 0, 1, 0, 0);
+
 	ctx.fillStyle = '#34190A';
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+	ctx.rotate(10 * Math.PI / 180);
 
 	var offset = {
 		x: 0 - player.x + (canvas.width / 2),
