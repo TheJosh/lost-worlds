@@ -138,13 +138,23 @@ function setTile(x, y, val) {
 	mapTiles[256 * y + x] = val;
 }
 
+var rot = 0;
+var rotDir = 0.1;
+
 function render() {
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 
 	ctx.fillStyle = '#34190A';
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-	ctx.rotate(10 * Math.PI / 180);
+	rot += rotDir;
+	if (rot >= 10 || rot <= -10) {
+		rotDir = 0 - rotDir;
+	}
+
+	ctx.translate(canvas.width/2, canvas.height/2);
+	ctx.rotate(rot * Math.PI / 180);
+	ctx.translate(0 - canvas.width/2, 0 - canvas.height/2);
 
 	var offset = {
 		x: 0 - player.x + (canvas.width / 2),
