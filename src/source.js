@@ -32,12 +32,20 @@ var keys = {
 
 
 var lastTs = 0;
+var fpsRingBuf = [];
 function frame(timestamp) {
 	var delta = timestamp - lastTs;
-	physics(delta);
-	render(delta);
-	requestAnimationFrame(frame);
 	lastTs = timestamp;
+
+	fpsRingBuf.push(1000 / delta);
+	if (fpsRingBuf.length > 100) {
+		fpsRingBuf.shift();
+	}
+
+	physics(delta);
+	render();
+
+	requestAnimationFrame(frame);
 }
 
 load();
@@ -144,7 +152,7 @@ function setTile(x, y, val) {
 var rot = 0;
 var rotDir = 0.1;
 
-function render(delta) {
+function render() {
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 
 	ctx.fillStyle = '#34190A';
@@ -198,10 +206,14 @@ function render(delta) {
 			gravSource[i].x - 80 + offset.x, gravSource[i].y - 30 + offset.y
 		);
 	}
-	
+
+	var fps = fpsRingBuf.reduce(function(x,y) {
+		return x + y;
+	}) / fpsRingBuf.length;
+
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 	ctx.fillStyle = '#fff';
-	ctx.fillText(delta.toFixed(2) + 'ms = ' + (1000 / delta).toFixed(2) + 'fps', 20, 20);
+	ctx.fillText(fps.toFixed(1) + ' fps', 20, 20);
 }
 
 function load() {
