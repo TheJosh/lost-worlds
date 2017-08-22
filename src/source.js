@@ -31,17 +31,20 @@ var keys = {
 };
 
 
+var lastTs = 0;
 function frame(timestamp) {
-	physics();
-	render();
+	var delta = timestamp - lastTs;
+	physics(delta);
+	render(delta);
 	requestAnimationFrame(frame);
+	lastTs = timestamp;
 }
 
 load();
 requestAnimationFrame(frame);
 
 
-function physics() {
+function physics(delta) {
 	var force = { x: 0.0, y: 0.0 }
 
 	if (keys.x != 0) {
@@ -141,7 +144,7 @@ function setTile(x, y, val) {
 var rot = 0;
 var rotDir = 0.1;
 
-function render() {
+function render(delta) {
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 
 	ctx.fillStyle = '#34190A';
@@ -195,6 +198,10 @@ function render() {
 			gravSource[i].x - 80 + offset.x, gravSource[i].y - 30 + offset.y
 		);
 	}
+	
+	ctx.setTransform(1, 0, 0, 1, 0, 0);
+	ctx.fillStyle = '#fff';
+	ctx.fillText(delta.toFixed(2) + 'ms = ' + (1000 / delta).toFixed(2) + 'fps', 20, 20);
 }
 
 function load() {
