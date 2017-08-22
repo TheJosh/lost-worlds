@@ -6,9 +6,19 @@
 
 mkdir -p tmp
 
-closure-compiler --compilation_level ADVANCED_OPTIMIZATIONS src/source.js >tmp/a.js
+cat \
+	src/map.js \
+	src/render.js \
+	src/physics.js \
+	src/events.js \
+	src/main.js \
+	> tmp/all.js
 
-sed 's/source.js/a.js/' src/index.html >tmp/index.html
+closure-compiler --compilation_level ADVANCED_OPTIMIZATIONS tmp/all.js >tmp/a.js
+rm tmp/all.js
+
+echo "<style>body{margin:0;overflow:hidden}</style><canvas id=c></canvas><script src=a.js></script>" \
+	>tmp/index.html
 
 cp src/map.png tmp/map.png
 
@@ -27,4 +37,3 @@ echo "Total size: $SIZE bytes"
 if [ $SIZE -gt 13312 ]; then
 	echo "TOO BIG!"
 fi
-
