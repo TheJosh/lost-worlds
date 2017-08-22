@@ -20,9 +20,9 @@ rm tmp/all.js
 echo "<style>body{margin:0;overflow:hidden}</style><canvas id=c></canvas><script src=a.js></script>" \
 	>tmp/index.html
 
-cp src/map.png tmp/map.png
+pngcrush -q -brute -c 0 src/map.png tmp/map.png
 
-rm build.zip
+rm -f build.zip
 
 echo "Would you like 50 more bytes? Remove this comment!" >archcomment
 zip -z -9 -q -j build.zip tmp/* <archcomment
