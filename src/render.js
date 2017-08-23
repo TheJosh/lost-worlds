@@ -30,6 +30,7 @@ function render() {
 	};
 	offset.x = Math.round(offset.x);
 	offset.y = Math.round(offset.y);
+	ctx.translate(offset.x, offset.y);
 
 	for (var y = 0; y <= 64; ++y) {
 		for (var x = 0; x <= 256; ++x) {
@@ -41,26 +42,29 @@ function render() {
 				case  2: ctx.fillStyle = '#D3D7DB'; break;   // steel
 				case  3: ctx.fillStyle = '#630E1B'; break;   // lava
 			}
-			ctx.fillRect(x * TILE_SIZE + offset.x, y * TILE_SIZE + offset.y, TILE_SIZE, TILE_SIZE);
+			ctx.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 		}
 	}
 
+	ctx.translate(player.x, player.y);
 	ctx.fillStyle = '#f00';
-	ctx.fillRect(player.x + offset.x - HALF_PLAYER_SIZE, player.y + offset.y - HALF_PLAYER_SIZE, PLAYER_SIZE, PLAYER_SIZE);
+	ctx.fillRect(-HALF_PLAYER_SIZE, -HALF_PLAYER_SIZE, PLAYER_SIZE, PLAYER_SIZE);
+	ctx.fillRect(-3, -HALF_PLAYER_SIZE - 5, 6, 6);
 	ctx.fillText(
 		player.x.toFixed(2) + 'x' + player.y.toFixed(2),
-		player.x - 35 + offset.x, player.y - 30 + offset.y
+		-35, -30
 	);
+	ctx.translate(-player.x, -player.y);
 
 	ctx.fillStyle = '#fff';
 	for (var i = 0; i < gravSource.length; ++i) {
 		var src = gravSource[i];
 		ctx.beginPath();
-		ctx.arc(src.x + offset.x, src.y + offset.y, 20, 0, 2 * Math.PI);
+		ctx.arc(src.x, src.y, 20, 0, 2 * Math.PI);
 		ctx.fill();
 		ctx.fillText(
 			src.x.toFixed(2) + 'x' + src.y.toFixed(2) + ' -- ' + src.dist.toFixed(2) + ' -- ' + src.strength.toFixed(2),
-			gravSource[i].x - 80 + offset.x, gravSource[i].y - 30 + offset.y
+			gravSource[i].x - 80, gravSource[i].y - 30
 		);
 	}
 
