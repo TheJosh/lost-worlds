@@ -1,7 +1,7 @@
 var canvas = document.getElementById('c');
 var ctx = canvas.getContext('2d');
-var rot = 0;
-var rotDir = 0.1;
+var universeRot = 0;
+var universeRotDir = 0.0;
 var offset = { x: 0, y: 0 };
 
 function resizeRenderCanvas() {
@@ -17,13 +17,13 @@ function render() {
 	ctx.fillStyle = '#34190A';
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-	rot += rotDir;
-	if (rot >= 10 || rot <= -10) {
-		rotDir = 0 - rotDir;
+	universeRot += universeRotDir;
+	if (universe.spinLimit > 0 && Math.abs(universeRot) >= universe.spinLimit) {
+		universeRotDir = 0 - universeRotDir;
 	}
 
 	ctx.translate(canvas.width/2, canvas.height/2);
-	ctx.rotate(rot * Math.PI / 180);
+	ctx.rotate(universeRot * Math.PI / 180);
 	ctx.translate(0 - canvas.width/2, 0 - canvas.height/2);
 
 	offset.x = Math.round(

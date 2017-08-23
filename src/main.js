@@ -34,4 +34,5 @@ function tick(timestamp) {
 
 resizeRenderCanvas();
 loadMap();
+initUniverse();
 requestAnimationFrame(tick);
