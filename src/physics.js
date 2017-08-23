@@ -2,6 +2,7 @@ var accel = { x: 0, y: 0 };
 
 
 function physics(delta) {
+	var delThous = delta / 1000;
 	var force = { x: 0.0, y: 0.0 }
 
 	if (mouse.x && mouse.y) {
@@ -11,7 +12,7 @@ function physics(delta) {
 	}
 
 	if (keys.x != 0) {
-		accel.x += (keys.x * universe.unitAccel);
+		accel.x += (keys.x * universe.unitAccel * delThous);
 		if (accel.x > universe.unitMax) accel.y = universe.unitMax;
 		if (accel.x < 0 - universe.unitMax) accel.y = 0 - universe.unitMax;
 	} else {
@@ -19,7 +20,7 @@ function physics(delta) {
 	}
 
 	if (keys.y != 0) {
-		accel.y += (keys.y * universe.unitAccel);
+		accel.y += (keys.y * universe.unitAccel * delThous);
 		if (accel.y > universe.unitMax) accel.y = universe.unitMax;
 		if (accel.y < 0 - universe.unitMax) accel.y = 0 - universe.unitMax;
 	} else {
@@ -27,12 +28,12 @@ function physics(delta) {
 	}
 
 	// Forwards and backwards
-	force.x += Math.cos(player.rot) * accel.y;
-	force.y += Math.sin(player.rot) * accel.y;
+	force.x += Math.cos(player.rot) * accel.y * delThous;
+	force.y += Math.sin(player.rot) * accel.y * delThous;
 
 	// Strafe
-	force.x += Math.cos(player.rot - Math.PI/2) * accel.x;
-	force.y += Math.sin(player.rot - Math.PI/2) * accel.x;
+	force.x += Math.cos(player.rot - Math.PI/2) * accel.x * delThous;
+	force.y += Math.sin(player.rot - Math.PI/2) * accel.x * delThous;
 
 	for (var i = 0; i < gravSource.length; ++i) {
 		var src = gravSource[i];
