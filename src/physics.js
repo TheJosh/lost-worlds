@@ -17,8 +17,13 @@ function physics(delta) {
 		accel.y /= 1.2;
 	}
 
-	force.x += accel.x;
-	force.y += accel.y;
+	// Forwards and backwards
+	force.x += Math.cos(player.rot) * accel.y;
+	force.y += Math.sin(player.rot) * accel.y;
+
+	// Strafe
+	force.x += Math.cos(player.rot - Math.PI/2) * accel.x;
+	force.y += Math.sin(player.rot - Math.PI/2) * accel.x;
 
 	for (var i = 0; i < gravSource.length; ++i) {
 		var src = gravSource[i];

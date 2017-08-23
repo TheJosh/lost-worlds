@@ -6,7 +6,7 @@ window.onresize = resizeRenderCanvas;
 window.onkeydown = keydown;
 window.onkeyup = keyup;
 
-var player = { x: 550, y: 550 };
+var player = { x: 550, y: 550, rot: 0.5 * Math.PI };
 var accel = { x: 0, y: 0 };
 var keys = { x: 0, y: 0 };
 var gravSource = [

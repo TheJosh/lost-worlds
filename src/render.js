@@ -47,13 +47,15 @@ function render() {
 	}
 
 	ctx.translate(player.x, player.y);
+	ctx.rotate(player.rot);
 	ctx.fillStyle = '#f00';
 	ctx.fillRect(-HALF_PLAYER_SIZE, -HALF_PLAYER_SIZE, PLAYER_SIZE, PLAYER_SIZE);
-	ctx.fillRect(-3, -HALF_PLAYER_SIZE - 5, 6, 6);
+	ctx.fillRect(-HALF_PLAYER_SIZE - 5, -3, 6, 6);
 	ctx.fillText(
 		player.x.toFixed(2) + 'x' + player.y.toFixed(2),
 		-35, -30
 	);
+	ctx.rotate(-player.rot);
 	ctx.translate(-player.x, -player.y);
 
 	ctx.fillStyle = '#fff';
