@@ -50,8 +50,8 @@ function loadMap() {
 				}
 			}
 		}
-		
-		initRender();
+
+		startGame();
 	};
 
 	img.crossOrigin = 'anonymous';
