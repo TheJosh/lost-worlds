@@ -12,8 +12,8 @@ var gravSource = [
 ];
 
 var universe = {
-    spinAmount: 0.1,
-    spinLimit: 10,
+    spinAmount: 0.01,
+    spinLimit: 2,
 
     unitAccel: 200,
     unitMax: 500,
