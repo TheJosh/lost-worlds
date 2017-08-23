@@ -1,4 +1,4 @@
-var TILE_SIZE = 32;
+
 var PLAYER_SIZE = 20;
 var HALF_PLAYER_SIZE = 10;
 
@@ -15,6 +15,8 @@ var gravSource = [
 ];
 
 var universe = {
+	tileSize: 32,
+
     spinAmount: 1,    // degrees/second
     spinLimit: 2,
 

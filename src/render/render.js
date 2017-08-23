@@ -20,7 +20,7 @@ function canvasCache(width, height, func) {
 }
 
 function initRender() {
-	cachedTiles = canvasCache(256 * TILE_SIZE, 64 * TILE_SIZE, drawTiles);
+	cachedTiles = canvasCache(256 * universe.tileSize, 64 * universe.tileSize, drawTiles);
 }
 
 function render() {
@@ -83,7 +83,7 @@ function drawTiles(ctx, canvas) {
 				case  2: ctx.fillStyle = universe.colors[2]; break;   // steel
 				case  3: ctx.fillStyle = universe.colors[3]; break;   // lava
 			}
-			ctx.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+			ctx.fillRect(x * universe.tileSize, y * universe.tileSize, universe.tileSize, universe.tileSize);
 		}
 	}
 }

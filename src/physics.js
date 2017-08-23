@@ -70,21 +70,21 @@ function physics(delta) {
 
 
 function collidePlayer(xSign, ySign) {
-	var tileX = Math.floor((player.x + HALF_PLAYER_SIZE * xSign) / TILE_SIZE);
-	var tileY = Math.floor((player.y + HALF_PLAYER_SIZE * ySign) / TILE_SIZE);
+	var tileX = Math.floor((player.x + HALF_PLAYER_SIZE * xSign) / universe.tileSize);
+	var tileY = Math.floor((player.y + HALF_PLAYER_SIZE * ySign) / universe.tileSize);
 
 	var tileType = getTile(tileX, tileY);
 
 	if (tileType > 0) {
 		if (xSign != 0) {
-			var tileXpx = tileX * TILE_SIZE;
-			if (xSign < 0) tileXpx += TILE_SIZE;
+			var tileXpx = tileX * universe.tileSize;
+			if (xSign < 0) tileXpx += universe.tileSize;
 			player.x =  tileXpx - (HALF_PLAYER_SIZE * xSign);
 		}
 
 		if (ySign != 0) {
-			var tileYpx = tileY * TILE_SIZE;
-			if (ySign < 0) tileYpx += TILE_SIZE;
+			var tileYpx = tileY * universe.tileSize;
+			if (ySign < 0) tileYpx += universe.tileSize;
 			player.y =  tileYpx - (HALF_PLAYER_SIZE * ySign);
 		}
 	}

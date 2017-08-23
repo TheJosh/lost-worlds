@@ -22,6 +22,8 @@ function getRandomColor(min, max) {
 
 function newUniverse() {
     with (universe) {
+        tileSize = Math.floor(getRandom(24, 64));
+
         spinAmount = getRandom(0, 10);
 
         if (getRandom(1, 10) <= 2) {
