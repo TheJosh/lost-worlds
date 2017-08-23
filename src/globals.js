@@ -18,4 +18,12 @@ var universe = {
     unitAccel: 200,
     unitMax: 500,
     unitDeccel: 1.2,
+
+	colors: {
+		'-1': '#2E1602',
+		'0': '#180B00',
+		'1': '#34190A',
+		'2': '#D3D7DB',
+		'3': '#630E1B',
+	},
 };

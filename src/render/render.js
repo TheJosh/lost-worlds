@@ -28,7 +28,7 @@ function initRender() {
 function render() {
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 
-	ctx.fillStyle = '#34190A';
+	ctx.fillStyle = universe.colors[1];
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	universeRot += universeRotDir;
@@ -77,18 +77,18 @@ function render() {
 
 
 function drawTiles(ctx, canvas) {
-	ctx.fillStyle = '#34190A';
+	ctx.fillStyle = universe.colors[1];
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	for (var y = 0; y <= 64; ++y) {
 		for (var x = 0; x <= 256; ++x) {
 			var tile = getTile(x, y);
 			switch (tile) {
-				case -1: ctx.fillStyle = '#2E1602'; break;   // dirt edge
-				case  0: ctx.fillStyle = '#180B00'; break;   // none
+				case -1: ctx.fillStyle = universe.colors[-1]; break;   // dirt edge
+				case  0: ctx.fillStyle = universe.colors[0]; break;   // none
 				case  1: continue;
-				case  2: ctx.fillStyle = '#D3D7DB'; break;   // steel
-				case  3: ctx.fillStyle = '#630E1B'; break;   // lava
+				case  2: ctx.fillStyle = universe.colors[2]; break;   // steel
+				case  3: ctx.fillStyle = universe.colors[3]; break;   // lava
 			}
 			ctx.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 		}
