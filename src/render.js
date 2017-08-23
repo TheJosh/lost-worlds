@@ -7,6 +7,7 @@ var offset = { x: 0, y: 0 };
 function resizeRenderCanvas() {
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
+	canvas.onmouseenter = mousemove;
 }
 
 
