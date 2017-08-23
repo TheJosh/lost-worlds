@@ -8,19 +8,19 @@ function physics(delta) {
 	}
 
 	if (keys.x != 0) {
-		accel.x += (keys.x * 0.5);
-		if (accel.x > 10) accel.x = 10;
-		if (accel.x < -10) accel.x = -10;
+		accel.x += (keys.x * universe.unitAccel);
+		if (accel.x > universe.unitMax) accel.y = universe.unitMax;
+		if (accel.x < 0 - universe.unitMax) accel.y = 0 - universe.unitMax;
 	} else {
-		accel.x /= 1.2;
+		accel.x /= universe.unitDeccel;
 	}
 
 	if (keys.y != 0) {
-		accel.y += (keys.y * 0.5);
-		if (accel.y > 10) accel.y = 10;
-		if (accel.y < -10) accel.y = -10;
+		accel.y += (keys.y * universe.unitAccel);
+		if (accel.y > universe.unitMax) accel.y = universe.unitMax;
+		if (accel.y < 0 - universe.unitMax) accel.y = 0 - universe.unitMax;
 	} else {
-		accel.y /= 1.2;
+		accel.y /= universe.unitDeccel;
 	}
 
 	// Forwards and backwards
