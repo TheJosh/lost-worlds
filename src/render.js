@@ -34,9 +34,14 @@ function render() {
 	);
 	ctx.translate(offset.x, offset.y);
 
-	drawTiles();
-	drawPlayer();
+	drawTiles(ctx);
 	
+	ctx.translate(player.x, player.y);
+	ctx.rotate(player.rot);
+	drawPlayer(ctx);
+	ctx.rotate(-player.rot);
+	ctx.translate(-player.x, -player.y);
+
 	ctx.fillStyle = '#fff';
 	for (var i = 0; i < gravSource.length; ++i) {
 		var src = gravSource[i];
@@ -55,7 +60,7 @@ function render() {
 }
 
 
-function drawTiles() {
+function drawTiles(ctx) {
 	for (var y = 0; y <= 64; ++y) {
 		for (var x = 0; x <= 256; ++x) {
 			var tile = getTile(x, y);
@@ -71,13 +76,8 @@ function drawTiles() {
 	}
 }
 
-function drawPlayer() {
-	ctx.translate(player.x, player.y);
-	ctx.rotate(player.rot);
+function drawPlayer(ctx) {
 	ctx.fillStyle = '#f00';
 	ctx.fillRect(-HALF_PLAYER_SIZE, -HALF_PLAYER_SIZE, PLAYER_SIZE, PLAYER_SIZE);
 	ctx.fillRect(-HALF_PLAYER_SIZE - 5, -3, 6, 6);
-	ctx.rotate(-player.rot);
-	ctx.translate(-player.x, -player.y);
-
 }
