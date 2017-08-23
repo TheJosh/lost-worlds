@@ -6,17 +6,20 @@ var canvas = document.getElementById('c');
 
 var player;
 
+var universeRot = 0;
+var universeRotDir = 0.0;
+
 var gravSource = [
 	{ x: 4630, y: 70, dist: 0, strength: 0, dirY: 2 },
 	{ x: 4110, y: 1030, dist: 0, strength: 0, dirY: 2 }
 ];
 
 var universe = {
-    spinAmount: 0.01,
+    spinAmount: 1,    // degrees/second
     spinLimit: 2,
 
-    unitAccel: 200,
-    unitMax: 500,
+    unitAccel: 200,   // pixels/sec/sec
+    unitMax: 500,     // pixels/second
     unitDeccel: 1.2,
 
 	colors: {

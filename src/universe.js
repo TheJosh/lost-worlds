@@ -18,7 +18,7 @@ function getRandomColor(min, max) {
 
 function newUniverse() {
     with (universe) {
-        spinAmount = getRandom(0.0, 0.2);
+        spinAmount = getRandom(0, 10);
 
         if (getRandom(1, 10) <= 2) {
             spinLimit = 0;   // spin forever

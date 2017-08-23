@@ -1,6 +1,4 @@
 var ctx = canvas.getContext('2d');
-var universeRot = 0;
-var universeRotDir = 0.0;
 var offset = { x: 0, y: 0 };
 var cachedTiles;
 
@@ -30,11 +28,6 @@ function render() {
 
 	ctx.fillStyle = universe.colors[1];
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-	universeRot += universeRotDir;
-	if (universe.spinLimit > 0 && Math.abs(universeRot) >= universe.spinLimit) {
-		universeRotDir = 0 - universeRotDir;
-	}
 
 	ctx.translate(canvas.width/2, canvas.height/2);
 	ctx.rotate(universeRot * Math.PI / 180);

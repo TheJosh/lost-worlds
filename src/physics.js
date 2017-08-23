@@ -5,6 +5,11 @@ function physics(delta) {
 	var delThous = delta / 1000;
 	var force = { x: 0.0, y: 0.0 }
 
+	universeRot += universeRotDir * delThous;
+	if (universe.spinLimit > 0 && Math.abs(universeRot) >= universe.spinLimit) {
+		universeRotDir = 0 - universeRotDir;
+	}
+
 	if (mouse.x && mouse.y) {
 		player.rot = Math.atan2(
 			(mouse.y - canvas.height/2), (mouse.x - canvas.width/2)
