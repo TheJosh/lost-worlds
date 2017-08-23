@@ -17,12 +17,12 @@ var gravSource = [
 var universe = {
 	tileSize: 32,
 
-    spinAmount: 1,    // degrees/second
-    spinLimit: 2,
+	spinAmount: 1,    // degrees/second
+	spinLimit: 2,
 
-    unitAccel: 200,   // pixels/sec/sec
-    unitMax: 500,     // pixels/second
-    unitDeccel: 1.2,
+	unitAccel: 200,   // pixels/sec/sec
+	unitMax: 500,     // pixels/second
+	unitDeccel: 1.2,
 
 	colors: {
 		'-1': '#2E1602',
