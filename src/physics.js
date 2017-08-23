@@ -6,7 +6,7 @@ function physics(delta) {
 	var force = { x: 0.0, y: 0.0 }
 
 	universeRot += universeRotDir * delThous;
-	if (universe.spinLimit > 0 && Math.abs(universeRot) >= universe.spinLimit) {
+	if (universe.spinLimit > 0.2 && Math.abs(universeRot) >= universe.spinLimit) {
 		universeRotDir = 0 - universeRotDir;
 	}
 
