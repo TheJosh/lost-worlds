@@ -1,6 +1,12 @@
 function physics(delta) {
 	var force = { x: 0.0, y: 0.0 }
 
+	if (mouse.x && mouse.y) {
+		player.rot = Math.atan2(
+			(mouse.y - canvas.height/2), (mouse.x - canvas.width/2)
+		) + Math.PI;
+	}
+
 	if (keys.x != 0) {
 		accel.x += (keys.x * 0.5);
 		if (accel.x > 10) accel.x = 10;

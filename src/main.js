@@ -3,7 +3,7 @@ var PLAYER_SIZE = 20;
 var HALF_PLAYER_SIZE = 10;
 
 window.onresize = resizeRenderCanvas;
-window.mousemove = mousemove;
+window.onmousemove = mousemove;
 window.onkeydown = keydown;
 window.onkeyup = keyup;
 
