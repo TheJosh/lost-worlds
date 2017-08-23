@@ -1,5 +1,5 @@
 function initUniverse() {
-    universeRot = 0;
+    universeRot = getRandom(-universe.spinAmount, universe.spinLimit);
     universeRotDir = universe.spinAmount;
 
     player = { x: 550, y: 550, rot: 0.5 * Math.PI };
@@ -19,7 +19,13 @@ function getRandomColor(min, max) {
 function newUniverse() {
     with (universe) {
         spinAmount = getRandom(0.0, 0.2);
-        spinLimit = getRandom(0, 30);
+
+        if (getRandom(1, 10) <= 2) {
+            spinLimit = 0;   // spin forever
+        } else {
+            spinLimit = getRandom(2, 50);
+        }
+
         unitAccel = getRandom(150, 300);
         unitMax = unitAccel * getRandom(1.0, 3.0);
         unitDeccel = getRandom(1.1, 1.3);
