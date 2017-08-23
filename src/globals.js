@@ -4,7 +4,7 @@ var HALF_PLAYER_SIZE = 10;
 
 var canvas = document.getElementById('c');
 
-var player;
+var player = null;
 
 var universeRot = 0;
 var universeRotDir = 0.0;

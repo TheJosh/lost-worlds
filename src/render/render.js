@@ -45,11 +45,13 @@ function render() {
 		ctx.drawImage(cachedTiles, 0, 0);
 	}
 
-	ctx.translate(player.x, player.y);
-	ctx.rotate(player.rot);
-	drawPlayer(ctx);
-	ctx.rotate(-player.rot);
-	ctx.translate(-player.x, -player.y);
+	if (player !== null) {
+		ctx.translate(player.x, player.y);
+		ctx.rotate(player.rot);
+		drawPlayer(ctx);
+		ctx.rotate(-player.rot);
+		ctx.translate(-player.x, -player.y);
+	}
 
 	ctx.fillStyle = '#fff';
 	for (var i = 0; i < gravSource.length; ++i) {
