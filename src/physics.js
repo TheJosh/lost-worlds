@@ -1,3 +1,6 @@
+var accel = { x: 0, y: 0 };
+
+
 function physics(delta) {
 	var force = { x: 0.0, y: 0.0 }
 

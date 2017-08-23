@@ -1,15 +1,15 @@
-var canvas = document.getElementById('c');
 var ctx = canvas.getContext('2d');
 var universeRot = 0;
 var universeRotDir = 0.0;
 var offset = { x: 0, y: 0 };
+var cachedTiles;
+
 
 function resizeRenderCanvas() {
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
 	canvas.onmouseenter = mousemove;
 }
-
 
 function canvasCache(width, height, func) {
 	var canvas = document.createElement('canvas');
@@ -21,14 +21,9 @@ function canvasCache(width, height, func) {
 	return canvas;
 }
 
-
-var tiles;
-
-
 function initRender() {
-	tiles = canvasCache(256 * TILE_SIZE, 64 * TILE_SIZE, drawTiles);
+	cachedTiles = canvasCache(256 * TILE_SIZE, 64 * TILE_SIZE, drawTiles);
 }
-
 
 function render() {
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -53,7 +48,7 @@ function render() {
 	);
 	ctx.translate(offset.x, offset.y);
 
-	ctx.drawImage(tiles, 0, 0);
+	ctx.drawImage(cachedTiles, 0, 0);
 
 	ctx.translate(player.x, player.y);
 	ctx.rotate(player.rot);
