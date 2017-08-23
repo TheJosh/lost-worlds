@@ -53,10 +53,6 @@ function render() {
 	ctx.fillStyle = '#f00';
 	ctx.fillRect(-HALF_PLAYER_SIZE, -HALF_PLAYER_SIZE, PLAYER_SIZE, PLAYER_SIZE);
 	ctx.fillRect(-HALF_PLAYER_SIZE - 5, -3, 6, 6);
-	ctx.fillText(
-		player.x.toFixed(2) + 'x' + player.y.toFixed(2),
-		-35, -30
-	);
 	ctx.rotate(-player.rot);
 	ctx.translate(-player.x, -player.y);
 
@@ -66,10 +62,6 @@ function render() {
 		ctx.beginPath();
 		ctx.arc(src.x, src.y, 20, 0, 2 * Math.PI);
 		ctx.fill();
-		ctx.fillText(
-			src.x.toFixed(2) + 'x' + src.y.toFixed(2) + ' -- ' + src.dist.toFixed(2) + ' -- ' + src.strength.toFixed(2),
-			gravSource[i].x - 80, gravSource[i].y - 30
-		);
 	}
 
 	var fps = fpsRingBuf.reduce(function(x,y) {
