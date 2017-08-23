@@ -4,7 +4,7 @@ var HALF_PLAYER_SIZE = 10;
 
 var canvas = document.getElementById('c');
 
-var player = { x: 550, y: 550, rot: 0.5 * Math.PI };
+var player;
 
 var gravSource = [
 	{ x: 4630, y: 70, dist: 0, strength: 0, dirY: 2 },

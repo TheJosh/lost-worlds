@@ -23,9 +23,9 @@ function tick(timestamp) {
 
 resizeRenderCanvas();
 loadMap();
+requestAnimationFrame(tick);
 
 function startGame() {
 	initUniverse();
 	initRender();
-	requestAnimationFrame(tick);
 }

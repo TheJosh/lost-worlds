@@ -39,7 +39,9 @@ function physics(delta) {
 		var src = gravSource[i];
 		src.dist = Math.sqrt(Math.pow(player.x - src.x, 2) + Math.pow(player.y - src.y, 2));
 
-		if (src.dist > 30 && src.dist < 750) {
+		if (src.dist < 30) {
+			newUniverse();
+		} else if (src.dist < 750) {
 			src.strength = 1.0 / (src.dist * src.dist);
 			src.strength *= 2000.0;
 			force.x -= ((player.x - src.x) / 1.0 * src.strength);

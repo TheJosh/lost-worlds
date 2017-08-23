@@ -48,7 +48,9 @@ function render() {
 	);
 	ctx.translate(offset.x, offset.y);
 
-	ctx.drawImage(cachedTiles, 0, 0);
+	if (cachedTiles) {
+		ctx.drawImage(cachedTiles, 0, 0);
+	}
 
 	ctx.translate(player.x, player.y);
 	ctx.rotate(player.rot);
