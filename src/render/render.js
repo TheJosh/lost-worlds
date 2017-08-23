@@ -11,6 +11,25 @@ function resizeRenderCanvas() {
 }
 
 
+function canvasCache(width, height, func) {
+	var canvas = document.createElement('canvas');
+	canvas.width = width;
+	canvas.height = height;
+
+	func(canvas.getContext('2d'), canvas);
+
+	return canvas;
+}
+
+
+var tiles;
+
+
+function initRender() {
+	tiles = canvasCache(256 * TILE_SIZE, 64 * TILE_SIZE, drawTiles);
+}
+
+
 function render() {
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 
@@ -34,8 +53,8 @@ function render() {
 	);
 	ctx.translate(offset.x, offset.y);
 
-	drawTiles(ctx);
-	
+	ctx.drawImage(tiles, 0, 0);
+
 	ctx.translate(player.x, player.y);
 	ctx.rotate(player.rot);
 	drawPlayer(ctx);
@@ -60,7 +79,10 @@ function render() {
 }
 
 
-function drawTiles(ctx) {
+function drawTiles(ctx, canvas) {
+	ctx.fillStyle = '#34190A';
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+
 	for (var y = 0; y <= 64; ++y) {
 		for (var x = 0; x <= 256; ++x) {
 			var tile = getTile(x, y);

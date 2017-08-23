@@ -1,0 +1,3 @@
+var TILE_SIZE = 32;
+var PLAYER_SIZE = 20;
+var HALF_PLAYER_SIZE = 10;

@@ -50,6 +50,8 @@ function loadMap() {
 				}
 			}
 		}
+		
+		initRender();
 	};
 
 	img.crossOrigin = 'anonymous';
