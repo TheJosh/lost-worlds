@@ -34,28 +34,9 @@ function render() {
 	);
 	ctx.translate(offset.x, offset.y);
 
-	for (var y = 0; y <= 64; ++y) {
-		for (var x = 0; x <= 256; ++x) {
-			var tile = getTile(x, y);
-			switch (tile) {
-				case -1: ctx.fillStyle = '#2E1602'; break;   // dirt edge
-				case  0: ctx.fillStyle = '#180B00'; break;   // none
-				case  1: continue;
-				case  2: ctx.fillStyle = '#D3D7DB'; break;   // steel
-				case  3: ctx.fillStyle = '#630E1B'; break;   // lava
-			}
-			ctx.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-		}
-	}
-
-	ctx.translate(player.x, player.y);
-	ctx.rotate(player.rot);
-	ctx.fillStyle = '#f00';
-	ctx.fillRect(-HALF_PLAYER_SIZE, -HALF_PLAYER_SIZE, PLAYER_SIZE, PLAYER_SIZE);
-	ctx.fillRect(-HALF_PLAYER_SIZE - 5, -3, 6, 6);
-	ctx.rotate(-player.rot);
-	ctx.translate(-player.x, -player.y);
-
+	drawTiles();
+	drawPlayer();
+	
 	ctx.fillStyle = '#fff';
 	for (var i = 0; i < gravSource.length; ++i) {
 		var src = gravSource[i];
@@ -71,4 +52,32 @@ function render() {
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 	ctx.fillStyle = '#fff';
 	ctx.fillText(fps.toFixed(1) + ' fps', 20, 20);
+}
+
+
+function drawTiles() {
+	for (var y = 0; y <= 64; ++y) {
+		for (var x = 0; x <= 256; ++x) {
+			var tile = getTile(x, y);
+			switch (tile) {
+				case -1: ctx.fillStyle = '#2E1602'; break;   // dirt edge
+				case  0: ctx.fillStyle = '#180B00'; break;   // none
+				case  1: continue;
+				case  2: ctx.fillStyle = '#D3D7DB'; break;   // steel
+				case  3: ctx.fillStyle = '#630E1B'; break;   // lava
+			}
+			ctx.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+		}
+	}
+}
+
+function drawPlayer() {
+	ctx.translate(player.x, player.y);
+	ctx.rotate(player.rot);
+	ctx.fillStyle = '#f00';
+	ctx.fillRect(-HALF_PLAYER_SIZE, -HALF_PLAYER_SIZE, PLAYER_SIZE, PLAYER_SIZE);
+	ctx.fillRect(-HALF_PLAYER_SIZE - 5, -3, 6, 6);
+	ctx.rotate(-player.rot);
+	ctx.translate(-player.x, -player.y);
+
 }
