@@ -2,6 +2,7 @@ var canvas = document.getElementById('c');
 var ctx = canvas.getContext('2d');
 var rot = 0;
 var rotDir = 0.1;
+var offset = { x: 0, y: 0 };
 
 function resizeRenderCanvas() {
 	canvas.width = window.innerWidth;
@@ -24,12 +25,12 @@ function render() {
 	ctx.rotate(rot * Math.PI / 180);
 	ctx.translate(0 - canvas.width/2, 0 - canvas.height/2);
 
-	var offset = {
-		x: 0 - player.x + (canvas.width / 2),
-		y: 0 - player.y + (canvas.height / 2)
-	};
-	offset.x = Math.round(offset.x);
-	offset.y = Math.round(offset.y);
+	offset.x = Math.round(
+		0 - player.x + (canvas.width / 2)
+	);
+	offset.y = Math.round(
+		0 - player.y + (canvas.height / 2)
+	);
 	ctx.translate(offset.x, offset.y);
 
 	for (var y = 0; y <= 64; ++y) {
