@@ -1,8 +1,10 @@
 function Enemy(x, y) {
     this.x = x * universe.tileSize;
     this.y = y * universe.tileSize;
-
+    this.alive = true;
     this.hitDistSq = 25 * 25;
+
+    var health = 10;
 
     this.render = function(ctx) {
         ctx.fillStyle = '#00f';
@@ -21,5 +23,10 @@ function Enemy(x, y) {
 
     this.hitPlayer = function() {
         console.log('ded');
+    };
+
+    this.takeDamage = function(bullet) {
+        health -= bullet.strength;
+        if (health < 0) this.alive = false;
     };
 }

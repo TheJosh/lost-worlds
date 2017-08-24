@@ -10,11 +10,15 @@ function physics(delta) {
 	for (var i = 0; i < enemies.length; ++i) {
 		enemies[i].update(delta);
 	}
-
 	for (var i = 0; i < bullets.length; ++i) {
 		bullets[i].update(delta);
 	}
 
+	checkBulletsHitEnemies();
+
+	enemies = enemies.filter(function(e){
+		return e.alive;
+	});
 	bullets = bullets.filter(function(b){
 		return b.alive;
 	});
@@ -125,6 +129,20 @@ function applyGravityPull(force, delta)
 	}
 }
 
+
+function checkBulletsHitEnemies() {
+	var ei, el, bi, bl;
+
+	// This is a dirty dirty double-linear search. YUK.
+	for (ei = 0, el = enemies.length; ei < el; ++ei) {
+		for (bi = 0, bl = bullets.length; bi < bl; ++bi) {
+			var distSq = Math_pow(bullets[bi].x - enemies[ei].x, 2) + Math_pow(bullets[bi].y - enemies[ei].y, 2);
+			if (distSq < enemies[ei].hitDistSq) {
+				enemies[ei].takeDamage(bullets[bi]);
+			}
+		}
+	}
+}
 
 
 function checkCollide(entity, halfSize, hit) {
