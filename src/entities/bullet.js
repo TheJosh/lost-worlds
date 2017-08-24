@@ -16,12 +16,13 @@ function Bullet(x, y) {
         this.x += this.dirX * delta;
         this.y += this.dirY * delta;
 
-        if (this.x < 0 || this.y < 0) {
+        if (this.x < 0 || this.y < 0 || this.x > 256 * universe.tileSize || this.y > 64 * universe.tileSize) {
             this.alive = false;
         }
 
-        // TODO: Also check far edge
-
+        checkCollideTiny(this, function() {
+            this.alive = false;
+        });
     };
 }
 
