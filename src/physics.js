@@ -60,6 +60,30 @@ function movePlayer_TopView(force, delThous)
 }
 
 
+function movePlayer_SideView(force, delThous)
+{
+	// Point player in movement direction
+	if (keys.x == 1) player.rot = Math.PI;
+	if (keys.x == -1) player.rot = 0;
+
+	// Horizontal movement
+	if (keys.x != 0) {
+		accel.x += (keys.x * universe.unitAccel * delThous);
+		if (accel.x > universe.unitMax) accel.x = universe.unitMax;
+		if (accel.x < 0 - universe.unitMax) accel.x = 0 - universe.unitMax;
+	} else {
+		accel.x /= universe.unitDeccel;
+	}
+	force.x += accel.x * delThous;
+
+	if (keys.jump == 1) {
+		force.y = -500.0 * delThous;
+	} else {
+		force.y = 350.0 * delThous;
+	}
+}
+
+
 function applyGravityPull(force, delThous)
 {
 	for (var i = 0; i < gravSource.length; ++i) {
