@@ -154,3 +154,14 @@ function collideDir(entity, halfSize, xSign, ySign, hit) {
 		}
 	}
 }
+
+function checkCollideTiny(entity, hit) {
+	var tileX = Math_floor(entity.x / universe.tileSize);
+	var tileY = Math_floor(entity.y / universe.tileSize);
+
+	var tileType = getTile(tileX, tileY);
+
+	if (tileType > 0) {
+		hit.apply(entity);
+	}
+}
