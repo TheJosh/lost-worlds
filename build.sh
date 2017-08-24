@@ -7,10 +7,12 @@
 mkdir -p tmp
 
 cat \
+	src/globals.js \
+	src/render/render.js \
 	src/map.js \
-	src/render.js \
 	src/physics.js \
 	src/events.js \
+	src/universe.js \
 	src/main.js \
 	> tmp/all.js
 
