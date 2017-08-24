@@ -7,7 +7,6 @@ function Player(x, y) {
         ctx.translate(player.x, player.y);
         ctx.rotate(player.rot);
 
-
         ctx.fillStyle = '#f00';
         ctx.fillRect(-HALF_PLAYER_SIZE, -HALF_PLAYER_SIZE, PLAYER_SIZE, PLAYER_SIZE);
         ctx.fillRect(-HALF_PLAYER_SIZE - 5, -3, 6, 6);
@@ -15,4 +14,10 @@ function Player(x, y) {
         ctx.rotate(-player.rot);
         ctx.translate(-player.x, -player.y);
     };
+
+    this.fire = function() {
+        bullets.push(
+            new Bullet(player.x, player.y, player.rot + Math_PI, 500)
+        );
+    }
 }

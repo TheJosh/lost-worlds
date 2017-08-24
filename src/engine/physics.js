@@ -43,7 +43,7 @@ function physics(delta) {
 		}
 
 		if (keys.fire) {
-			bullets.push(new Bullet(player.x, player.y, player.rot + Math_PI, 500));
+			player.fire();
 		}
 	}
 }
