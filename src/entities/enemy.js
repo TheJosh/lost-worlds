@@ -28,6 +28,12 @@ function Enemy(x, y) {
 
     this.takeDamage = function(bullet) {
         health -= bullet.strength;
-        if (health < 0) this.alive = false;
+
+        if (health < 0) {
+            this.alive = false;
+        }
+
+        this.x += bullet.dirX * bullet.strength / 300;
+        this.y += bullet.dirY * bullet.strength / 300;
     };
 }
