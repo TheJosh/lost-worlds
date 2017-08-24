@@ -8,11 +8,9 @@ mkdir -p tmp
 
 cat \
 	src/globals.js \
-	src/render/render.js \
-	src/map.js \
-	src/physics.js \
-	src/events.js \
-	src/universe.js \
+	src/render/*.js \
+	src/engine/*.js \
+	src/entities/*.js \
 	src/main.js \
 	> tmp/all.js
 

@@ -16,13 +16,13 @@ function loadMap() {
 
 	gravSource = [
 		new BlackHole(144, 2),
-		new BlackHole(128, 32),
+		new BlackHole(128, 32)
 	];
 
 	enemies = [
 		new Enemy(38, 15),
 		new Enemy(39, 16),
-		new Enemy(40, 17),
+		new Enemy(40, 17)
 	];
 
 
