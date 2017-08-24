@@ -2,26 +2,24 @@ var accel = { x: 0, y: 0 };
 
 
 function physics(delta) {
-	var delThous = delta / 1000;
-
-	universeRot += universeRotDir * delThous;
+	universeRot += universeRotDir * delta;
 	if (universe.spinLimit > 0.2 && Math.abs(universeRot) >= universe.spinLimit) {
 		universeRotDir = 0 - universeRotDir;
 	}
 
 	for (var i = 0; i < enemies.length; ++i) {
-		enemies[i].update(delThous);
+		enemies[i].update(delta);
 	}
 
 	if (player) {
 		var force = { x: 0.0, y: 0.0 }
 		if (universe.orientation == 1) {
-			movePlayer_TopView(force, delThous);
+			movePlayer_TopView(force, delta);
 		}
 		if (universe.orientation == 2) {
-			movePlayer_SideView(force, delThous);
+			movePlayer_SideView(force, delta);
 		}
-		applyGravityPull(force, delThous);
+		applyGravityPull(force, delta);
 		
 		player.x += force.x;
 		player.y += force.y;
@@ -31,7 +29,7 @@ function physics(delta) {
 }
 
 
-function movePlayer_TopView(force, delThous)
+function movePlayer_TopView(force, delta)
 {
 	// Point player towards the mouse
 	if (mouse.x && mouse.y) {
@@ -42,29 +40,29 @@ function movePlayer_TopView(force, delThous)
 
 	// Forwards and backwards
 	if (keys.y != 0) {
-		accel.y += (keys.y * universe.unitAccel * delThous);
+		accel.y += (keys.y * universe.unitAccel * delta);
 		if (accel.y > universe.unitMax) accel.y = universe.unitMax;
 		if (accel.y < 0 - universe.unitMax) accel.y = 0 - universe.unitMax;
 	} else {
 		accel.y /= universe.unitDeccel;
 	}
-	force.x += Math.cos(player.rot) * accel.y * delThous;
-	force.y += Math.sin(player.rot) * accel.y * delThous;
+	force.x += Math.cos(player.rot) * accel.y * delta;
+	force.y += Math.sin(player.rot) * accel.y * delta;
 
 	// Strafe
 	if (keys.x != 0) {
-		accel.x += (keys.x * universe.unitAccel * delThous);
+		accel.x += (keys.x * universe.unitAccel * delta);
 		if (accel.x > universe.unitMax) accel.x = universe.unitMax;
 		if (accel.x < 0 - universe.unitMax) accel.x = 0 - universe.unitMax;
 	} else {
 		accel.x /= universe.unitDeccel;
 	}
-	force.x += Math.cos(player.rot - Math.PI/2) * accel.x * delThous;
-	force.y += Math.sin(player.rot - Math.PI/2) * accel.x * delThous;
+	force.x += Math.cos(player.rot - Math.PI/2) * accel.x * delta;
+	force.y += Math.sin(player.rot - Math.PI/2) * accel.x * delta;
 }
 
 
-function movePlayer_SideView(force, delThous)
+function movePlayer_SideView(force, delta)
 {
 	// Point player in movement direction
 	if (keys.x == 1) player.rot = Math.PI;
@@ -72,23 +70,23 @@ function movePlayer_SideView(force, delThous)
 
 	// Horizontal movement
 	if (keys.x != 0) {
-		accel.x += (keys.x * universe.unitAccel * delThous);
+		accel.x += (keys.x * universe.unitAccel * delta);
 		if (accel.x > universe.unitMax) accel.x = universe.unitMax;
 		if (accel.x < 0 - universe.unitMax) accel.x = 0 - universe.unitMax;
 	} else {
 		accel.x /= universe.unitDeccel;
 	}
-	force.x += accel.x * delThous;
+	force.x += accel.x * delta;
 
 	if (keys.jump == 1) {
-		force.y = -500.0 * delThous;
+		force.y = -500.0 * delta;
 	} else {
-		force.y = 350.0 * delThous;
+		force.y = 350.0 * delta;
 	}
 }
 
 
-function applyGravityPull(force, delThous)
+function applyGravityPull(force, delta)
 {
 	for (var i = 0; i < gravSource.length; ++i) {
 		var src = gravSource[i];

@@ -15,7 +15,7 @@ function tick(timestamp) {
 		fpsRingBuf.shift();
 	}
 
-	physics(delta);
+	physics(delta / 1000);
 	render();
 
 	requestAnimationFrame(tick);
