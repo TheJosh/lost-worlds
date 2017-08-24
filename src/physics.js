@@ -10,6 +10,10 @@ function physics(delta) {
 		universeRotDir = 0 - universeRotDir;
 	}
 
+	if (player === null) {
+		return;
+	}
+
 	if (mouse.x && mouse.y) {
 		player.rot = Math.atan2(
 			(mouse.y - canvas.height/2), (mouse.x - canvas.width/2)
