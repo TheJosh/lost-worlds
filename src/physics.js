@@ -103,11 +103,6 @@ function applyGravityPull(force, delThous)
 			force.x -= ((player.x - src.x) / 1.0 * src.strength);
 			force.y -= ((player.y - src.y) / 1.0 * src.strength);
 		}
-
-		src.y += src.dirY;
-		if (src.y > 600 || src.y < 200) {
-			src.dirY = 0 - src.dirY;
-		}
 	}
 }
 

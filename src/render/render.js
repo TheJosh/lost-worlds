@@ -52,15 +52,10 @@ function render() {
 		player.render(ctx);
 	}
 
-	ctx.fillStyle = '#fff';
 	for (var i = 0; i < gravSource.length; ++i) {
-		var src = gravSource[i];
-		ctx.beginPath();
-		ctx.arc(src.x, src.y, 20, 0, 2 * Math.PI);
-		ctx.fill();
+		gravSource[i].render(ctx);
 	}
 
-	ctx.fillStyle = '#00f';
 	for (var i = 0; i < enemies.length; ++i) {
 		enemies[i].render(ctx);
 	}

@@ -15,8 +15,8 @@ function loadMap() {
 	player = new Player(16, 16);
 
 	gravSource = [
-		{ x: 144 * universe.tileSize, y: 2 * universe.tileSize, dist: 0, strength: 0, dirY: 2 },
-		{ x: 128 * universe.tileSize, y: 32 * universe.tileSize, dist: 0, strength: 0, dirY: 2 }
+		new BlackHole(144, 2),
+		new BlackHole(128, 32),
 	];
 
 	enemies = [
