@@ -3,7 +3,6 @@ var accel = { x: 0, y: 0 };
 
 function physics(delta) {
 	var delThous = delta / 1000;
-	var force = { x: 0.0, y: 0.0 }
 
 	universeRot += universeRotDir * delThous;
 	if (universe.spinLimit > 0.2 && Math.abs(universeRot) >= universe.spinLimit) {
@@ -13,7 +12,23 @@ function physics(delta) {
 	if (player === null) {
 		return;
 	}
+	
+	var force = { x: 0.0, y: 0.0 }
+	movePlayer(force, delThous);
+	applyGravityPull(force, delThous);
+	
+	player.x += force.x;
+	player.y += force.y;
 
+	collidePlayer(-1.0, 0.0);
+	collidePlayer(+1.0, 0.0);
+	collidePlayer(0.0, -1.0);
+	collidePlayer(0.0, +1.0);
+}
+
+
+function movePlayer(force, delThous)
+{
 	if (mouse.x && mouse.y) {
 		player.rot = Math.atan2(
 			(mouse.y - canvas.height/2), (mouse.x - canvas.width/2)
@@ -43,7 +58,11 @@ function physics(delta) {
 	// Strafe
 	force.x += Math.cos(player.rot - Math.PI/2) * accel.x * delThous;
 	force.y += Math.sin(player.rot - Math.PI/2) * accel.x * delThous;
+}
 
+
+function applyGravityPull(force, delThous)
+{
 	for (var i = 0; i < gravSource.length; ++i) {
 		var src = gravSource[i];
 		src.dist = Math.sqrt(Math.pow(player.x - src.x, 2) + Math.pow(player.y - src.y, 2));
@@ -62,14 +81,6 @@ function physics(delta) {
 			src.dirY = 0 - src.dirY;
 		}
 	}
-
-	player.x += force.x;
-	player.y += force.y;
-
-	collidePlayer(-1.0, 0.0);
-	collidePlayer(+1.0, 0.0);
-	collidePlayer(0.0, -1.0);
-	collidePlayer(0.0, +1.0);
 }
 
 
