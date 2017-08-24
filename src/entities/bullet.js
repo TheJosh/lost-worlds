@@ -4,12 +4,15 @@ function Bullet(x, y, rot, vel) {
     this.dirX = Math_cos(rot) * vel;
     this.dirY = Math_sin(rot) * vel;
     this.alive = true;
+    this.strength = 1.0;
 
     var hitCount = 0;
 
     this.render = function(ctx) {
         ctx.fillStyle = '#e11';
+        ctx.globalAlpha = this.strength;
         ctx.fillRect(this.x - 2, this.y - 2, 4, 4);
+        ctx.globalAlpha = 1;
     };
 
     this.update = function(delta) {
@@ -29,6 +32,12 @@ function Bullet(x, y, rot, vel) {
             rot += getRandom(0, Math_PI * 2);
             this.dirX = Math_cos(rot) * vel;
             this.dirY = Math_sin(rot) * vel;
+            this.strength -= 0.1;
         });
+
+        this.strength -= 0.01;
+        if (this.strength < 0.01) {
+            this.alive = false;
+        }
     };
 }
