@@ -25,10 +25,7 @@ function physics(delta) {
 	player.x += force.x;
 	player.y += force.y;
 
-	collidePlayer(-1.0, 0.0);
-	collidePlayer(+1.0, 0.0);
-	collidePlayer(0.0, -1.0);
-	collidePlayer(0.0, +1.0);
+	checkCollide(player);
 }
 
 
@@ -107,9 +104,17 @@ function applyGravityPull(force, delThous)
 }
 
 
-function collidePlayer(xSign, ySign) {
-	var tileX = Math.floor((player.x + HALF_PLAYER_SIZE * xSign) / universe.tileSize);
-	var tileY = Math.floor((player.y + HALF_PLAYER_SIZE * ySign) / universe.tileSize);
+
+function checkCollide(entity) {
+	collidePlayer(entity, -1.0, 0.0);
+	collidePlayer(entity, +1.0, 0.0);
+	collidePlayer(entity, 0.0, -1.0);
+	collidePlayer(entity, 0.0, +1.0);
+}
+
+function collidePlayer(entity, xSign, ySign) {
+	var tileX = Math.floor((entity.x + HALF_PLAYER_SIZE * xSign) / universe.tileSize);
+	var tileY = Math.floor((entity.y + HALF_PLAYER_SIZE * ySign) / universe.tileSize);
 
 	var tileType = getTile(tileX, tileY);
 
@@ -117,13 +122,13 @@ function collidePlayer(xSign, ySign) {
 		if (xSign != 0) {
 			var tileXpx = tileX * universe.tileSize;
 			if (xSign < 0) tileXpx += universe.tileSize;
-			player.x =  tileXpx - (HALF_PLAYER_SIZE * xSign);
+			entity.x =  tileXpx - (HALF_PLAYER_SIZE * xSign);
 		}
 
 		if (ySign != 0) {
 			var tileYpx = tileY * universe.tileSize;
 			if (ySign < 0) tileYpx += universe.tileSize;
-			player.y =  tileYpx - (HALF_PLAYER_SIZE * ySign);
+			entity.y =  tileYpx - (HALF_PLAYER_SIZE * ySign);
 		}
 	}
 }
