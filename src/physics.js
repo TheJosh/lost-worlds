@@ -25,6 +25,14 @@ function physics(delta) {
 		player.y += force.y;
 
 		checkCollide(player);
+
+		var thresh = Math.pow(250, 2);
+		for (var i = 0; i < enemies.length; ++i) {
+			var distSq = Math.pow(player.x - enemies[i].x, 2) + Math.pow(player.y - enemies[i].y, 2);
+			if (distSq < enemies[i].hitDistSq) {
+				enemies[i].hitPlayer();
+			}
+		}
 	}
 }
 
