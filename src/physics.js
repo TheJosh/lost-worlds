@@ -12,24 +12,22 @@ function physics(delta) {
 	for (var i = 0; i < enemies.length; ++i) {
 		enemies[i].update(delThous);
 	}
-	
-	if (player === null) {
-		return;
-	}
-	
-	var force = { x: 0.0, y: 0.0 }
-	if (universe.orientation == 1) {
-		movePlayer_TopView(force, delThous);
-	}
-	if (universe.orientation == 2) {
-		movePlayer_SideView(force, delThous);
-	}
-	applyGravityPull(force, delThous);
-	
-	player.x += force.x;
-	player.y += force.y;
 
-	checkCollide(player);
+	if (player) {
+		var force = { x: 0.0, y: 0.0 }
+		if (universe.orientation == 1) {
+			movePlayer_TopView(force, delThous);
+		}
+		if (universe.orientation == 2) {
+			movePlayer_SideView(force, delThous);
+		}
+		applyGravityPull(force, delThous);
+		
+		player.x += force.x;
+		player.y += force.y;
+
+		checkCollide(player);
+	}
 }
 
 
