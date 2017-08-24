@@ -14,7 +14,7 @@ function physics(delta) {
 	}
 	
 	var force = { x: 0.0, y: 0.0 }
-	movePlayer(force, delThous);
+	movePlayer_TopView(force, delThous);
 	applyGravityPull(force, delThous);
 	
 	player.x += force.x;
@@ -27,22 +27,16 @@ function physics(delta) {
 }
 
 
-function movePlayer(force, delThous)
+function movePlayer_TopView(force, delThous)
 {
+	// Point player towards the mouse
 	if (mouse.x && mouse.y) {
 		player.rot = Math.atan2(
 			(mouse.y - canvas.height/2), (mouse.x - canvas.width/2)
 		) + Math.PI;
 	}
 
-	if (keys.x != 0) {
-		accel.x += (keys.x * universe.unitAccel * delThous);
-		if (accel.x > universe.unitMax) accel.y = universe.unitMax;
-		if (accel.x < 0 - universe.unitMax) accel.y = 0 - universe.unitMax;
-	} else {
-		accel.x /= universe.unitDeccel;
-	}
-
+	// Forwards and backwards
 	if (keys.y != 0) {
 		accel.y += (keys.y * universe.unitAccel * delThous);
 		if (accel.y > universe.unitMax) accel.y = universe.unitMax;
@@ -50,12 +44,17 @@ function movePlayer(force, delThous)
 	} else {
 		accel.y /= universe.unitDeccel;
 	}
-
-	// Forwards and backwards
 	force.x += Math.cos(player.rot) * accel.y * delThous;
 	force.y += Math.sin(player.rot) * accel.y * delThous;
 
 	// Strafe
+	if (keys.x != 0) {
+		accel.x += (keys.x * universe.unitAccel * delThous);
+		if (accel.x > universe.unitMax) accel.y = universe.unitMax;
+		if (accel.x < 0 - universe.unitMax) accel.y = 0 - universe.unitMax;
+	} else {
+		accel.x /= universe.unitDeccel;
+	}
 	force.x += Math.cos(player.rot - Math.PI/2) * accel.x * delThous;
 	force.y += Math.sin(player.rot - Math.PI/2) * accel.x * delThous;
 }
