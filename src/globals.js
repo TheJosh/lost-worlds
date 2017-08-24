@@ -9,10 +9,7 @@ var player = null;
 var universeRot = 0;
 var universeRotDir = 0.0;
 
-var gravSource = [
-	{ x: 4630, y: 70, dist: 0, strength: 0, dirY: 2 },
-	{ x: 4110, y: 1030, dist: 0, strength: 0, dirY: 2 }
-];
+var gravSource = [];
 
 var universe = {
 	tileSize: 32,

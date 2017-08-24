@@ -12,6 +12,18 @@ function setTile(x, y, val) {
 
 
 function loadMap() {
+	player = {
+		x: 16 * universe.tileSize,
+		y: 16 * universe.tileSize,
+		rot: 0
+	};
+
+	gravSource = [
+		{ x: 144 * universe.tileSize, y: 2 * universe.tileSize, dist: 0, strength: 0, dirY: 2 },
+		{ x: 128 * universe.tileSize, y: 32 * universe.tileSize, dist: 0, strength: 0, dirY: 2 }
+	];
+
+
 	var img = document.createElement('img');
 
 	img.onload = function() {

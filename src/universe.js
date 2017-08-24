@@ -5,8 +5,6 @@ function initUniverse() {
     if (getRandom(1, 2) > 1.5) {
         universeRotDir = -universeRotDir;
     }
-
-    player = { x: 550, y: 550, rot: 0.5 * Math.PI };
 }
 
 function getRandom(min, max) {
