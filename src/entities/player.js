@@ -3,6 +3,8 @@ function Player(x, y) {
     this.y = y * universe.tileSize;
     this.rot = 0;
 
+    var fireDelay = 0;
+
     this.render = function(ctx) {
         ctx.translate(player.x, player.y);
         ctx.rotate(player.rot);
@@ -15,9 +17,15 @@ function Player(x, y) {
         ctx.translate(-player.x, -player.y);
     };
 
-    this.fire = function() {
+    this.update = function(delta) {
+        if (fireDelay > 0) fireDelay -= delta;
+    };
+
+    this.fire = function(delta) {
+        if (fireDelay > 0) return;
         bullets.push(
             new Bullet(player.x, player.y, player.rot + Math_PI, 500)
         );
-    }
+        fireDelay = 0.2;
+    };
 }

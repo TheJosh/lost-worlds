@@ -42,8 +42,10 @@ function physics(delta) {
 			}
 		}
 
+		player.update(delta);
+
 		if (keys.fire) {
-			player.fire();
+			player.fire(delta);
 		}
 	}
 }
