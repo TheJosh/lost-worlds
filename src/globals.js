@@ -11,6 +11,9 @@ var universeRotDir = 0.0;
 
 var gravSource = [];
 
+var enemies = [];
+
+
 var universe = {
 	orientation: 1,   // 1 is top, 2 is side
 

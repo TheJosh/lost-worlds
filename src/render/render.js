@@ -64,6 +64,14 @@ function render() {
 		ctx.fill();
 	}
 
+	ctx.fillStyle = '#00f';
+	for (var i = 0; i < enemies.length; ++i) {
+		var en = enemies[i];
+		ctx.beginPath();
+		ctx.arc(en.x, en.y, 10, 0, 2 * Math.PI);
+		ctx.fill();
+	}
+
 	var fps = fpsRingBuf.reduce(function(x,y) {
 		return x + y;
 	}) / fpsRingBuf.length;

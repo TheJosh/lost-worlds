@@ -23,6 +23,10 @@ function loadMap() {
 		{ x: 128 * universe.tileSize, y: 32 * universe.tileSize, dist: 0, strength: 0, dirY: 2 }
 	];
 
+	enemies = [
+		new Enemy(40 * universe.tileSize, 15 * universe.tileSize),
+	];
+
 
 	var img = document.createElement('img');
 
