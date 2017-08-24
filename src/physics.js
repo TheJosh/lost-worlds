@@ -14,7 +14,12 @@ function physics(delta) {
 	}
 	
 	var force = { x: 0.0, y: 0.0 }
-	movePlayer_TopView(force, delThous);
+	if (universe.orientation == 1) {
+		movePlayer_TopView(force, delThous);
+	}
+	if (universe.orientation == 2) {
+		movePlayer_SideView(force, delThous);
+	}
 	applyGravityPull(force, delThous);
 	
 	player.x += force.x;
