@@ -11,6 +11,14 @@ function physics(delta) {
 		enemies[i].update(delta);
 	}
 
+	for (var i = 0; i < bullets.length; ++i) {
+		bullets[i].update(delta);
+	}
+
+	bullets = bullets.filter(function(b){
+		return b.alive;
+	});
+
 	if (player) {
 		var force = { x: 0.0, y: 0.0 }
 		if (universe.orientation == 1) {
@@ -32,6 +40,10 @@ function physics(delta) {
 			if (distSq < enemies[i].hitDistSq) {
 				enemies[i].hitPlayer();
 			}
+		}
+
+		if (keys.fire) {
+			addBullet(player.x, player.y, player.rot + Math_PI, 500);
 		}
 	}
 }

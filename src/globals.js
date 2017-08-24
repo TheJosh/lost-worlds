@@ -10,8 +10,8 @@ var universeRot = 0;
 var universeRotDir = 0.0;
 
 var gravSource = [];
-
 var enemies = [];
+var bullets = [];
 
 
 var universe = {

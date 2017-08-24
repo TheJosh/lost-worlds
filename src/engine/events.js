@@ -1,4 +1,4 @@
-var keys = { x: 0, y: 0, jump: 0 };
+var keys = { x: 0, y: 0, jump: 0, fire: 0 };
 var mouse = { x: 0, y: 0 };
 
 function mousemove(e) {
@@ -13,6 +13,7 @@ function keydown(e) {
 		case 'a': case 'ArrowLeft': keys.x = -1; break;
 		case 'd': case 'ArrowRight': keys.x = 1; break;
 		case ' ': keys.jump = 1; break;
+		case 'Shift': keys.fire = 1; break;
 	}
 }
 
@@ -23,5 +24,6 @@ function keyup(e) {
 		case 'a': case 'ArrowLeft':
 		case 'd': case 'ArrowRight': keys.x = 0; break;
 		case ' ': keys.jump = 0; break;
+		case 'Shift': keys.fire = 0; break;
 	}
 }

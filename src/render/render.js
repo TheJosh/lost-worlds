@@ -60,6 +60,10 @@ function render() {
 		enemies[i].render(ctx);
 	}
 
+	for (var i = 0; i < bullets.length; ++i) {
+		bullets[i].render(ctx);
+	}
+
 	var fps = fpsRingBuf.reduce(function(x,y) {
 		return x + y;
 	}) / fpsRingBuf.length;
