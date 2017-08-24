@@ -1,8 +1,8 @@
-function Bullet(x, y) {
+function Bullet(x, y, rot, vel) {
     this.x = x;
     this.y = y;
-    this.dirX = 0;
-    this.dirY = 0;
+    this.dirX = Math_cos(rot) * vel;
+    this.dirY = Math_sin(rot) * vel;
     this.alive = true;
 
     this.render = function(ctx) {
@@ -24,12 +24,4 @@ function Bullet(x, y) {
             this.alive = false;
         });
     };
-}
-
-
-function addBullet(x, y, rot, vel) {
-    var bul = new Bullet(x, y);
-    bul.dirX = Math_cos(rot) * vel;
-    bul.dirY = Math_sin(rot) * vel;
-    bullets.push(bul);
 }
