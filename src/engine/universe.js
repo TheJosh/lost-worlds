@@ -19,27 +19,27 @@ function getRandomColor(min, max) {
 }
 
 function newUniverse() {
-        universe.orientation = Math_round(getRandom(1, 2));
+    universe.orientation = Math_round(getRandom(1, 2));
 
-        universe.tileSize = Math_floor(getRandom(24, 64));
+    universe.tileSize = Math_floor(getRandom(24, 64));
 
-        universe.spinAmount = getRandom(0, 10);
+    universe.spinAmount = getRandom(0, 10);
 
-        if (getRandom(1, 10) <= 2) {
-            universe.spinLimit = 0;   // spin forever
-        } else {
-            universe.spinLimit = getRandom(2, 50);
-        }
+    if (getRandom(1, 10) <= 2) {
+        universe.spinLimit = 0;   // spin forever
+    } else {
+        universe.spinLimit = getRandom(2, 50);
+    }
 
-        universe.unitAccel = getRandom(150, 300);
-        universe.unitMax = universe.unitAccel * getRandom(1.0, 3.0);
-        universe.unitDeccel = getRandom(1.1, 1.3);
+    universe.unitAccel = getRandom(150, 300);
+    universe.unitMax = universe.unitAccel * getRandom(1.0, 3.0);
+    universe.unitDeccel = getRandom(1.1, 1.3);
 
-        universe.colors[-1] = getRandomColor(100, 150);
-        universe.colors[0] = getRandomColor(0, 80);
-        universe.colors[1] = getRandomColor(150, 250);
-        universe.colors[2] = getRandomColor(150, 250);
-        universe.colors[3] = getRandomColor(150, 250);
+    universe.colors[-1] = getRandomColor(100, 150);
+    universe.colors[0] = getRandomColor(0, 80);
+    universe.colors[1] = getRandomColor(150, 250);
+    universe.colors[2] = getRandomColor(150, 250);
+    universe.colors[3] = getRandomColor(150, 250);
 
     loadMap();
 }
