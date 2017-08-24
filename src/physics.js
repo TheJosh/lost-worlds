@@ -9,6 +9,10 @@ function physics(delta) {
 		universeRotDir = 0 - universeRotDir;
 	}
 
+	for (var i = 0; i < enemies.length; ++i) {
+		enemies[i].update(delThous);
+	}
+	
 	if (player === null) {
 		return;
 	}

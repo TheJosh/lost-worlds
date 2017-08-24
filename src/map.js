@@ -20,7 +20,9 @@ function loadMap() {
 	];
 
 	enemies = [
-		new Enemy(40, 15),
+		new Enemy(38, 15),
+		new Enemy(39, 16),
+		new Enemy(40, 17),
 	];
 
 
