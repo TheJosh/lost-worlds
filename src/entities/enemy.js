@@ -14,7 +14,7 @@ function Enemy(x, y) {
     var yMove = 100.0;
     this.update = function(delta) {
         this.y += yMove * delta;
-        checkCollide(this, function(axis, sign) {
+        checkCollide(this, 10, function(axis, sign) {
             yMove = -yMove;
         });
     };
