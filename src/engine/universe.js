@@ -8,14 +8,14 @@ function initUniverse() {
 }
 
 function getRandom(min, max) {
-    return Math.random() * (max - min) + min;
+    return Math_random() * (max - min) + min;
 }
 
 function getRandomColor(min, max) {
     return '#'
-        + Math.floor(getRandom(min, max)).toString(16)
-        + Math.floor(getRandom(min, max)).toString(16)
-        + Math.floor(getRandom(min, max)).toString(16);
+        + Math_floor(getRandom(min, max)).toString(16)
+        + Math_floor(getRandom(min, max)).toString(16)
+        + Math_floor(getRandom(min, max)).toString(16);
 }
 
 function newUniverse() {

@@ -3,7 +3,7 @@ var accel = { x: 0, y: 0 };
 
 function physics(delta) {
 	universeRot += universeRotDir * delta;
-	if (universe.spinLimit > 0.2 && Math.abs(universeRot) >= universe.spinLimit) {
+	if (universe.spinLimit > 0.2 && Math_abs(universeRot) >= universe.spinLimit) {
 		universeRotDir = 0 - universeRotDir;
 	}
 
@@ -26,9 +26,9 @@ function physics(delta) {
 
 		checkCollide(player);
 
-		var thresh = Math.pow(250, 2);
+		var thresh = Math_pow(250, 2);
 		for (var i = 0; i < enemies.length; ++i) {
-			var distSq = Math.pow(player.x - enemies[i].x, 2) + Math.pow(player.y - enemies[i].y, 2);
+			var distSq = Math_pow(player.x - enemies[i].x, 2) + Math_pow(player.y - enemies[i].y, 2);
 			if (distSq < enemies[i].hitDistSq) {
 				enemies[i].hitPlayer();
 			}
@@ -41,9 +41,9 @@ function movePlayer_TopView(force, delta)
 {
 	// Point player towards the mouse
 	if (mouse.x && mouse.y) {
-		player.rot = Math.atan2(
+		player.rot = Math_atan2(
 			(mouse.y - canvas.height/2), (mouse.x - canvas.width/2)
-		) + Math.PI;
+		) + Math_PI;
 	}
 
 	// Forwards and backwards
@@ -54,8 +54,8 @@ function movePlayer_TopView(force, delta)
 	} else {
 		accel.y /= universe.unitDeccel;
 	}
-	force.x += Math.cos(player.rot) * accel.y * delta;
-	force.y += Math.sin(player.rot) * accel.y * delta;
+	force.x += Math_cos(player.rot) * accel.y * delta;
+	force.y += Math_sin(player.rot) * accel.y * delta;
 
 	// Strafe
 	if (keys.x != 0) {
@@ -65,15 +65,15 @@ function movePlayer_TopView(force, delta)
 	} else {
 		accel.x /= universe.unitDeccel;
 	}
-	force.x += Math.cos(player.rot - Math.PI/2) * accel.x * delta;
-	force.y += Math.sin(player.rot - Math.PI/2) * accel.x * delta;
+	force.x += Math_cos(player.rot - Math_PI/2) * accel.x * delta;
+	force.y += Math_sin(player.rot - Math_PI/2) * accel.x * delta;
 }
 
 
 function movePlayer_SideView(force, delta)
 {
 	// Point player in movement direction
-	if (keys.x == 1) player.rot = Math.PI;
+	if (keys.x == 1) player.rot = Math_PI;
 	if (keys.x == -1) player.rot = 0;
 
 	// Horizontal movement
@@ -98,7 +98,7 @@ function applyGravityPull(force, delta)
 {
 	for (var i = 0; i < gravSource.length; ++i) {
 		var src = gravSource[i];
-		src.dist = Math.sqrt(Math.pow(player.x - src.x, 2) + Math.pow(player.y - src.y, 2));
+		src.dist = Math_sqrt(Math_pow(player.x - src.x, 2) + Math_pow(player.y - src.y, 2));
 
 		if (src.dist < 30) {
 			newUniverse();
@@ -121,8 +121,8 @@ function checkCollide(entity, hit) {
 }
 
 function collidePlayer(entity, xSign, ySign, hit) {
-	var tileX = Math.floor((entity.x + HALF_PLAYER_SIZE * xSign) / universe.tileSize);
-	var tileY = Math.floor((entity.y + HALF_PLAYER_SIZE * ySign) / universe.tileSize);
+	var tileX = Math_floor((entity.x + HALF_PLAYER_SIZE * xSign) / universe.tileSize);
+	var tileY = Math_floor((entity.y + HALF_PLAYER_SIZE * ySign) / universe.tileSize);
 
 	var tileType = getTile(tileX, tileY);
 

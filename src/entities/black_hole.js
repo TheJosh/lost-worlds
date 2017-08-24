@@ -8,7 +8,7 @@ function BlackHole(x, y) {
     this.render = function(ctx) {
         ctx.fillStyle = '#fff';
         ctx.beginPath();
-        ctx.arc(this.x, this.y, 20, 0, 2 * Math.PI);
+        ctx.arc(this.x, this.y, 20, 0, 2 * Math_PI);
         ctx.fill();
     };
 }

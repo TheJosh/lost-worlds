@@ -34,3 +34,15 @@ var universe = {
 		'3': '#630E1B'
 	}
 };
+
+// Closure compiler will replace these vars with names like B and X
+var Math_PI = Math.PI;
+var Math_round = Math.round;
+var Math_floor = Math.floor;
+var Math_random = Math.random;
+var Math_sin = Math.sin;
+var Math_cos = Math.cos;
+var Math_atan2 = Math.atan2;
+var Math_pow = Math.pow;
+var Math_sqrt = Math.sqrt;
+var Math_abs = Math.abs;

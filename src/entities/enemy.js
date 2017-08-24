@@ -7,7 +7,7 @@ function Enemy(x, y) {
     this.render = function(ctx) {
         ctx.fillStyle = '#00f';
         ctx.beginPath();
-        ctx.arc(this.x, this.y, 10, 0, 2 * Math.PI);
+        ctx.arc(this.x, this.y, 10, 0, 2 * Math_PI);
         ctx.fill();
     };
 
