@@ -49,11 +49,7 @@ function render() {
 	}
 
 	if (player !== null) {
-		ctx.translate(player.x, player.y);
-		ctx.rotate(player.rot);
-		drawPlayer(ctx);
-		ctx.rotate(-player.rot);
-		ctx.translate(-player.x, -player.y);
+		player.render(ctx);
 	}
 
 	ctx.fillStyle = '#fff';
@@ -96,10 +92,4 @@ function drawTiles(ctx, canvas) {
 			ctx.fillRect(x * universe.tileSize, y * universe.tileSize, universe.tileSize, universe.tileSize);
 		}
 	}
-}
-
-function drawPlayer(ctx) {
-	ctx.fillStyle = '#f00';
-	ctx.fillRect(-HALF_PLAYER_SIZE, -HALF_PLAYER_SIZE, PLAYER_SIZE, PLAYER_SIZE);
-	ctx.fillRect(-HALF_PLAYER_SIZE - 5, -3, 6, 6);
 }

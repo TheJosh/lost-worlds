@@ -1,6 +1,6 @@
 function Enemy(x, y) {
-    this.x = x;
-    this.y = y;
+    this.x = x * universe.tileSize;
+    this.y = y * universe.tileSize;
 
     this.render = function(ctx) {
         ctx.beginPath();

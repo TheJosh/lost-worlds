@@ -12,11 +12,7 @@ function setTile(x, y, val) {
 
 
 function loadMap() {
-	player = {
-		x: 16 * universe.tileSize,
-		y: 16 * universe.tileSize,
-		rot: 0
-	};
+	player = new Player(16, 16);
 
 	gravSource = [
 		{ x: 144 * universe.tileSize, y: 2 * universe.tileSize, dist: 0, strength: 0, dirY: 2 },
@@ -24,7 +20,7 @@ function loadMap() {
 	];
 
 	enemies = [
-		new Enemy(40 * universe.tileSize, 15 * universe.tileSize),
+		new Enemy(40, 15),
 	];
 
 
