@@ -5,6 +5,8 @@ function Bullet(x, y, rot, vel) {
     this.dirY = Math_sin(rot) * vel;
     this.alive = true;
 
+    var hitCount = 0;
+
     this.render = function(ctx) {
         ctx.fillStyle = '#e11';
         ctx.fillRect(this.x - 2, this.y - 2, 4, 4);
@@ -21,7 +23,12 @@ function Bullet(x, y, rot, vel) {
         }
 
         checkCollideTiny(this, function() {
-            this.alive = false;
+            if (hitCount++ > 3) this.alive = false;
+            if (Math_random() > 0.7) this.alive = false;
+
+            rot += getRandom(0, Math_PI * 2);
+            this.dirX = Math_cos(rot) * vel;
+            this.dirY = Math_sin(rot) * vel;
         });
     };
 }
