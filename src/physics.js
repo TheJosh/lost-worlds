@@ -50,8 +50,8 @@ function movePlayer_TopView(force, delThous)
 	// Strafe
 	if (keys.x != 0) {
 		accel.x += (keys.x * universe.unitAccel * delThous);
-		if (accel.x > universe.unitMax) accel.y = universe.unitMax;
-		if (accel.x < 0 - universe.unitMax) accel.y = 0 - universe.unitMax;
+		if (accel.x > universe.unitMax) accel.x = universe.unitMax;
+		if (accel.x < 0 - universe.unitMax) accel.x = 0 - universe.unitMax;
 	} else {
 		accel.x /= universe.unitDeccel;
 	}
