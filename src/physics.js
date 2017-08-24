@@ -105,14 +105,14 @@ function applyGravityPull(force, delThous)
 
 
 
-function checkCollide(entity) {
-	collidePlayer(entity, -1.0, 0.0);
-	collidePlayer(entity, +1.0, 0.0);
-	collidePlayer(entity, 0.0, -1.0);
-	collidePlayer(entity, 0.0, +1.0);
+function checkCollide(entity, hit) {
+	collidePlayer(entity, -1.0, 0.0, hit);
+	collidePlayer(entity, +1.0, 0.0, hit);
+	collidePlayer(entity, 0.0, -1.0, hit);
+	collidePlayer(entity, 0.0, +1.0, hit);
 }
 
-function collidePlayer(entity, xSign, ySign) {
+function collidePlayer(entity, xSign, ySign, hit) {
 	var tileX = Math.floor((entity.x + HALF_PLAYER_SIZE * xSign) / universe.tileSize);
 	var tileY = Math.floor((entity.y + HALF_PLAYER_SIZE * ySign) / universe.tileSize);
 
@@ -123,12 +123,14 @@ function collidePlayer(entity, xSign, ySign) {
 			var tileXpx = tileX * universe.tileSize;
 			if (xSign < 0) tileXpx += universe.tileSize;
 			entity.x =  tileXpx - (HALF_PLAYER_SIZE * xSign);
+			hit && hit('x', xSign);
 		}
 
 		if (ySign != 0) {
 			var tileYpx = tileY * universe.tileSize;
 			if (ySign < 0) tileYpx += universe.tileSize;
 			entity.y =  tileYpx - (HALF_PLAYER_SIZE * ySign);
+			hit && hit('y', ySign);
 		}
 	}
 }
