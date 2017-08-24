@@ -7,9 +7,11 @@ If player ends up in invalid cell just teleport to closest valid cell
 Priority one
 ============
 
+Objectives - collect objects?
+
 Dynamic (procedual) level creation
 
-Initial map to be simpler (like a tutorial)
+Initial map to be simpler (like a tutorial) and smaller
 
 Animation for the black holes
 
@@ -18,4 +20,5 @@ Player image, for both top and side view
 
 Priority two
 ============
+
 Double-buffered rendering?
