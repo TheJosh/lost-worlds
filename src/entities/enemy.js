@@ -1,6 +1,8 @@
 function Enemy(x, y) {
     this.x = x * universe.tileSize;
     this.y = y * universe.tileSize;
+    this.dirX = 0;
+    this.dirY = 100;
     this.alive = true;
     this.hitDistSq = 25 * 25;
 
@@ -13,11 +15,10 @@ function Enemy(x, y) {
         ctx.fill();
     };
 
-    var yMove = 100.0;
     this.update = function(delta) {
-        this.y += yMove * delta;
+        this.y += this.dirY * delta;
         checkCollide(this, 10, function(axis, sign) {
-            yMove = -yMove;
+            this.dirY = -this.dirY;
         });
     };
 

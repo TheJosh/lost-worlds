@@ -163,14 +163,14 @@ function collideDir(entity, halfSize, xSign, ySign, hit) {
 			var tileXpx = tileX * universe.tileSize;
 			if (xSign < 0) tileXpx += universe.tileSize;
 			entity.x =  tileXpx - (halfSize * xSign);
-			hit && hit('x', xSign);
+			hit && hit.call(entity, 'x', xSign);
 		}
 
 		if (ySign != 0) {
 			var tileYpx = tileY * universe.tileSize;
 			if (ySign < 0) tileYpx += universe.tileSize;
 			entity.y =  tileYpx - (halfSize * ySign);
-			hit && hit('y', ySign);
+			hit && hit.call(entity, 'y', ySign);
 		}
 	}
 }
