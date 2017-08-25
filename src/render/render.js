@@ -117,4 +117,25 @@ function drawTiles(ctx, canvas) {
 			ctx.fillRect(x * universe.tileSize, y * universe.tileSize, universe.tileSize, universe.tileSize);
 		}
 	}
+
+	ctx.fillStyle = universe.colors[-1];
+	for (var y = 0; y < 64; ++y) {
+		for (var x = 0; x < 256; ++x) {
+			var tile = getTile(x, y);
+			if (tile.type != 0) continue;
+
+			if (tile.wallLeft) {
+				ctx.fillRect(x * universe.tileSize, y * universe.tileSize, 5, universe.tileSize);
+			}
+			if (tile.wallRight) {
+				ctx.fillRect(x * universe.tileSize + universe.tileSize - 5, y * universe.tileSize, 5, universe.tileSize);
+			}
+			if (tile.wallUp) {
+				ctx.fillRect(x * universe.tileSize, y * universe.tileSize, universe.tileSize, 5);
+			}
+			if (tile.wallDown) {
+				ctx.fillRect(x * universe.tileSize, y * universe.tileSize + universe.tileSize - 5, universe.tileSize, 5);
+			}
+		}
+	}
 }
