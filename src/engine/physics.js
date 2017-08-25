@@ -150,6 +150,7 @@ function checkCollide(entity, halfSize, hit) {
 	collideDir(entity, halfSize, +1.0, 0.0, hit);
 	collideDir(entity, halfSize, 0.0, -1.0, hit);
 	collideDir(entity, halfSize, 0.0, +1.0, hit);
+	repairBrokenPosition(entity);
 }
 
 function collideDir(entity, halfSize, xSign, ySign, hit) {
@@ -174,6 +175,36 @@ function collideDir(entity, halfSize, xSign, ySign, hit) {
 		}
 	}
 }
+
+function repairBrokenPosition(entity) {
+	var tileX = Math_floor(entity.x / universe.tileSize);
+	var tileY = Math_floor(entity.y / universe.tileSize);
+	var tile = getTile(tileX, tileY);
+	if (tile.type == 0) return;
+
+	var valid = findValidTile(tileX, tileY, 2);
+	if (valid) {
+		entity.x = valid[0] * universe.tileSize;
+		entity.y = valid[1] * universe.tileSize;
+	}
+}
+
+function findValidTile(x, y, radius) {
+	var sx = x - radius; mx = x + radius;
+	var sy = y - radius; my = y + radius;
+
+	for (y = sy; y <= my; ++y) {
+		for (x = sx; x <= mx; ++x) {
+			var tile = getTile(x, y);
+			if (tile && tile.type == 0) {
+				return [x, y];
+			}
+		}
+	}
+
+	return null;
+}
+
 
 function checkCollideTiny(entity, hit) {
 	var tileX = Math_floor(entity.x / universe.tileSize);
