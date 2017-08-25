@@ -1,6 +1,6 @@
 
-var PLAYER_SIZE = 20;
-var HALF_PLAYER_SIZE = 10;
+var PLAYER_SIZE = 30;
+var HALF_PLAYER_SIZE = 15;
 
 var canvas = document.getElementById('c');
 
