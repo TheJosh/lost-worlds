@@ -2,16 +2,22 @@ function Player(x, y) {
     this.x = x * universe.tileSize;
     this.y = y * universe.tileSize;
     this.rot = 0;
+    this.weapon = 2;
 
     var fireDelay = 0;
+
+    var img = document.createElement('img');
+    img.src = 'player.png';
 
     this.render = function(ctx) {
         ctx.translate(player.x, player.y);
         ctx.rotate(player.rot);
 
-        ctx.fillStyle = '#f00';
-        ctx.fillRect(-HALF_PLAYER_SIZE, -HALF_PLAYER_SIZE, PLAYER_SIZE, PLAYER_SIZE);
-        ctx.fillRect(-HALF_PLAYER_SIZE - 5, -3, 6, 6);
+        ctx.drawImage(
+            img,
+            this.weapon * 52, 0, 52, 31,
+            -HALF_PLAYER_SIZE - 22, -HALF_PLAYER_SIZE, 52, 31
+        );
 
         ctx.rotate(-player.rot);
         ctx.translate(-player.x, -player.y);
