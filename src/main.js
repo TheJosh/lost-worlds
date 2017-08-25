@@ -1,7 +1,4 @@
 window.onresize = resizeRenderCanvas;
-window.onmousemove = mousemove;
-window.onkeydown = keydown;
-window.onkeyup = keyup;
 
 
 var lastTs = 0;

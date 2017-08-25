@@ -6,7 +6,7 @@ var cachedTiles;
 function resizeRenderCanvas() {
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
-	canvas.onmouseenter = mousemove;
+	canvas.onmouseenter = window.onmousemove;
 }
 
 function canvasCache(width, height, func) {
