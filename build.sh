@@ -21,6 +21,7 @@ echo "<style>body{margin:0;overflow:hidden}</style><canvas id=c></canvas><script
 	>build/index.html
 
 pngcrush -q -brute -c 0 src/map.png build/map.png
+pngcrush -q -brute src/player.png build/player.png
 
 rm -f build.zip
 
