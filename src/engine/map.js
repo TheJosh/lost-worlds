@@ -48,10 +48,10 @@ function loadMap() {
 			var cell2 = (pxl & parseInt('00001100', 2)) >>> 2;
 			var cell1 = (pxl & parseInt('00000011', 2));
 
-			mapTiles.push(cell4);
-			mapTiles.push(cell3);
-			mapTiles.push(cell2);
-			mapTiles.push(cell1);
+			mapTiles.push({ type: cell4 });
+			mapTiles.push({ type: cell3 });
+			mapTiles.push({ type: cell2 });
+			mapTiles.push({ type: cell1 });
 		}
 
 		//for (var y = 0; y <= 64; ++y) {

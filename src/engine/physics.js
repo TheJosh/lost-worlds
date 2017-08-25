@@ -156,9 +156,9 @@ function collideDir(entity, halfSize, xSign, ySign, hit) {
 	var tileX = Math_floor((entity.x + halfSize * xSign) / universe.tileSize);
 	var tileY = Math_floor((entity.y + halfSize * ySign) / universe.tileSize);
 
-	var tileType = getTile(tileX, tileY);
+	var tile = getTile(tileX, tileY);
 
-	if (tileType > 0) {
+	if (tile.type > 0) {
 		if (xSign != 0) {
 			var tileXpx = tileX * universe.tileSize;
 			if (xSign < 0) tileXpx += universe.tileSize;
@@ -179,9 +179,9 @@ function checkCollideTiny(entity, hit) {
 	var tileX = Math_floor(entity.x / universe.tileSize);
 	var tileY = Math_floor(entity.y / universe.tileSize);
 
-	var tileType = getTile(tileX, tileY);
+	var tile = getTile(tileX, tileY);
 
-	if (tileType > 0) {
+	if (tile.type > 0) {
 		hit.apply(entity);
 	}
 }

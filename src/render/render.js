@@ -104,10 +104,10 @@ function drawTiles(ctx, canvas) {
 	ctx.fillStyle = universe.colors[1];
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-	for (var y = 0; y <= 64; ++y) {
-		for (var x = 0; x <= 256; ++x) {
+	for (var y = 0; y < 64; ++y) {
+		for (var x = 0; x < 256; ++x) {
 			var tile = getTile(x, y);
-			switch (tile) {
+			switch (tile.type) {
 				case -1: ctx.fillStyle = universe.colors[-1]; break;   // dirt edge
 				case  0: ctx.fillStyle = universe.colors[0]; break;   // none
 				case  1: continue;
