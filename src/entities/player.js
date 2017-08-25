@@ -29,8 +29,15 @@ function Player(x, y) {
 
     this.fire = function(delta) {
         if (fireDelay > 0) return;
+
+        var aheadPx = 40;
+        var sidePx = 8;     // weapon is off-centre
+
+        var x = this.x - (Math_cos(this.rot) * aheadPx) - (Math_cos(this.rot - Math_PI / 2) * sidePx);
+        var y = this.y - (Math_sin(this.rot) * aheadPx) - (Math_sin(this.rot - Math_PI / 2) * sidePx);
+
         bullets.push(
-            new Bullet(player.x, player.y, player.rot + Math_PI, 500)
+            new Bullet(x, y, this.rot + Math_PI, 500)
         );
         fireDelay = 0.2;
     };
