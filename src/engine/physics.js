@@ -182,27 +182,33 @@ function repairBrokenPosition(entity) {
 	var tile = getTile(tileX, tileY);
 	if (tile.type == 0) return;
 
-	var valid = findValidTile(tileX, tileY, 2);
+	var valid = findValidTiles(tileX, tileY, 3);
 	if (valid) {
+		valid.sort(function(a,b) {
+			return (b[2] - a[2]);
+		});
+		valid = valid.pop();
 		entity.x = valid[0] * universe.tileSize;
 		entity.y = valid[1] * universe.tileSize;
 	}
 }
 
-function findValidTile(x, y, radius) {
-	var sx = x - radius; mx = x + radius;
-	var sy = y - radius; my = y + radius;
+function findValidTiles(x, y, radius) {
+	var tx, sx = x - radius; mx = x + radius;
+	var ty, sy = y - radius; my = y + radius;
 
-	for (y = sy; y <= my; ++y) {
-		for (x = sx; x <= mx; ++x) {
-			var tile = getTile(x, y);
+	var valid = [];
+	for (ty = sy; ty <= my; ++ty) {
+		for (tx = sx; tx <= mx; ++tx) {
+			var tile = getTile(tx, ty);
 			if (tile && tile.type == 0) {
-				return [x, y];
+				var manHatDist = Math_abs(x - tx) + Math_abs(y - ty);
+				valid.push([tx, ty, manHatDist]);
 			}
 		}
 	}
 
-	return null;
+	return valid;
 }
 
 
