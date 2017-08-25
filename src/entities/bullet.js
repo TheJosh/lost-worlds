@@ -9,7 +9,7 @@ function Bullet(x, y, rot, vel) {
     var hitCount = 0;
 
     this.render = function(ctx) {
-        ctx.fillStyle = '#e11';
+        ctx.fillStyle = '#333';
         ctx.globalAlpha = this.strength;
         ctx.fillRect(this.x - 2, this.y - 2, 4, 4);
         ctx.globalAlpha = 1;
