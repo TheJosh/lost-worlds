@@ -1,6 +1,7 @@
 var ctx = canvas.getContext('2d');
 var offset = { x: 0, y: 0 };
 var cachedTiles;
+var cachedCrosshair;
 
 
 function resizeRenderCanvas() {
@@ -9,6 +10,7 @@ function resizeRenderCanvas() {
 	canvas.onmouseenter = window.onmousemove;
 	canvas.style.cursor = 'none';
 }
+
 
 function canvasCache(width, height, func) {
 	var canvas = document.createElement('canvas');
@@ -20,9 +22,28 @@ function canvasCache(width, height, func) {
 	return canvas;
 }
 
+
 function initRender() {
 	cachedTiles = canvasCache(256 * universe.tileSize, 64 * universe.tileSize, drawTiles);
+	
+	cachedCrosshair = canvasCache(30, 30, function(ctx, canv) {
+		var grad = ctx.createRadialGradient(15, 15, 0, 15, 15, 15);
+		grad.addColorStop(0.0, 'rgba(255,0,0,0)');
+		grad.addColorStop(0.5, 'rgba(240,8,8,1)');
+		grad.addColorStop(1.0, 'rgba(120,4,4,1)');
+
+		ctx.lineWidth = 3;
+		ctx.strokeStyle = grad;
+		ctx.beginPath();
+		ctx.arc(15, 15, 10, 0, 2 * Math_PI);
+		ctx.moveTo(0, 15);
+		ctx.lineTo(30, 15);
+		ctx.moveTo(15, 0);
+		ctx.lineTo(15, 30);
+		ctx.stroke();
+	});
 }
+
 
 function render() {
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -65,20 +86,8 @@ function render() {
 		bullets[i].render(ctx);
 	}
 
-	var grad = ctx.createRadialGradient(0, 0, 0, 0, 0, 15);
-	grad.addColorStop(0, 'rgba(240,8,8,0)');
-	grad.addColorStop(1, 'rgba(120,4,4,1)');
-
-	ctx.setTransform(1, 0, 0, 1, mouse.x, mouse.y);
-	ctx.lineWidth = 3;
-	ctx.strokeStyle = grad;
-	ctx.beginPath();
-	ctx.arc(0, 0, 10, 0, 2 * Math_PI);
-	ctx.moveTo(-15, 0);
-	ctx.lineTo(+15, 0);
-	ctx.moveTo(0, -15);
-	ctx.lineTo(0, +15);
-	ctx.stroke();
+	ctx.setTransform(1, 0, 0, 1, 0, 0);
+	ctx.drawImage(cachedCrosshair, mouse.x - 15, mouse.y - 15);
 
 
 	var fps = fpsRingBuf.reduce(function(x,y) {
