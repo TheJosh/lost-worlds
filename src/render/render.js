@@ -1,6 +1,8 @@
 var ctx = canvas.getContext('2d');
 var offset = { x: 0, y: 0 };
+
 var cachedTiles;
+var cachedTileEdges;
 var cachedCrosshair;
 
 
@@ -25,6 +27,8 @@ function canvasCache(width, height, func) {
 
 function initRender() {
 	cachedTiles = canvasCache(256 * universe.tileSize, 64 * universe.tileSize, drawTiles);
+	
+	cachedTileEdges = canvasCache(256 * universe.tileSize, 64 * universe.tileSize, drawTileEdges);
 	
 	cachedCrosshair = canvasCache(30, 30, function(ctx, canv) {
 		var grad = ctx.createRadialGradient(15, 15, 0, 15, 15, 15);
@@ -68,6 +72,7 @@ function render() {
 
 	if (cachedTiles) {
 		ctx.drawImage(cachedTiles, 0, 0);
+		ctx.drawImage(cachedTileEdges, 0, 0);
 	}
 
 	if (player !== null) {
@@ -117,6 +122,10 @@ function drawTiles(ctx, canvas) {
 			ctx.fillRect(x * universe.tileSize, y * universe.tileSize, universe.tileSize, universe.tileSize);
 		}
 	}
+}
+
+function drawTileEdges(ctx, canvas) {
+	var width = 3;
 
 	ctx.fillStyle = universe.colors[-1];
 	for (var y = 0; y < 64; ++y) {
@@ -125,16 +134,16 @@ function drawTiles(ctx, canvas) {
 			if (tile.type != 0) continue;
 
 			if (tile.wallLeft) {
-				ctx.fillRect(x * universe.tileSize, y * universe.tileSize, 5, universe.tileSize);
+				ctx.fillRect(x * universe.tileSize, y * universe.tileSize, width, universe.tileSize);
 			}
 			if (tile.wallRight) {
-				ctx.fillRect(x * universe.tileSize + universe.tileSize - 5, y * universe.tileSize, 5, universe.tileSize);
+				ctx.fillRect(x * universe.tileSize + universe.tileSize - width, y * universe.tileSize, width, universe.tileSize);
 			}
 			if (tile.wallUp) {
-				ctx.fillRect(x * universe.tileSize, y * universe.tileSize, universe.tileSize, 5);
+				ctx.fillRect(x * universe.tileSize, y * universe.tileSize, universe.tileSize, width);
 			}
 			if (tile.wallDown) {
-				ctx.fillRect(x * universe.tileSize, y * universe.tileSize + universe.tileSize - 5, universe.tileSize, 5);
+				ctx.fillRect(x * universe.tileSize, y * universe.tileSize + universe.tileSize - width, universe.tileSize, width);
 			}
 		}
 	}
