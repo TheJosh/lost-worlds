@@ -183,7 +183,7 @@ function repairBrokenPosition(entity) {
 	if (tile.type == 0) return;
 
 	var valid = findValidTiles(tileX, tileY, 3);
-	if (valid) {
+	if (valid.length) {
 		valid.sort(function(a,b) {
 			return (b[2] - a[2]);
 		});
