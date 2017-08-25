@@ -7,6 +7,7 @@ function resizeRenderCanvas() {
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
 	canvas.onmouseenter = window.onmousemove;
+	canvas.style.cursor = 'none';
 }
 
 function canvasCache(width, height, func) {
@@ -63,6 +64,22 @@ function render() {
 	for (var i = 0; i < bullets.length; ++i) {
 		bullets[i].render(ctx);
 	}
+
+	var grad = ctx.createRadialGradient(0, 0, 0, 0, 0, 15);
+	grad.addColorStop(0, 'rgba(240,8,8,0)');
+	grad.addColorStop(1, 'rgba(120,4,4,1)');
+
+	ctx.setTransform(1, 0, 0, 1, mouse.x, mouse.y);
+	ctx.lineWidth = 3;
+	ctx.strokeStyle = grad;
+	ctx.beginPath();
+	ctx.arc(0, 0, 10, 0, 2 * Math_PI);
+	ctx.moveTo(-15, 0);
+	ctx.lineTo(+15, 0);
+	ctx.moveTo(0, -15);
+	ctx.lineTo(0, +15);
+	ctx.stroke();
+
 
 	var fps = fpsRingBuf.reduce(function(x,y) {
 		return x + y;
