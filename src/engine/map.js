@@ -54,16 +54,16 @@ function loadMap() {
 			mapTiles.push(cell1);
 		}
 
-		for (var y = 0; y <= 64; ++y) {
-			for (var x = 0; x <= 256; ++x) {
-				var tile = getTile(x, y);
-				if (tile == 1) {
-					if (getTile(x - 1, y) == 0 || getTile(x + 1, y) == 0 || getTile(x, y - 1) == 0 || getTile(x, y + 1) == 0) {
-						setTile(x, y, -1);
-					}
-				}
-			}
-		}
+		//for (var y = 0; y <= 64; ++y) {
+		//	for (var x = 0; x <= 256; ++x) {
+		//		var tile = getTile(x, y);
+		//		if (tile == 1) {
+		//			if (getTile(x - 1, y) == 0 || getTile(x + 1, y) == 0 || getTile(x, y - 1) == 0 || getTile(x, y + 1) == 0) {
+		//				setTile(x, y, -1);
+		//			}
+		//		}
+		//	}
+		//}
 
 		startGame();
 	};
