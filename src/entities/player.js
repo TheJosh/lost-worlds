@@ -6,12 +6,15 @@ function Player(x, y) {
 
     var fireDelay = 0;
 
+    var walkWobbleRot = 0;
+    var walkWobbleDir = 0.01;
+
     var img = document.createElement('img');
     img.src = 'player.png';
 
     this.render = function(ctx) {
         ctx.translate(player.x, player.y);
-        ctx.rotate(player.rot);
+        ctx.rotate(player.rot + walkWobbleRot);
 
         ctx.drawImage(
             img,
@@ -19,12 +22,19 @@ function Player(x, y) {
             -HALF_PLAYER_SIZE - 22, -HALF_PLAYER_SIZE, 52, 31
         );
 
-        ctx.rotate(-player.rot);
+        ctx.rotate(-player.rot - walkWobbleRot);
         ctx.translate(-player.x, -player.y);
     };
 
     this.update = function(delta) {
         if (fireDelay > 0) fireDelay -= delta;
+
+        if (keys.y != 0) {
+            walkWobbleRot += walkWobbleDir;
+            if (Math_abs(walkWobbleRot) > 0.05) {
+                walkWobbleDir = -walkWobbleDir;
+            }
+        }
     };
 
     this.fire = function(delta) {
