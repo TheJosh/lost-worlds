@@ -16,8 +16,6 @@ var bullets = [];
 
 
 var universe = {
-	orientation: 1,   // 1 is top, 2 is side
-
 	tileSize: 32,
 
 	spinAmount: 1,    // degrees/second

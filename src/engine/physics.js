@@ -28,12 +28,7 @@ function physics(delta) {
 
 	if (player) {
 		var force = { x: 0.0, y: 0.0 }
-		if (universe.orientation == 1) {
-			movePlayer_TopView(force, delta);
-		}
-		if (universe.orientation == 2) {
-			movePlayer_SideView(force, delta);
-		}
+		movePlayer_TopView(force, delta);
 		applyGravityPull(force, delta);
 		
 		player.x += force.x;

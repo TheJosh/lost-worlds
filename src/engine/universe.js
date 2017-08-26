@@ -19,8 +19,6 @@ function getRandomColor(min, max) {
 }
 
 function newUniverse() {
-    universe.orientation = Math_round(getRandom(1, 2));
-
     universe.tileSize = Math_floor(getRandom(24, 64));
 
     universe.spinAmount = getRandom(0, 10);
