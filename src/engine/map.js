@@ -25,6 +25,10 @@ function loadMap() {
 		new Enemy(40, 17)
 	];
 
+	collectables = [
+		new Collectable(45, 16)
+	];
+
 
 	var img = document.createElement('img');
 

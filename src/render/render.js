@@ -87,6 +87,10 @@ function render() {
 		enemies[i].render(ctx);
 	}
 
+	for (var i = 0; i < collectables.length; ++i) {
+		collectables[i].render(ctx);
+	}
+
 	for (var i = 0; i < bullets.length; ++i) {
 		bullets[i].render(ctx);
 	}

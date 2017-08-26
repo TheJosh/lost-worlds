@@ -11,6 +11,7 @@ var universeRotDir = 0.0;
 
 var gravSource = [];
 var enemies = [];
+var collectables = [];
 var bullets = [];
 
 

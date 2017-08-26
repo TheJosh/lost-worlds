@@ -22,6 +22,9 @@ function physics(delta) {
 	bullets = bullets.filter(function(b){
 		return b.alive;
 	});
+	collectables = collectables.filter(function(c){
+		return c.alive;
+	});
 
 	if (player) {
 		var force = { x: 0.0, y: 0.0 }
@@ -38,11 +41,17 @@ function physics(delta) {
 
 		checkCollide(player, HALF_PLAYER_SIZE);
 
-		var thresh = Math_pow(250, 2);
 		for (var i = 0; i < enemies.length; ++i) {
 			var distSq = Math_pow(player.x - enemies[i].x, 2) + Math_pow(player.y - enemies[i].y, 2);
 			if (distSq < enemies[i].hitDistSq) {
 				enemies[i].hitPlayer();
+			}
+		}
+
+		for (var i = 0; i < collectables.length; ++i) {
+			var distSq = Math_pow(player.x - collectables[i].x, 2) + Math_pow(player.y - collectables[i].y, 2);
+			if (distSq < collectables[i].hitDistSq) {
+				collectables[i].touchPlayer();
 			}
 		}
 
