@@ -13,6 +13,9 @@ function physics(delta) {
 	for (var i = 0; i < bullets.length; ++i) {
 		bullets[i].update(delta);
 	}
+	for (var i = 0; i < gravSource.length; ++i) {
+		gravSource[i].update(delta);
+	}
 
 	checkBulletsHitEnemies();
 
