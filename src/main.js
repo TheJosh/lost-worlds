@@ -3,6 +3,7 @@ window.onresize = resizeRenderCanvas;
 
 var lastTs = 0;
 var fpsRingBuf = [];
+var running = false;
 function tick(timestamp) {
 	var delta = timestamp - lastTs;
 	lastTs = timestamp;
@@ -20,9 +21,14 @@ function tick(timestamp) {
 
 resizeRenderCanvas();
 loadMap();
-requestAnimationFrame(tick);
 
-function startGame() {
+function postMapLoad() {
 	initUniverse();
 	initRender();
+
+	if (!running) {
+		requestAnimationFrame(tick);
+	}
+
+	running = true;
 }

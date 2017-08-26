@@ -29,8 +29,6 @@ function loadMap() {
 	var img = document.createElement('img');
 
 	img.onload = function() {
-		console.log('onload');
-
 		var canvas = document.createElement('canvas');
 		canvas.width = canvas.height = 64;
 		var ctx = canvas.getContext('2d');
@@ -73,7 +71,7 @@ function loadMap() {
 			}
 		}
 
-		startGame();
+		postMapLoad();
 	};
 
 	img.crossOrigin = 'anonymous';
