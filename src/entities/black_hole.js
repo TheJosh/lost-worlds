@@ -1,3 +1,6 @@
+var black_hole_particles = [];
+
+
 function BlackHole(x, y) {
     this.x = x * universe.tileSize;
     this.y = y * universe.tileSize;
@@ -5,38 +8,14 @@ function BlackHole(x, y) {
     this.dist = 0;
     this.strength = 0;
 
-    var particles = [];
-    for (var i = 0; i < 250; ++i) {
-        particles.push({
-            rot: getRandom(0, Math_PI * 2),
-            dist: getRandom(0, 98)
-        });
-    }
-
-
-    this.update = function(delta) {
-        for (var i = 0; i < particles.length; ++i) {
-            var p = particles[i];
-
-            p.rot += (1.0 / p.dist * 70) * delta;    // spin
-            p.dist -= 20.0 * delta;   // fall inwards
-
-            if (p.dist <= 0) {
-                p.rot = getRandom(0, Math_PI * 2),
-                p.dist = 100;
-            }
-        }
-    };
-
-
     this.render = function(ctx) {
         ctx.translate(this.x, this.y);
 
         var x, y, p;
         ctx.strokeStyle = '#fff';
         ctx.fillStyle = '#fff';
-        for (var i = 0; i < particles.length; ++i) {
-            p = particles[i];
+        for (var i = 0; i < black_hole_particles.length; ++i) {
+            p = black_hole_particles[i];
 
             x = Math_cos(p.rot) * (p.dist + 37);
             y = Math_sin(p.rot) * (p.dist + 37);
@@ -67,3 +46,28 @@ function BlackHole(x, y) {
         ctx.translate(-this.x, -this.y);
     };
 }
+
+
+BlackHole.setupParticles = function() {
+    for (var i = 0; i < 250; ++i) {
+        black_hole_particles.push({
+            rot: getRandom(0, Math_PI * 2),
+            dist: getRandom(0, 98)
+        });
+    }
+};
+
+
+BlackHole.updateParticles = function(delta) {
+    for (var i = 0; i < black_hole_particles.length; ++i) {
+        var p = black_hole_particles[i];
+
+        p.rot += (1.0 / p.dist * 70) * delta;    // spin
+        p.dist -= 20.0 * delta;   // fall inwards
+
+        if (p.dist <= 0) {
+            p.rot = getRandom(0, Math_PI * 2),
+            p.dist = 100;
+        }
+    }
+};
