@@ -2,7 +2,6 @@ var ctx = canvas.getContext('2d');
 var offset = { x: 0, y: 0 };
 
 var cachedTiles;
-var cachedTileEdges;
 var cachedCrosshair;
 
 
@@ -27,8 +26,6 @@ function canvasCache(width, height, func) {
 
 function initRender() {
 	cachedTiles = canvasCache(256 * universe.tileSize, 64 * universe.tileSize, drawTiles);
-	
-	cachedTileEdges = canvasCache(256 * universe.tileSize, 64 * universe.tileSize, drawTileEdges);
 	
 	cachedCrosshair = canvasCache(30, 30, function(ctx, canv) {
 		var grad = ctx.createRadialGradient(15, 15, 0, 15, 15, 15);
@@ -72,7 +69,6 @@ function render() {
 
 	if (cachedTiles) {
 		ctx.drawImage(cachedTiles, 0, 0);
-		ctx.drawImage(cachedTileEdges, 0, 0);
 	}
 
 	if (player !== null) {
@@ -126,6 +122,8 @@ function drawTiles(ctx, canvas) {
 			ctx.fillRect(x * universe.tileSize, y * universe.tileSize, universe.tileSize, universe.tileSize);
 		}
 	}
+
+	drawTileEdges(ctx, canvas);
 }
 
 function drawTileEdges(ctx, canvas) {
