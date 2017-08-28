@@ -87,9 +87,11 @@ function render() {
 		collectables[i].render(ctx);
 	}
 
+	ctx.fillStyle = '#333';
 	for (var i = 0; i < bullets.length; ++i) {
 		bullets[i].render(ctx);
 	}
+	ctx.globalAlpha = 1;
 
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 	ctx.drawImage(cachedCrosshair, mouse.x - 15, mouse.y - 15);
