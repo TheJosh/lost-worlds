@@ -47,12 +47,15 @@ function initRender() {
 
 
 function render() {
+	var maxExtent = Math_floor((canvas.width ? canvas.width : canvas.height) * 1.2);
+
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 
 	ctx.fillStyle = universe.colors[1];
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	ctx.translate(canvas.width/2, canvas.height/2);
+	ctx.scale(0.1,0.1);
 	ctx.rotate(universeRot * Math.PI / 180);
 	ctx.translate(0 - canvas.width/2, 0 - canvas.height/2);
 
@@ -104,6 +107,26 @@ function render() {
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 	ctx.fillStyle = '#fff';
 	ctx.fillText(fps.toFixed(1) + ' fps', 20, 20);
+
+
+	ctx.fillText(maxExtent, 20, 40);
+	
+	ctx.setTransform(1, 0, 0, 1, 0, 0);
+	ctx.translate(canvas.width/2, canvas.height/2);
+	ctx.scale(0.1,0.1);
+	ctx.translate(0 - canvas.width/2, 0 - canvas.height/2);
+	
+	ctx.strokeStyle = '#F00';
+	ctx.strokeRect(0, 0, canvas.width, canvas.height);
+	
+	ctx.setTransform(1, 0, 0, 1, 0, 0);
+	ctx.translate(canvas.width/2, canvas.height/2);
+	ctx.scale(0.1,0.1);
+	ctx.rotate(universeRot * Math.PI / 180);
+	ctx.translate(0 - canvas.width/2, 0 - canvas.height/2);
+	
+	ctx.strokeStyle = '#FFF';
+	ctx.strokeRect((canvas.width-maxExtent)/2,(canvas.height-maxExtent)/2, maxExtent, maxExtent);
 }
 
 
