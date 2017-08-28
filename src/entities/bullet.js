@@ -13,8 +13,6 @@ function Bullet(x, y, rot, vel) {
     };
 
     this.update = function(delta) {
-        if (! this.alive) return;
-
         this.x += this.dir.x * delta;
         this.y += this.dir.y * delta;
 
