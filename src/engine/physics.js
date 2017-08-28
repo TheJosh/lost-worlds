@@ -162,7 +162,7 @@ function repairBrokenPosition(entity) {
 	var tileX = Math_floor(entity.x / universe.tileSize);
 	var tileY = Math_floor(entity.y / universe.tileSize);
 	var tile = getTile(tileX, tileY);
-	if (tile.type == 0) return;
+	if (tile && tile.type == 0) return;
 
 	var valid = findValidTiles(tileX, tileY, 3);
 	if (valid.length) {
@@ -200,7 +200,7 @@ function checkCollideTiny(entity, hit) {
 
 	var tile = getTile(tileX, tileY);
 
-	if (tile.type > 0) {
+	if (tile && tile.type > 0) {
 		hit.apply(entity);
 	}
 }
