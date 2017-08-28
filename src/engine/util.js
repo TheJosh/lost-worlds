@@ -25,3 +25,12 @@ function addRotVel(origin, rot, vel) {
 		y: origin.y + Math_sin(rot) * vel
 	};
 }
+
+
+function pointInBounds(point, bounds) {
+    return (
+        point.x >= bounds.x1 && point.x <= bounds.x2
+        &&
+        point.y >= bounds.y1 && point.y <= bounds.y2
+    );
+}

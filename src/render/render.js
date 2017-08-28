@@ -47,8 +47,6 @@ function initRender() {
 
 
 function render() {
-	var maxExtent = Math_floor((canvas.width ? canvas.width : canvas.height) * 1.2);
-
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 
 	ctx.fillStyle = universe.colors[1];
@@ -68,6 +66,14 @@ function render() {
 		);
 	}
 
+	// Only entities fully within these bounds should be rendered
+	var maxExtent = (canvas.width ? canvas.width : canvas.height) * 1.2;
+	var renderBounds = {}
+	renderBounds.x1 = Math_round(player.x - (maxExtent / 2));
+	renderBounds.y1 = Math_round(player.y - (maxExtent / 2));
+	renderBounds.x2 = Math_round(player.x + (maxExtent / 2));
+	renderBounds.y2 = Math_round(player.y + (maxExtent / 2));
+
 	ctx.translate(offset.x, offset.y);
 
 	if (cachedTiles) {
@@ -79,7 +85,9 @@ function render() {
 	}
 
 	for (var i = 0; i < gravSource.length; ++i) {
-		gravSource[i].render(ctx);
+		if (pointInBounds(gravSource[i], renderBounds)) {
+			gravSource[i].render(ctx);
+		}
 	}
 
 	for (var i = 0; i < enemies.length; ++i) {
