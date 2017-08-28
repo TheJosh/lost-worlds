@@ -9,3 +9,19 @@ function getRandomColor(min, max) {
         + Math_floor(getRandom(min, max)).toString(16)
         + Math_floor(getRandom(min, max)).toString(16);
 }
+
+
+function getRotVel(rot, vel) {
+	return {
+		x: Math_cos(rot) * vel,
+		y: Math_sin(rot) * vel
+	};
+}
+
+
+function addRotVel(origin, rot, vel) {
+	return {
+		x: origin.x + Math_cos(rot) * vel,
+		y: origin.y + Math_sin(rot) * vel
+	};
+}
