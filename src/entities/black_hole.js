@@ -11,26 +11,24 @@ function BlackHole(x, y) {
     this.render = function(ctx) {
         ctx.translate(this.x, this.y);
 
-        var x, y, p;
+        var part, pos;
         ctx.strokeStyle = '#fff';
         ctx.fillStyle = '#fff';
         for (var i = 0; i < black_hole_particles.length; ++i) {
-            p = black_hole_particles[i];
+            part = black_hole_particles[i];
 
-            x = Math_cos(p.rot) * (p.dist + 37);
-            y = Math_sin(p.rot) * (p.dist + 37);
+            pos = getRotVel(part.rot, part.dist + 37);
 
-            ctx.globalAlpha = 1.0 - (p.dist / 100);
+            ctx.globalAlpha = 1.0 - (part.dist / 100);
 
-            if (p.dist < 25) {
-                ctx.fillRect(x, y, 1, 1);
+            if (part.dist < 25) {
+                ctx.fillRect(pos.x, pos.y, 1, 1);
             } else {
                 ctx.beginPath();
-                ctx.moveTo(x, y);
+                ctx.moveTo(pos.x, pos.y);
 
-                x = Math_cos(p.rot + 0.05) * (p.dist + 35);
-                y = Math_sin(p.rot + 0.05) * (p.dist + 35);
-                ctx.lineTo(x, y);
+                pos = getRotVel(part.rot + 0.05, part.dist + 35);
+                ctx.lineTo(pos.x, pos.y);
 
                 ctx.stroke();
             }
