@@ -58,10 +58,10 @@ function render() {
 	ctx.translate(0 - canvas.width/2, 0 - canvas.height/2);
 
 	if (player !== null) {
-		offset.x = Math.round(
+		offset.x = Math_round(
 			0 - player.x + (canvas.width / 2)
 		);
-		offset.y = Math.round(
+		offset.y = Math_round(
 			0 - player.y + (canvas.height / 2)
 		);
 	}
