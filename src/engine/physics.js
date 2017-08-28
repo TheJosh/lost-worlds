@@ -141,7 +141,7 @@ function collideDir(entity, halfSize, xSign, ySign, hit) {
 
 	var tile = getTile(tileX, tileY);
 
-	if (tile.type > 0) {
+	if (tile && tile.type > 0) {
 		if (xSign != 0) {
 			var tileXpx = tileX * universe.tileSize;
 			if (xSign < 0) tileXpx += universe.tileSize;
