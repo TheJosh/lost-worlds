@@ -53,7 +53,6 @@ function render() {
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	ctx.translate(canvas.width/2, canvas.height/2);
-	ctx.scale(0.2,0.2);
 	ctx.rotate(universeRot * Math.PI / 180);
 	ctx.translate(0 - canvas.width/2, 0 - canvas.height/2);
 
@@ -104,14 +103,6 @@ function render() {
 	}
 	ctx.globalAlpha = 1;
 
-	ctx.strokeStyle = '#FFF';
-	ctx.strokeRect(
-		renderBounds.x1,
-		renderBounds.y1,
-		renderBounds.x2 - renderBounds.x1,
-		renderBounds.y2 - renderBounds.y1
-	);
-
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 	ctx.drawImage(cachedCrosshair, mouse.x - 15, mouse.y - 15);
 
@@ -123,19 +114,6 @@ function render() {
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 	ctx.fillStyle = '#fff';
 	ctx.fillText(fps.toFixed(1) + ' fps', 20, 20);
-
-
-	ctx.fillText(renderBounds.x1 + 'x' + renderBounds.y1 + ' to ' + renderBounds.x2 + 'x' + renderBounds.y2, 20, 40);
-	ctx.fillText(player.x + 'x' + player.y, 20, 60);
-
-
-	ctx.setTransform(1, 0, 0, 1, 0, 0);
-	ctx.translate(canvas.width/2, canvas.height/2);
-	ctx.scale(0.2,0.2);
-	ctx.translate(0 - canvas.width/2, 0 - canvas.height/2);
-	
-	ctx.strokeStyle = '#F00';
-	ctx.strokeRect(0, 0, canvas.width, canvas.height);
 }
 
 
