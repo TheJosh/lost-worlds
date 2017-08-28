@@ -1,8 +1,7 @@
 function Bullet(x, y, rot, vel) {
     this.x = x;
     this.y = y;
-    this.dirX = Math_cos(rot) * vel;
-    this.dirY = Math_sin(rot) * vel;
+    this.dir = getRotVel(rot, vel);
     this.alive = true;
     this.strength = 1.0;
 
@@ -16,8 +15,8 @@ function Bullet(x, y, rot, vel) {
     this.update = function(delta) {
         if (! this.alive) return;
 
-        this.x += this.dirX * delta;
-        this.y += this.dirY * delta;
+        this.x += this.dir.x * delta;
+        this.y += this.dir.y * delta;
 
         if (this.x < 0 || this.y < 0 || this.x > 256 * universe.tileSize || this.y > 64 * universe.tileSize) {
             this.alive = false;
@@ -28,8 +27,7 @@ function Bullet(x, y, rot, vel) {
             if (Math_random() > 0.7) this.alive = false;
 
             rot += getRandom(0, Math_PI * 2);
-            this.dirX = Math_cos(rot) * vel;
-            this.dirY = Math_sin(rot) * vel;
+            this.dir = getRotVel(rot, vel);
             this.strength -= 0.1;
         });
 
