@@ -90,11 +90,11 @@ function render() {
 	}
 
 	for (var i = 0; i < enemies.length; ++i) {
-		enemies[i].render(ctx);
+		if (enemies[i].alive) enemies[i].render(ctx);
 	}
 
 	for (var i = 0; i < collectables.length; ++i) {
-		collectables[i].render(ctx);
+		if (collectables[i].alive) collectables[i].render(ctx);
 	}
 
 	ctx.fillStyle = '#333';

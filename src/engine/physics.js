@@ -8,7 +8,7 @@ function physics(delta) {
 	}
 
 	for (var i = 0; i < enemies.length; ++i) {
-		enemies[i].update(delta);
+		if (enemies[i].alive) enemies[i].update(delta);
 	}
 	for (var i = 0; i < bullets.length; ++i) {
 		bullets[i].update(delta);
@@ -18,14 +18,8 @@ function physics(delta) {
 
 	checkBulletsHitEnemies();
 
-	enemies = enemies.filter(function(e){
-		return e.alive;
-	});
 	bullets = bullets.filter(function(b){
 		return b.alive;
-	});
-	collectables = collectables.filter(function(c){
-		return c.alive;
 	});
 
 	if (player) {
@@ -39,6 +33,7 @@ function physics(delta) {
 		checkCollide(player, HALF_PLAYER_SIZE);
 
 		for (var i = 0; i < enemies.length; ++i) {
+			if (!enemies[i].alive) continue;
 			var distSq = Math_pow(player.x - enemies[i].x, 2) + Math_pow(player.y - enemies[i].y, 2);
 			if (distSq < enemies[i].hitDistSq) {
 				enemies[i].hitPlayer();
@@ -46,6 +41,7 @@ function physics(delta) {
 		}
 
 		for (var i = 0; i < collectables.length; ++i) {
+			if (!collectables[i].alive) continue;
 			var distSq = Math_pow(player.x - collectables[i].x, 2) + Math_pow(player.y - collectables[i].y, 2);
 			if (distSq < collectables[i].hitDistSq) {
 				collectables[i].touchPlayer();
