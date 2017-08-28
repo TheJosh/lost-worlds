@@ -18,7 +18,7 @@ function BlackHole(x, y) {
         for (var i = 0; i < particles.length; ++i) {
             var p = particles[i];
 
-            p.rot += 1.0 * delta;    // spin
+            p.rot += (1.0 / p.dist * 70) * delta;    // spin
             p.dist -= 20.0 * delta;   // fall inwards
 
             if (p.dist <= 0) {
