@@ -34,13 +34,19 @@ function BlackHole(x, y) {
 
         var x, y, p;
         ctx.strokeStyle = '#fff';
+        ctx.fillStyle = '#fff';
         for (var i = 0; i < particles.length; ++i) {
             p = particles[i];
 
-            ctx.beginPath();
-
             x = Math_cos(p.rot) * (p.dist + 37);
             y = Math_sin(p.rot) * (p.dist + 37);
+
+            if (p.dist < 25) {
+                ctx.globalAlpha = 1.0;
+                ctx.fillRect(x, y, 1, 1);
+            } else {
+            ctx.beginPath();
+
             ctx.moveTo(x, y);
 
             x = Math_cos(p.rot + 0.05) * (p.dist + 35);
@@ -49,6 +55,7 @@ function BlackHole(x, y) {
 
             ctx.globalAlpha = 1.0 - (p.dist / 100);
             ctx.stroke();
+            }
         }
 
         ctx.globalAlpha = 1.0;
