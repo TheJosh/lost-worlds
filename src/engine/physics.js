@@ -91,6 +91,8 @@ function movePlayer_TopView(force, delta)
 	}
 	force.x += Math_cos(player.rot - Math_PI/2) * accel.x * delta;
 	force.y += Math_sin(player.rot - Math_PI/2) * accel.x * delta;
+
+	player.vel = -accel.y;
 }
 
 

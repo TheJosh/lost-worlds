@@ -2,6 +2,7 @@ function Player(x, y) {
     this.x = x * universe.tileSize;
     this.y = y * universe.tileSize;
     this.rot = 0;
+    this.vel = 0;
     this.weapon = 2;
 
     var fireDelay = 0;
@@ -47,7 +48,7 @@ function Player(x, y) {
         var y = this.y - (Math_sin(this.rot) * aheadPx) - (Math_sin(this.rot - Math_PI / 2) * sidePx);
 
         bullets.push(
-            new Bullet(x, y, this.rot + Math_PI, 500)
+            new Bullet(x, y, this.rot + Math_PI, 500 + player.vel)
         );
         fireDelay = 0.2;
     };
