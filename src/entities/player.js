@@ -28,6 +28,7 @@ function Player(x, y) {
     this.health = 100;
 
     var fireWait = 0;
+    var invincWait = 0;
 
     var walkWobbleRot = 0;
     var walkWobbleDir = 0.01;
@@ -51,9 +52,8 @@ function Player(x, y) {
     };
 
     this.update = function(delta) {
-        if (fireWait > 0) {
-            fireWait -= delta;
-        }
+        if (fireWait > 0) fireWait -= delta;
+        if (invincWait > 0) invincWait -= delta;
 
         if (keys.y != 0) {
             walkWobbleRot += walkWobbleDir;
@@ -90,12 +90,15 @@ function Player(x, y) {
 
 
     this.takeDamage = function(enemy) {
+        if (invincWait > 0) return;
+
         this.health -= enemy.damage;
-        console.log('ouch', enemy.damage);
-        
+
         if (this.health < 0) {
             console.log('ded');
             // TODO: Death animation
         }
+
+        invincWait = 1;
     };
 }
