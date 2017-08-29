@@ -40,7 +40,7 @@ function physics(delta) {
 			if (!enemies[i].alive) continue;
 			var distSq = Math_pow(player.x - enemies[i].x, 2) + Math_pow(player.y - enemies[i].y, 2);
 			if (distSq < enemies[i].hitDistSq) {
-				enemies[i].hitPlayer();
+				player.takeDamage(enemies[i]);
 			}
 		}
 

@@ -25,6 +25,7 @@ function Player(x, y) {
     this.rot = 0;
     this.vel = 0;
     this.weapon = 2;
+    this.health = 100;
 
     var fireWait = 0;
 
@@ -85,5 +86,16 @@ function Player(x, y) {
         }
 
         fireWait = weapons[this.weapon].delay;
+    };
+
+
+    this.takeDamage = function(enemy) {
+        this.health -= enemy.damage;
+        console.log('ouch', enemy.damage);
+        
+        if (this.health < 0) {
+            console.log('ded');
+            // TODO: Death animation
+        }
     };
 }

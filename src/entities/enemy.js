@@ -6,6 +6,7 @@ function Enemy(x, y) {
     this.alive = true;
     this.hitDistSq = 25 * 25;
     this.health = 10;
+    this.damage = 25;
 };
 
 
@@ -22,11 +23,6 @@ Enemy.prototype.update = function(delta) {
     checkCollide(this, 10, function(axis, sign) {
         this.dirY = -this.dirY;
     });
-};
-
-
-Enemy.prototype.hitPlayer = function() {
-    console.log('ded');
 };
 
 
