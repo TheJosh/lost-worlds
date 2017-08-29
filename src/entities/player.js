@@ -25,7 +25,7 @@ function Player(x, y) {
     this.rot = 0;
     this.vel = 0;
     this.weapon = 2;
-    this.health = 100;
+    this.health = 10;
     this.lives = 5;
     this.heartAnim = null;
 
@@ -113,7 +113,7 @@ function Player(x, y) {
         if (invincWait > 0) return;
 
         this.health -= enemy.damage;
-        if (this.health < 0) {
+        if (this.health <= 0) {
             this.lives--;
             this.health = 100;
 

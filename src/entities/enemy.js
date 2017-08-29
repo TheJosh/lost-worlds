@@ -6,7 +6,7 @@ function Enemy(x, y) {
     this.alive = true;
     this.hitDistSq = 25 * 25;
     this.health = 10;
-    this.damage = 25;
+    this.damage = 5;
 };
 
 
