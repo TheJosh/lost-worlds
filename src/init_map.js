@@ -41,16 +41,10 @@ var init_map = '\
 
 function loadInitMap() {
 	player.spawn(6, 7);
-	gravSource = [
-		new BlackHole(12, 34)
-	];
-	enemies = [
-		new Enemy(26, 7),
-		new Enemy(30, 8)
-	];
-	collectables = [
-		new Collectable(43, 9)
-	];
+	gravSource.push(new BlackHole(12, 34));
+	enemies.push(new Enemy(26, 7));
+	enemies.push(new Enemy(30, 8));
+	collectables.push(new Collectable(43, 9));
 
 	universe.mapWidth = 49;
 	universe.mapHeight = 39;

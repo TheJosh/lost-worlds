@@ -12,7 +12,12 @@ function setTile(x, y, val) {
 
 
 function loadMap() {
-	
+	gravSource.length = 0;
+	enemies.length = 0;
+	collectables.length = 0;
+	bullets.length = 0;
+	overlayWords.length = 0;
+
 	// TODO: Eventually the procedural generator goes here
 	loadInitMap();
 
