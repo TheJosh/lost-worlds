@@ -78,7 +78,6 @@ function setupTutorial() {
 	}, 3500);
 
 	var zone = window.setInterval(function() {
-		console.log(player.x, player.y);
 		if (player.x >= 1000 && player.y >= 330) {
 			window.clearInterval(zone);
 			setupTutorialTwo();
