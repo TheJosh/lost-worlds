@@ -1,3 +1,7 @@
+var bug = new Image();
+bug.src = 'bug.gif';
+
+
 function Enemy(x, y) {
     this.x = x * universe.tileSize;
     this.y = y * universe.tileSize;
@@ -11,10 +15,15 @@ function Enemy(x, y) {
 
 
 Enemy.prototype.render = function(ctx) {
-    ctx.fillStyle = '#00f';
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, 10, 0, 2 * Math_PI);
-    ctx.fill();
+    if (this.alive == false) {
+        return;
+    }
+
+    ctx.translate(this.x, this.y);
+    if (this.dirY > 0) ctx.rotate(Math_PI);
+    ctx.drawImage(bug, -9, -11);
+    if (this.dirY > 0) ctx.rotate(-Math_PI);
+    ctx.translate(-this.x, -this.y);
 };
 
 
