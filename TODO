@@ -1,24 +1,30 @@
 Bugs
 ====
 
-If player ends up in invalid cell just teleport to closest valid cell
+-
 
 
 Priority one
 ============
 
-Objectives - collect objects?
+Collecting objects
+ - animation
+ - increment score
+
+Hitting enemies to cause pain
+
+Show score and health
+
+Weapon selection
+
+Pathfinder
 
 Dynamic (procedual) level creation
 
 Initial map to be simpler (like a tutorial) and smaller
 
-Animation for the black holes
-
-Player image, for both top and side view
-
 
 Priority two
 ============
 
-Double-buffered rendering?
+Improve performance
