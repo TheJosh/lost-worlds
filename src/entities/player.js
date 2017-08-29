@@ -115,7 +115,7 @@ function Player(x, y) {
         this.health -= enemy.damage;
         if (this.health <= 0) {
             this.lives--;
-            this.health = 100;
+            this.health = 10;
 
             this.heartAnim = { x: this.x, y: this.y, alpha: 1.0 };
         }
