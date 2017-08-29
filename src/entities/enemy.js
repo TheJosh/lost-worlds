@@ -8,31 +8,35 @@ function Enemy(x, y) {
     this.health = 10;
 };
 
+
 Enemy.prototype.render = function(ctx) {
-        ctx.fillStyle = '#00f';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, 10, 0, 2 * Math_PI);
-        ctx.fill();
-    };
+    ctx.fillStyle = '#00f';
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, 10, 0, 2 * Math_PI);
+    ctx.fill();
+};
+
 
 Enemy.prototype.update = function(delta) {
-        this.y += this.dirY * delta;
-        checkCollide(this, 10, function(axis, sign) {
-            this.dirY = -this.dirY;
-        });
-    };
+    this.y += this.dirY * delta;
+    checkCollide(this, 10, function(axis, sign) {
+        this.dirY = -this.dirY;
+    });
+};
+
 
 Enemy.prototype.hitPlayer = function() {
-        console.log('ded');
-    };
+    console.log('ded');
+};
+
 
 Enemy.prototype.takeDamage = function(bullet) {
-        this.health -= bullet.strength;
+    this.health -= bullet.strength;
 
-        if (this.health < 0) {
-            this.alive = false;
-        }
+    if (this.health < 0) {
+        this.alive = false;
+    }
 
-        this.x += bullet.dirX * bullet.strength / 300;
-        this.y += bullet.dirY * bullet.strength / 300;
-    };
+    this.x += bullet.dirX * bullet.strength / 300;
+    this.y += bullet.dirY * bullet.strength / 300;
+};
