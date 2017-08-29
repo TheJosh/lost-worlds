@@ -40,7 +40,7 @@ var init_map = '\
 1111111111111111111100000000000000111111111111111';
 
 function loadInitMap() {
-	player = new Player(6, 7);
+	player.spawn(6, 7);
 	gravSource = [
 		new BlackHole(12, 34)
 	];

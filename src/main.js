@@ -20,6 +20,7 @@ function tick(timestamp) {
 
 resizeRenderCanvas();
 BlackHole.setupParticles();
+player = new Player();
 loadInitMap();
 
 function postMapLoad() {

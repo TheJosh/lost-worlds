@@ -19,11 +19,7 @@ var weapons = [
 ];
 
 
-function Player(x, y) {
-    this.x = x * universe.tileSize;
-    this.y = y * universe.tileSize;
-    this.rot = 0;
-    this.vel = 0;
+function Player() {
     this.weapon = 2;
     this.health = 10;
     this.lives = 5;
@@ -39,6 +35,13 @@ function Player(x, y) {
 
     var img = new Image();
     img.src = 'player.png';
+
+    this.spawn = function(x, y) {
+        this.x = x * universe.tileSize;
+        this.y = y * universe.tileSize;
+        this.rot = 0;
+        this.vel = 0;
+    };
 
     this.render = function(ctx) {
         ctx.translate(player.x, player.y);
