@@ -20,7 +20,7 @@ function tick(timestamp) {
 
 resizeRenderCanvas();
 BlackHole.setupParticles();
-loadMap();
+loadInitMap();
 
 function postMapLoad() {
 	initUniverse();
