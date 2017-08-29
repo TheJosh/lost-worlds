@@ -93,11 +93,12 @@ function Player(x, y) {
         if (invincWait > 0) return;
 
         this.health -= enemy.damage;
-
         if (this.health < 0) {
             console.log('ded');
             // TODO: Death animation
         }
+
+        overlayWords.push({ x: player.x, y: player.y, text: 'OUCH' });
 
         invincWait = 1;
     };

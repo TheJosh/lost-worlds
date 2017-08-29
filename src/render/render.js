@@ -44,6 +44,8 @@ function initRender() {
 		ctx.lineTo(15, 30);
 		ctx.stroke();
 	});
+
+	ctx.font = '12px monospace';
 }
 
 
@@ -131,6 +133,11 @@ function drawEntities()
 
 function drawHUD()
 {
+	ctx.fillStyle = '#fff';
+	for (var i = 0; i < overlayWords.length; ++i) {
+		ctx.fillText(overlayWords[i].text, overlayWords[i].x, overlayWords[i].y);
+	}
+
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 	ctx.drawImage(cachedCrosshair, mouse.x - 15, mouse.y - 15);
 }

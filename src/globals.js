@@ -18,6 +18,7 @@ var gravSource = [];
 var enemies = [];
 var collectables = [];
 var bullets = [];
+var overlayWords = [];
 
 
 var universe = {
