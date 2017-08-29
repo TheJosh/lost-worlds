@@ -26,6 +26,8 @@ function Player(x, y) {
     this.vel = 0;
     this.weapon = 2;
     this.health = 100;
+    this.lives = 5;
+    this.heartAnim = null;
 
     var fireWait = 0;
     var invincWait = 0;
@@ -34,7 +36,7 @@ function Player(x, y) {
     var walkWobbleDir = 0.01;
 
 
-    var img = document.createElement('img');
+    var img = new Image();
     img.src = 'player.png';
 
     this.render = function(ctx) {
@@ -49,6 +51,16 @@ function Player(x, y) {
 
         ctx.rotate(-player.rot - walkWobbleRot);
         ctx.translate(-player.x, -player.y);
+
+        if (player.heartAnim) {
+            ctx.globalAlpha = player.heartAnim.alpha;
+            ctx.drawImage(
+                heart,
+                18, 0, 18, 14,
+                player.heartAnim.x, player.heartAnim.y, 18, 14
+            );
+            ctx.globalAlpha = 1.0;
+        }
     };
 
     this.update = function(delta) {
@@ -59,6 +71,14 @@ function Player(x, y) {
             walkWobbleRot += walkWobbleDir;
             if (Math_abs(walkWobbleRot) > 0.05) {
                 walkWobbleDir = -walkWobbleDir;
+            }
+        }
+
+        if (this.heartAnim) {
+            this.heartAnim.y -= 10 * delta;
+            this.heartAnim.alpha -= 0.2 * delta;
+            if (this.heartAnim.alpha < 0.1) {
+                this.heartAnim = null;
             }
         }
     };
@@ -94,8 +114,10 @@ function Player(x, y) {
 
         this.health -= enemy.damage;
         if (this.health < 0) {
-            console.log('ded');
-            // TODO: Death animation
+            this.lives--;
+            this.health = 100;
+
+            this.heartAnim = { x: this.x, y: this.y, alpha: 1.0 };
         }
 
         overlayWords.push({ x: player.x, y: player.y, text: 'OUCH' });

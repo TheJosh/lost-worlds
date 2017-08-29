@@ -5,6 +5,9 @@ var renderBounds = { x1: 0, y1: 0, x2: 0, y2: 0, size: 0 };
 var cachedTiles;
 var cachedCrosshair;
 
+var heart = new Image();
+heart.src = 'heart.gif';
+
 
 function resizeRenderCanvas() {
 	canvas.width = window.innerWidth;
@@ -140,6 +143,14 @@ function drawHUD()
 
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 	ctx.drawImage(cachedCrosshair, mouse.x - 15, mouse.y - 15);
+
+	for (var i = 0; i < player.lives; ++i) {
+		ctx.drawImage(
+			heart,
+			0, 0, 18, 14,
+			20 + (22 * i), 20, 18, 14
+		);
+	}
 }
 
 
