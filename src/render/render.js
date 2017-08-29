@@ -1,6 +1,6 @@
 var ctx = canvas.getContext('2d');
 var offset = { x: 0, y: 0 };
-var renderBounds = { x1: 0, y1: 0, x2: 0, y2: 0};
+var renderBounds = { x1: 0, y1: 0, x2: 0, y2: 0, size: 0 };
 
 var cachedTiles;
 var cachedCrosshair;
@@ -66,6 +66,7 @@ function render() {
 		offset.y = Math_round(
 			0 - player.y + (canvas.height / 2)
 		);
+		ctx.translate(offset.x, offset.y);
 	}
 
 	// Only entities fully within these bounds should be rendered
@@ -74,8 +75,7 @@ function render() {
 	renderBounds.y1 = Math_round(player.y - (maxExtent / 2));
 	renderBounds.x2 = Math_round(player.x + (maxExtent / 2));
 	renderBounds.y2 = Math_round(player.y + (maxExtent / 2));
-
-	ctx.translate(offset.x, offset.y);
+	renderBounds.size = maxExtent;
 
 	drawBG();
 	drawEntities();
@@ -91,9 +91,13 @@ function render() {
 
 function drawBG()
 {
-	if (cachedTiles) {
-		ctx.drawImage(cachedTiles, 0, 0);
-	}
+	if (!cachedTiles) return;
+
+	ctx.drawImage(
+		cachedTiles,
+		renderBounds.x1, renderBounds.y1, renderBounds.size, renderBounds.size,
+		renderBounds.x1, renderBounds.y1, renderBounds.size, renderBounds.size
+	);
 }
 
 
