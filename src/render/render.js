@@ -109,7 +109,7 @@ function drawEntities()
 		if (collectables[i].alive) collectables[i].render(ctx);
 	}
 
-	ctx.fillStyle = '#333';
+	ctx.fillStyle = '#000';
 	for (var i = 0; i < bullets.length; ++i) {
 		bullets[i].render(ctx);
 	}
