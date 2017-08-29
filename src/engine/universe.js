@@ -8,7 +8,33 @@ function initUniverse() {
 }
 
 
+function enteredBlackHole(blackHole) {
+    blackHoleAnim = 0.0;
+    universeRotDir = 10;
+    player.x = blackHole.x;
+    player.y = blackHole.y;
+}
+
+
+function blackHoleAnimation(delta) {
+    blackHoleAnim += delta;
+    if (blackHoleAnim >= 5) {
+        newUniverse();
+        return;
+    }
+
+    BlackHole.updateParticles(delta);
+
+    universeScale += 12 * delta;
+    universeRot += universeRotDir * delta;
+    universeRotDir += 10;
+}
+
+
 function newUniverse() {
+    universeScale = 1.0;
+    blackHoleAnim = -1;
+
     universe.tileSize = Math_floor(getRandom(20, 70));
 
     universe.spinAmount = getRandom(0, 15);

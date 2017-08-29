@@ -8,6 +8,8 @@ var player = null;
 
 var universeRot = 0;
 var universeRotDir = 0.0;
+
+var blackHoleAnim = -1;
 var universeScale = 1.0;
 
 var gravSource = [];

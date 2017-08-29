@@ -13,7 +13,12 @@ function tick(timestamp) {
 		fpsRingBuf.shift();
 	}
 
-	physics(delta / 1000);
+	if (blackHoleAnim < 0) {
+		physics(delta / 1000);
+	} else {
+		blackHoleAnimation(delta / 1000);
+	}
+
 	render();
 
 	requestAnimationFrame(tick);

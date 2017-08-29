@@ -99,7 +99,7 @@ function applyGravityPull(force, delta)
 		src.dist = Math_sqrt(Math_pow(player.x - src.x, 2) + Math_pow(player.y - src.y, 2));
 
 		if (src.dist < 30) {
-			newUniverse();
+			enteredBlackHole(gravSource[i]);
 		} else if (src.dist < 750) {
 			src.strength = 1.0 / (src.dist * src.dist);
 			src.strength *= 2000.0;
