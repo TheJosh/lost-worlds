@@ -8,6 +8,7 @@ bug.src = 'bug.gif';
 function Enemy(x, y, behaviour) {
     this.x = x * universe.tileSize;
     this.y = y * universe.tileSize;
+    this.rot = 0;
     this.alive = true;
     this.hitDistSq = 25 * 25;
     this.health = 3;
@@ -26,9 +27,9 @@ Enemy.prototype.render = function(ctx) {
     }
 
     ctx.translate(this.x, this.y);
-    if (this.dirY > 0) ctx.rotate(Math_PI);
+    ctx.rotate(this.rot);
     ctx.drawImage(bug, -9, -11);
-    if (this.dirY > 0) ctx.rotate(-Math_PI);
+    ctx.rotate(-this.rot);
     ctx.translate(-this.x, -this.y);
 };
 
@@ -41,9 +42,11 @@ Enemy.prototype.update = function(delta) {
 enemy_behave_setup = [
     function(e) {
         e.dirY = 100;
+        e.rot = Math_PI;
     },
     function(e) {
         e.dirX = 100;
+        e.rot = Math_PI / 2;
     },
 ];
 
@@ -52,12 +55,14 @@ enemy_behave_update = [
         e.y += e.dirY * delta;
         checkCollide(e, 10, function(axis, sign) {
             e.dirY = -e.dirY;
+            e.rot += Math_PI;
         });
     },
     function(e, delta) {
         e.x += e.dirX * delta;
         checkCollide(e, 10, function(axis, sign) {
             e.dirX = -e.dirX;
+            e.rot += Math_PI;
         });
     },
 ];
