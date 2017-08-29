@@ -1,7 +1,9 @@
 Bugs
 ====
 
--
+Colliding does not work properly on top or bottom map edges
+Seems to be okay on sides (but needs more testing)
+
 
 
 Priority one

@@ -12,7 +12,7 @@ function setTile(x, y, val) {
 
 
 function loadMap() {
-	player = new Player(16, 16);
+	player = new Player(10, 7);
 
 	gravSource = [
 		new BlackHole(144, 2),
@@ -20,44 +20,34 @@ function loadMap() {
 	];
 
 	enemies = [
-		new Enemy(38, 15),
-		new Enemy(39, 16),
-		new Enemy(40, 17)
+		new Enemy(37, 9),
+		new Enemy(38, 16),
 	];
 
 	collectables = [
-		new Collectable(45, 16)
+		new Collectable(29, 27)
 	];
 
 
-	var img = document.createElement('img');
+	universe.mapWidth = 49;
+	universe.mapHeight = 31;
 
-	img.onload = function() {
-		var canvas = document.createElement('canvas');
-		canvas.width = canvas.height = 64;
-		var ctx = canvas.getContext('2d');
-		ctx.drawImage(img, 0, 0);
-		var pixels = ctx.getImageData(0, 0, 64, 64);
-
-		mapTiles = [];
-		var x = 0;
-		var y = 0;
-		for (var i = 0; i < pixels.data.length; i += 4) {
-			var pxl = pixels.data[i];
-
-			var cell4 = (pxl & parseInt('11000000', 2)) >>> 6;
-			var cell3 = (pxl & parseInt('00110000', 2)) >>> 4;
-			var cell2 = (pxl & parseInt('00001100', 2)) >>> 2;
-			var cell1 = (pxl & parseInt('00000011', 2));
-
-			mapTiles.push({ type: cell4 });
-			mapTiles.push({ type: cell3 });
-			mapTiles.push({ type: cell2 });
-			mapTiles.push({ type: cell1 });
+	for (i = 0; i < init_map.length; ++i) {
+		var c = init_map.charAt(i);
+		var val = parseInt(c, 10);
+		if (!isNaN(val)) {
+			mapTiles.push({ type: val });
 		}
+	}
 
-		for (var y = 0; y < 64; ++y) {
-			for (var x = 0; x < 256; ++x) {
+	if (mapTiles.length != (universe.mapWidth * universe.mapHeight)) {
+		alert('nope');
+	}
+	
+	
+		for (var y = 0; y < universe.mapHeight; ++y) {
+			for (var x = 0; x < universe.mapWidth; ++x) {
+				console.log(x,y);
 				var t, tile = getTile(x, y);
 				if (tile.type == 0) {
 					t = getTile(x - 1, y);
@@ -76,8 +66,4 @@ function loadMap() {
 		}
 
 		postMapLoad();
-	};
-
-	img.crossOrigin = 'anonymous';
-	img.src = 'map.png';
 }
