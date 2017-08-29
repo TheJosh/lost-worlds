@@ -28,12 +28,14 @@ function blackHoleAnimation(delta) {
     universeScale += 12 * delta;
     universeRot += universeRotDir * delta;
     universeRotDir += 10;
+    blackOverlay += 0.2 * delta;
 }
 
 
 function newUniverse() {
     universeScale = 1.0;
     blackHoleAnim = -1;
+    blackOverlay = 0;
 
     universe.tileSize = Math_floor(getRandom(20, 70));
 

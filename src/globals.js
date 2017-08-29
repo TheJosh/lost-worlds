@@ -12,6 +12,8 @@ var universeRotDir = 0.0;
 var blackHoleAnim = -1;
 var universeScale = 1.0;
 
+var blackOverlay = 0;
+
 var gravSource = [];
 var enemies = [];
 var collectables = [];

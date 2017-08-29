@@ -50,6 +50,7 @@ function initRender() {
 function render() {
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 
+	ctx.globalAlpha = 1.0;
 	ctx.fillStyle = universe.colors[1];
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -79,6 +80,12 @@ function render() {
 	drawBG();
 	drawEntities();
 	drawHUD();
+
+	if (blackOverlay > 0.01) {
+		ctx.fillStyle = '#000';
+		ctx.globalAlpha = blackOverlay;
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+	}
 }
 
 
