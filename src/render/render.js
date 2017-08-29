@@ -183,31 +183,4 @@ function drawTiles(ctx, canvas) {
 			ctx.fillRect(x * universe.tileSize, y * universe.tileSize, universe.tileSize, universe.tileSize);
 		}
 	}
-
-	drawTileEdges(ctx, canvas);
-}
-
-function drawTileEdges(ctx, canvas) {
-	var width = 3;
-
-	ctx.fillStyle = universe.colors[-1];
-	for (var y = 0; y < universe.mapHeight; ++y) {
-		for (var x = 0; x < universe.mapWidth; ++x) {
-			var tile = getTile(x, y);
-			if (tile.type != 0) continue;
-
-			if (tile.wallLeft) {
-				ctx.fillRect(x * universe.tileSize, y * universe.tileSize, width, universe.tileSize);
-			}
-			if (tile.wallRight) {
-				ctx.fillRect(x * universe.tileSize + universe.tileSize - width, y * universe.tileSize, width, universe.tileSize);
-			}
-			if (tile.wallUp) {
-				ctx.fillRect(x * universe.tileSize, y * universe.tileSize, universe.tileSize, width);
-			}
-			if (tile.wallDown) {
-				ctx.fillRect(x * universe.tileSize, y * universe.tileSize + universe.tileSize - width, universe.tileSize, width);
-			}
-		}
-	}
 }
