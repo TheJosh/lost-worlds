@@ -28,6 +28,7 @@ function Player(x, y) {
     this.health = 10;
     this.lives = 5;
     this.heartAnim = null;
+    this.collected = 0;
 
     var fireWait = 0;
     var invincWait = 0;

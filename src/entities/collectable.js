@@ -1,3 +1,7 @@
+var elec = new Image();
+elec.src = 'elec.gif';
+
+
 function Collectable(x, y) {
     this.x = x * universe.tileSize;
     this.y = y * universe.tileSize;
@@ -5,13 +9,12 @@ function Collectable(x, y) {
     this.hitDistSq = 25 * 25;
 
     this.render = function(ctx) {
-        ctx.fillStyle = '#0f0';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, 10, 0, 2 * Math_PI);
-        ctx.fill();
+        ctx.drawImage(elec, this.x, this.y);
     };
 
     this.touchPlayer = function() {
         this.alive = false;
+        player.collected++;
+        overlayWords.push({ x: player.x, y: player.y - 30, lift: 0, text: 'YEAH' });
     };
 }

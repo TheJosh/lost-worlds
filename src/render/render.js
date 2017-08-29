@@ -159,6 +159,10 @@ function drawHUD()
 			20 + (22 * i), 20, 18, 14
 		);
 	}
+
+	for (var i = 0; i < player.collected; ++i) {
+		ctx.drawImage(elec, 20 + (22 * i), 50);
+	}
 }
 
 
