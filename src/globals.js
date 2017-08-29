@@ -31,6 +31,9 @@ var universe = {
 	unitMax: 500,     // pixels/second
 	unitDeccel: 1.2,
 
+	mapWidth: 256,
+	mapHeight: 64,
+
 	colors: {
 		'-1': '#2E1602',
 		'0': '#401E00',

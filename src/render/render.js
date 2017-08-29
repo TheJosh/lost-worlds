@@ -29,7 +29,7 @@ function canvasCache(width, height, func) {
 
 
 function initRender() {
-	cachedTiles = canvasCache(256 * universe.tileSize, 64 * universe.tileSize, drawTiles);
+	cachedTiles = canvasCache(universe.mapWidth * universe.tileSize, universe.mapHeight * universe.tileSize, drawTiles);
 	
 	cachedCrosshair = canvasCache(30, 30, function(ctx, canv) {
 		var grad = ctx.createRadialGradient(15, 15, 0, 15, 15, 15);
@@ -170,8 +170,8 @@ function drawTiles(ctx, canvas) {
 	ctx.fillStyle = universe.colors[1];
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-	for (var y = 0; y < 64; ++y) {
-		for (var x = 0; x < 256; ++x) {
+	for (var y = 0; y < universe.mapHeight; ++y) {
+		for (var x = 0; x < universe.mapWidth; ++x) {
 			var tile = getTile(x, y);
 			switch (tile.type) {
 				case -1: ctx.fillStyle = universe.colors[-1]; break;   // dirt edge
@@ -191,8 +191,8 @@ function drawTileEdges(ctx, canvas) {
 	var width = 3;
 
 	ctx.fillStyle = universe.colors[-1];
-	for (var y = 0; y < 64; ++y) {
-		for (var x = 0; x < 256; ++x) {
+	for (var y = 0; y < universe.mapHeight; ++y) {
+		for (var x = 0; x < universe.mapWidth; ++x) {
 			var tile = getTile(x, y);
 			if (tile.type != 0) continue;
 

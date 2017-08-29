@@ -16,7 +16,7 @@ function Bullet(x, y, rot, vel) {
         this.x += this.dir.x * delta;
         this.y += this.dir.y * delta;
 
-        if (this.x < 0 || this.y < 0 || this.x > 256 * universe.tileSize || this.y > 64 * universe.tileSize) {
+        if (this.x < 0 || this.y < 0 || this.x > universe.mapWidth * universe.tileSize || this.y > universe.mapHeight * universe.tileSize) {
             this.alive = false;
         }
 

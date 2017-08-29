@@ -2,12 +2,12 @@ var mapTiles = [];
 
 
 function getTile(x, y) {
-	return mapTiles[256 * y + x];
+	return mapTiles[universe.mapWidth * y + x];
 }
 
 
 function setTile(x, y, val) {
-	mapTiles[256 * y + x] = val;
+	mapTiles[universe.mapWidth * y + x] = val;
 }
 
 
