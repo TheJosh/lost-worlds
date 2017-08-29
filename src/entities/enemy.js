@@ -9,7 +9,7 @@ function Enemy(x, y) {
     this.dirY = 100;
     this.alive = true;
     this.hitDistSq = 25 * 25;
-    this.health = 10;
+    this.health = 3;
     this.damage = 5;
 };
 
