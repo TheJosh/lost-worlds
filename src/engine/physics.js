@@ -11,6 +11,13 @@ function physics(delta) {
 		blackOverlay -= 0.5 * delta;
 	}
 
+	for (var i = 0; i < overlayWords.length; ++i) {
+		overlayWords[i].lift += 20 * delta;
+	}
+	overlayWords = overlayWords.filter(function(b){
+		return b.lift < 50;
+	});
+
 	for (var i = 0; i < enemies.length; ++i) {
 		if (enemies[i].alive) enemies[i].update(delta);
 	}

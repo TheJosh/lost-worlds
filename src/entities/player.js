@@ -120,7 +120,7 @@ function Player(x, y) {
             this.heartAnim = { x: this.x, y: this.y, alpha: 1.0 };
         }
 
-        overlayWords.push({ x: player.x, y: player.y, text: 'OUCH' });
+        overlayWords.push({ x: player.x, y: player.y - 30, lift: 0, text: 'OUCH' });
 
         invincWait = 1;
     };

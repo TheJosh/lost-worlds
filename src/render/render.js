@@ -138,7 +138,7 @@ function drawHUD()
 {
 	ctx.fillStyle = '#fff';
 	for (var i = 0; i < overlayWords.length; ++i) {
-		ctx.fillText(overlayWords[i].text, overlayWords[i].x, overlayWords[i].y);
+		ctx.fillText(overlayWords[i].text, overlayWords[i].x, overlayWords[i].y - overlayWords[i].lift);
 	}
 
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
