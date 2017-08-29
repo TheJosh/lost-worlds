@@ -1,16 +1,22 @@
+var ENEMY_BEHAVE_VERT = 0;
+var ENEMY_BEHAVE_HORIZ = 1;
+
 var bug = new Image();
 bug.src = 'bug.gif';
 
 
-function Enemy(x, y) {
+function Enemy(x, y, behaviour) {
     this.x = x * universe.tileSize;
     this.y = y * universe.tileSize;
-    this.dirX = 0;
-    this.dirY = 100;
     this.alive = true;
     this.hitDistSq = 25 * 25;
     this.health = 3;
     this.damage = 5;
+    this.behaviour = behaviour;
+
+    if (enemy_behave_setup[behaviour]) {
+        enemy_behave_setup[behaviour](this);
+    }
 };
 
 
@@ -28,11 +34,33 @@ Enemy.prototype.render = function(ctx) {
 
 
 Enemy.prototype.update = function(delta) {
-    this.y += this.dirY * delta;
-    checkCollide(this, 10, function(axis, sign) {
-        this.dirY = -this.dirY;
-    });
+    enemy_behave_update[this.behaviour](this, delta);
 };
+
+
+enemy_behave_setup = [
+    function(e) {
+        e.dirY = 100;
+    },
+    function(e) {
+        e.dirX = 100;
+    },
+];
+
+enemy_behave_update = [
+    function(e, delta) {
+        e.y += e.dirY * delta;
+        checkCollide(e, 10, function(axis, sign) {
+            e.dirY = -e.dirY;
+        });
+    },
+    function(e, delta) {
+        e.x += e.dirX * delta;
+        checkCollide(e, 10, function(axis, sign) {
+            e.dirX = -e.dirX;
+        });
+    },
+];
 
 
 Enemy.prototype.takeDamage = function(bullet) {
