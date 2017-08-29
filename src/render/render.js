@@ -55,6 +55,7 @@ function render() {
 
 	ctx.translate(canvas.width/2, canvas.height/2);
 	ctx.rotate(universeRot * Math.PI / 180);
+	ctx.scale(universeScale, universeScale);
 	ctx.translate(0 - canvas.width/2, 0 - canvas.height/2);
 
 	if (player !== null) {

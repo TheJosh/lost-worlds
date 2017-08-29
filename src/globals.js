@@ -8,6 +8,7 @@ var player = null;
 
 var universeRot = 0;
 var universeRotDir = 0.0;
+var universeScale = 1.0;
 
 var gravSource = [];
 var enemies = [];
