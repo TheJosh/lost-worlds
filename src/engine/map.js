@@ -21,7 +21,7 @@ function loadMap() {
 
 	enemies = [
 		new Enemy(37, 9),
-		new Enemy(38, 16),
+		new Enemy(38, 16)
 	];
 
 	collectables = [

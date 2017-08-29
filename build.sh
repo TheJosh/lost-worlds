@@ -8,6 +8,7 @@ mkdir -p build
 
 cat \
 	src/globals.js \
+	src/init_map.js \
 	src/render/*.js \
 	src/engine/*.js \
 	src/entities/*.js \
@@ -20,8 +21,9 @@ rm build/all.js
 echo "<title>Lost Worlds</title><style>body{margin:0;overflow:hidden}</style><canvas id=c></canvas><script src=a.js></script>" \
 	>build/index.html
 
-pngcrush -q -brute -c 0 src/map.png build/map.png
 pngcrush -q -brute src/player.png build/player.png
+
+cp src/*.gif build
 
 rm -f build.zip
 
