@@ -94,6 +94,8 @@ $(document).ready(function() {
             });
         });
 
+        console.log(JSON.stringify(data));
+
         var ctx = $canvas[0].getContext('2d');
 
         var idx = 0;
