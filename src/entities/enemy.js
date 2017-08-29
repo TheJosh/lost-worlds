@@ -42,6 +42,6 @@ Enemy.prototype.takeDamage = function(bullet) {
         this.alive = false;
     }
 
-    this.x += bullet.dirX * bullet.strength / 300;
-    this.y += bullet.dirY * bullet.strength / 300;
+    this.x += bullet.dir.x * bullet.strength / 300;
+    this.y += bullet.dir.y * bullet.strength / 300;
 };
