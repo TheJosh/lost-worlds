@@ -129,15 +129,6 @@ function drawHUD()
 {
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 	ctx.drawImage(cachedCrosshair, mouse.x - 15, mouse.y - 15);
-
-
-	var fps = fpsRingBuf.reduce(function(x,y) {
-		return x + y;
-	}) / fpsRingBuf.length;
-
-	ctx.setTransform(1, 0, 0, 1, 0, 0);
-	ctx.fillStyle = '#fff';
-	ctx.fillText(fps.toFixed(1) + ' fps', 20, 20);
 }
 
 
