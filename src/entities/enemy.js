@@ -5,35 +5,34 @@ function Enemy(x, y) {
     this.dirY = 100;
     this.alive = true;
     this.hitDistSq = 25 * 25;
+    this.health = 10;
+};
 
-    var health = 10;
-
-    this.render = function(ctx) {
+Enemy.prototype.render = function(ctx) {
         ctx.fillStyle = '#00f';
         ctx.beginPath();
         ctx.arc(this.x, this.y, 10, 0, 2 * Math_PI);
         ctx.fill();
     };
 
-    this.update = function(delta) {
+Enemy.prototype.update = function(delta) {
         this.y += this.dirY * delta;
         checkCollide(this, 10, function(axis, sign) {
             this.dirY = -this.dirY;
         });
     };
 
-    this.hitPlayer = function() {
+Enemy.prototype.hitPlayer = function() {
         console.log('ded');
     };
 
-    this.takeDamage = function(bullet) {
-        health -= bullet.strength;
+Enemy.prototype.takeDamage = function(bullet) {
+        this.health -= bullet.strength;
 
-        if (health < 0) {
+        if (this.health < 0) {
             this.alive = false;
         }
 
         this.x += bullet.dirX * bullet.strength / 300;
         this.y += bullet.dirY * bullet.strength / 300;
     };
-}
