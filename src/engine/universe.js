@@ -10,7 +10,9 @@ function initUniverse() {
 
 function enteredBlackHole(blackHole) {
     blackHoleAnim = 0.0;
+    blackOverlay = 0.0;
     universeRotDir = 10;
+
     player.x = blackHole.x;
     player.y = blackHole.y;
 }
@@ -27,19 +29,18 @@ function blackHoleAnimation(delta) {
         universeRotDir += 10;
         blackOverlay += 0.2 * delta;
 
-    } else if (blackHoleAnim < 7) {
-        blackOverlay -= 0.5 * delta;
-
     } else {
-        universeScale = 1.0;
-        blackOverlay = 0;
-        blackHoleAnim = -1;
+        blackOverlay -= 0.5 * delta;
         newUniverse();
     }
 }
 
 
 function newUniverse() {
+    universeScale = 1.0;
+    universeRotDir = 0;
+    universeRot = 0;
+
     universe.tileSize = Math_floor(getRandom(20, 70));
 
     universe.spinAmount = getRandom(0, 15);
@@ -64,4 +65,6 @@ function newUniverse() {
     universe.colors[3] = getRandomColor(50, 200);
 
     loadMap();
+
+    blackHoleAnim = -1;
 }

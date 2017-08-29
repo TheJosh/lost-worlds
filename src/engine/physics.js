@@ -7,6 +7,10 @@ function physics(delta) {
 		universeRotDir = 0 - universeRotDir;
 	}
 
+	if (blackOverlay > 0.01) {
+		blackOverlay -= 0.5 * delta;
+	}
+
 	for (var i = 0; i < enemies.length; ++i) {
 		if (enemies[i].alive) enemies[i].update(delta);
 	}
