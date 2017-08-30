@@ -18,8 +18,11 @@ function generateNewMap() {
 	bullets.length = 0;
 	overlayWords.length = 0;
 
-	universe.mapWidth = 100;
-	universe.mapHeight = 100;
+	if (universe.mapWidth != 100) {
+		universe.mapWidth = 100;
+		universe.mapHeight = 100;
+		astarCreateGrid(universe.mapWidth, universe.mapHeight);
+	}
 
 	mapBuffer = new ArrayBuffer(universe.mapWidth * universe.mapHeight);
 	mapTiles = new Uint8Array(mapBuffer);
