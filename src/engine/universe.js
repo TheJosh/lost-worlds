@@ -58,7 +58,6 @@ function newUniverse() {
     universe.unitMax = universe.unitAccel * getRandom(1.0, 3.0);
     universe.unitDeccel = getRandom(1.1, 1.3);
 
-    universe.colors[-1] = getRandomColor(100, 150);
     universe.colors[0] = getRandomColor(100, 250);
     universe.colors[1] = getRandomColor(50, 200);
     universe.colors[2] = getRandomColor(50, 200);
