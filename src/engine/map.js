@@ -29,7 +29,13 @@ function generateNewMap() {
 	var spawnY = Math_floor(getRandom(10, universe.mapHeight - 20));
 
 	player.spawn(spawnX, spawnY);
-	generateCircle(spawnX, spawnY, 9, 0);
+	generateCircle(spawnX, spawnY, 8, 0);
+
+	for (var i = 0; i < 8; ++i) {
+		var x = Math_floor(getRandom(10, universe.mapWidth - 20));
+		var y = Math_floor(getRandom(10, universe.mapHeight - 20));
+		generateCircle(x, y, 8, 0);
+	}
 
 	// TODO: Eventually the procedural generator goes here
 
