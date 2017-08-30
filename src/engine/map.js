@@ -66,32 +66,42 @@ function generateCircle(originX, originY, radius, val)
 }
 
 
-function generateLine(x0, y0, x1, y1, val)
+function generateRect3x3(x, y, val)
 {
-	if (x1 < x0) x1 = [x0, x0 = x1][0];
-	if (y1 < y0) y1 = [y0, y0 = y1][0];
-
-	// Bresenham cannot handle vertical lines
-	if (x0 == x1) {
-		for (var y = y0; y <= y1; ++y) {
-			setTile(x0, y, val);
-		}
-		return;
-	}
-
-	var deltax = x1 - x0;
-	var deltay = y1 - y0;
-	var deltaerr = Math_abs(deltay / deltax);
-	var error = deltaerr - 0.5;
-
-	var y = y0;
-	for (var x = x0; x <= x1; ++x) {
+	--x; --y; i = 9;
+	while (i-- != 0) {
 		setTile(x, y, val);
+		x++;
+		if (i % 3 == 0) { x -= 3; ++y; }
+	}
+}
 
-		error += deltaerr;
-		if (error >= 0.5) {
-			y += 1;
-			error -= 1.0;
+
+/**
+ * Bresenham's line algorithm
+ */
+function generateLine(x0, y0, x1, y1, val) {
+	var dx = Math.abs(x1 - x0);
+	var dy = Math.abs(y1 - y0);
+	var sx = (x0 < x1) ? 1 : -1;
+	var sy = (y0 < y1) ? 1 : -1;
+	var err = dx - dy;
+
+	while (true) {
+		generateRect3x3(x0, y0, val);
+
+		if ((x0 == x1) && (y0 == y1)) {
+			break;
+		}
+
+		var e2 = 2 * err;
+		if (e2 > -dy){
+			err -= dy;
+			x0 += sx;
+		}
+		if (e2 < dx) {
+			err += dx;
+			y0  += sy;
 		}
 	}
 }
