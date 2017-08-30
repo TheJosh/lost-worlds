@@ -107,7 +107,7 @@ function movePlayer_TopView(force, delta)
 
 function applyGravityPull(force, delta)
 {
-	var maxDist = 750;
+	var maxDist = universe.tileSize * 14;
 
 	for (var i = 0; i < gravSource.length; ++i) {
 		var src = gravSource[i];
