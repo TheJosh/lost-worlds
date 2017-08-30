@@ -107,18 +107,24 @@ function movePlayer_TopView(force, delta)
 
 function applyGravityPull(force, delta)
 {
+	var maxDist = 750;
+
 	for (var i = 0; i < gravSource.length; ++i) {
 		var src = gravSource[i];
-		src.dist = Math_sqrt(Math_pow(player.x - src.x, 2) + Math_pow(player.y - src.y, 2));
+		var dist = Math_sqrt(Math_pow(player.x - src.x, 2) + Math_pow(player.y - src.y, 2));
 
-		if (src.dist < 30) {
-			enteredBlackHole(gravSource[i]);
-		} else if (src.dist < 750) {
-			src.strength = 1.0 / (src.dist * src.dist);
-			src.strength *= 2000.0;
-			force.x -= ((player.x - src.x) / 1.0 * src.strength);
-			force.y -= ((player.y - src.y) / 1.0 * src.strength);
+		if (dist > maxDist) {
+			continue;
 		}
+
+		if (dist < 30) {
+			enteredBlackHole(gravSource[i]);
+			continue;
+		}
+
+		var strength = 1.0 / (dist * dist) * 2000.0;
+		force.x -= ((player.x - src.x) / 1.0 * strength);
+		force.y -= ((player.y - src.y) / 1.0 * strength);
 	}
 }
 
