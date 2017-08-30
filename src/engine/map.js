@@ -42,7 +42,7 @@ function generateNewMap() {
 		} else if (gravSource.length < 2) {
 			// Create gravity source - only if far enough from the player
 			r = Math_pow(px - x, 2) + Math_pow(py - y, 2);
-			if (r > 15 ** 2) {
+			if (r > 15 * 15) {
 				gravSource.push(new BlackHole(x, y));
 			}
 		}
