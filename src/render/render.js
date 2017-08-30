@@ -84,13 +84,15 @@ function render() {
 
 	drawBG();
 	drawEntities();
-	drawHUD();
 
 	if (blackOverlay > 0.01) {
+		ctx.setTransform(1, 0, 0, 1, 0, 0);
 		ctx.fillStyle = '#000';
 		ctx.globalAlpha = blackOverlay;
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 	}
+
+	drawHUD();
 }
 
 
@@ -130,12 +132,12 @@ function drawEntities()
 	for (var i = 0; i < bullets.length; ++i) {
 		bullets[i].render(ctx);
 	}
-	ctx.globalAlpha = 1;
 }
 
 
 function drawHUD()
 {
+	ctx.globalAlpha = 1;
 	ctx.fillStyle = '#fff';
 	for (var i = 0; i < overlayWords.length; ++i) {
 		ctx.fillText(overlayWords[i].text, overlayWords[i].x, overlayWords[i].y - overlayWords[i].lift);
