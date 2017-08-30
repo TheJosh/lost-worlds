@@ -11,9 +11,9 @@ function getRandomInt(min, max) {
 
 function getRandomColor(min, max) {
     return '#'
-        + Math_floor(getRandom(min, max)).toString(16)
-        + Math_floor(getRandom(min, max)).toString(16)
-        + Math_floor(getRandom(min, max)).toString(16);
+        + getRandomInt(min, max).toString(16)
+        + getRandomInt(min, max).toString(16)
+        + getRandomInt(min, max).toString(16);
 }
 
 

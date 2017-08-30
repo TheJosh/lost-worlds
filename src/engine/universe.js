@@ -41,7 +41,7 @@ function newUniverse() {
     universeRotDir = 0;
     universeRot = 0;
 
-    universe.tileSize = Math_floor(getRandom(20, 70));
+    universe.tileSize = getRandomInt(20, 70);
 
     universe.spinAmount = getRandom(0, 15);
     if (universe.spinAmount < 1) {
