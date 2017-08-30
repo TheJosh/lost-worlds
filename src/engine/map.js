@@ -26,17 +26,27 @@ function generateNewMap() {
 	mapTiles.fill(1);
 
 	var pois = [];
+	var i, x, y, r, px, py;
 
-	var spawnX = getRandomInt(10, universe.mapWidth - 20);
-	var spawnY = getRandomInt(10, universe.mapHeight - 20);
-	player.spawn(spawnX, spawnY);
-	generateCircle(spawnX, spawnY, 8, 0);
-	pois.push({ x: spawnX, y: spawnY });
-
-	for (var i = 0; i < 7; ++i) {
+	for (i = 0; i < 8; ++i) {
 		var x = getRandomInt(10, universe.mapWidth - 20);
 		var y = getRandomInt(10, universe.mapHeight - 20);
-		generateCircle(x, y, 8, 0);
+		var r = getRandomInt(5, 10);
+
+		generateCircle(x, y, r, 0);
+
+		if (i == 0) {
+			px = x;
+			py = y;
+
+		} else if (gravSource.length < 2) {
+			// Create gravity source - only if far enough from the player
+			r = Math_pow(px - x, 2) + Math_pow(py - y, 2);
+			if (r > 15 ** 2) {
+				gravSource.push(new BlackHole(x, y));
+			}
+		}
+
 		pois.push({ x: x, y: y });
 	}
 
@@ -45,6 +55,8 @@ function generateNewMap() {
 		var b = pois.pop();
 		generateLine(a.x, a.y, b.x, b.y, 0);
 	}
+
+	player.spawn(px, py);
 
 	postMapLoad();
 }
