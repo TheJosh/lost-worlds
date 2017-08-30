@@ -57,9 +57,12 @@ function generateNewMap() {
 		} else if (collectables.length < 1 && r >= 20*20) {
 			collectables.push(new Collectable(x, y));
 
+			x += getRandomInt(-3, 3);
+			y += getRandomInt(-3, 3);
+			enemies.push(new Enemy(x, y, getRandomInt(0, 1)));
+
 		} else {
-			r = getRandomInt(0, 1);
-			enemies.push(new Enemy(x, y, r));
+			enemies.push(new Enemy(x, y, getRandomInt(0, 1)));
 		}
 
 		pois.push({ x: x, y: y });
