@@ -87,6 +87,16 @@ function generateNewMap() {
 		coord = orphans[i];
 	}
 
+	// Ensure at least 10 enemies
+	while (enemies.length < 10) {
+		var x = getRandomInt(0, universe.mapWidth);
+		var y = getRandomInt(0, universe.mapHeight);
+		var t = getTile(x, y);
+		if (t == 0) {
+			enemies.push(new Enemy(x, y, getRandomInt(0, 1)));
+		}
+	}
+
 	player.spawn(px, py);
 	postMapLoad();
 }
