@@ -50,14 +50,16 @@ function generateNewMap() {
 }
 
 
+/**
+ * Brute force circle drawing
+ */
 function generateCircle(originX, originY, radius, val)
 {
 	var x, y;
 	var radiusSquared = radius * radius;
 
-	// Brute force circle drawing
-	for(y = -radius; y <= radius; ++y) {
-		for(x = -radius; x <= radius; ++x) {
+	for (y = -radius; y <= radius; ++y) {
+		for (x = -radius; x <= radius; ++x) {
 			if ((x * x + y * y) <= radiusSquared) {
 				setTile(originX + x, originY + y, val);
 			}
