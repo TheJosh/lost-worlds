@@ -4,24 +4,25 @@ Bugs
 Colliding does not work properly on top or bottom map edges
 Seems to be okay on sides (but needs more testing)
 
+Enemies sometimes way outside of the play area
 
 
-Priority one
-============
+Features
+========
 
 Collecting objects
  - animation
 
 Weapon selection
 
-Pathfinder
+Increase difficulty with each black hole
+ - min enemies += 2
 
-Dynamic (procedual) level creation
+Enemies to target the player when within
+a given range
 
-Initial map to be simpler (like a tutorial) and smaller
+Death animation
 
-
-Priority two
-============
+Menu
 
 Improve performance
