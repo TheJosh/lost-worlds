@@ -39,16 +39,27 @@ function generateNewMap() {
 
 		generateCircle(x, y, r, 0);
 
+		// Need to know distance from the spawn point
+		r = Math_pow(px - x, 2) + Math_pow(py - y, 2);
+
+		// Don't spawn everthing right in the middle
+		x += getRandomInt(-3, 3);
+		y += getRandomInt(-3, 3);
+
 		if (i == 0) {
 			px = x;
 			py = y;
 
-		} else if (gravSource.length < 2) {
+		} else if (gravSource.length < 2 && r >= 15*15) {
 			// Create gravity source - only if far enough from the player
-			r = Math_pow(px - x, 2) + Math_pow(py - y, 2);
-			if (r > 15 * 15) {
-				gravSource.push(new BlackHole(x, y));
-			}
+			gravSource.push(new BlackHole(x, y));
+
+		} else if (collectables.length < 1 && r >= 20*20) {
+			collectables.push(new Collectable(x, y));
+
+		} else {
+			r = getRandomInt(0, 1);
+			enemies.push(new Enemy(x, y, r));
 		}
 
 		pois.push({ x: x, y: y });
