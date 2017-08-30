@@ -54,7 +54,7 @@ function loadInitMap() {
 		var c = init_map.charAt(i);
 		var val = parseInt(c, 10);
 		if (!isNaN(val)) {
-			mapTiles.push({ type: val });
+			mapTiles.push(val);
 		}
 	}
 

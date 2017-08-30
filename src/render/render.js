@@ -173,7 +173,7 @@ function drawTiles(ctx, canvas) {
 	for (var y = 0; y < universe.mapHeight; ++y) {
 		for (var x = 0; x < universe.mapWidth; ++x) {
 			var tile = getTile(x, y);
-			switch (tile.type) {
+			switch (tile) {
 				case -1: ctx.fillStyle = universe.colors[-1]; break;   // dirt edge
 				case  0: ctx.fillStyle = universe.colors[0]; break;   // none
 				case  1: continue;

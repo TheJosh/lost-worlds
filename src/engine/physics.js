@@ -150,7 +150,7 @@ function collideDir(entity, halfSize, xSign, ySign, hit) {
 
 	var tile = getTile(tileX, tileY);
 
-	if (tile && tile.type > 0) {
+	if (tile > 0) {
 		if (xSign != 0) {
 			var tileXpx = tileX * universe.tileSize;
 			if (xSign < 0) tileXpx += universe.tileSize;
@@ -171,7 +171,7 @@ function repairBrokenPosition(entity) {
 	var tileX = Math_floor(entity.x / universe.tileSize);
 	var tileY = Math_floor(entity.y / universe.tileSize);
 	var tile = getTile(tileX, tileY);
-	if (tile && tile.type == 0) return;
+	if (tile == 0) return;
 
 	var valid = findValidTiles(tileX, tileY, 3);
 	if (valid.length) {
@@ -192,7 +192,7 @@ function findValidTiles(x, y, radius) {
 	for (ty = sy; ty <= my; ++ty) {
 		for (tx = sx; tx <= mx; ++tx) {
 			var tile = getTile(tx, ty);
-			if (tile && tile.type == 0) {
+			if (tile == 0) {
 				var manHatDist = Math_abs(x - tx) + Math_abs(y - ty);
 				valid.push([tx, ty, manHatDist]);
 			}
@@ -209,7 +209,7 @@ function checkCollideTiny(entity, hit) {
 
 	var tile = getTile(tileX, tileY);
 
-	if (tile && tile.type > 0) {
+	if (tile > 0) {
 		hit.apply(entity);
 	}
 }
