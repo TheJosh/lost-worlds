@@ -63,7 +63,6 @@ function generateNewMap() {
 	var orphans = [];
 	var coord = { x: px, y: py };
 	for (i = 1; i < pois.length; ++i) {
-		setTile(pois[i].x, pois[i].y, 3);
 		var path = astarSearch(coord, pois[i]);
 		if (path.length == 0) {
 			orphans.push(pois[i]);
@@ -75,7 +74,6 @@ function generateNewMap() {
 	for (i = 0; i < orphans.length; ++i) {
 		generateLine(coord.x, coord.y, orphans[i].x, orphans[i].y, 0);
 		coord = orphans[i];
-		setTile(orphans[i].x, orphans[i].y, 2);
 	}
 
 	player.spawn(px, py);
