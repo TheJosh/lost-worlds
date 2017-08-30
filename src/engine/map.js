@@ -1,4 +1,4 @@
-var mapTiles = [];
+var mapBuffer, mapTiles;
 
 
 function getTile(x, y) {

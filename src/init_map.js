@@ -39,7 +39,14 @@ var init_map = '\
 1110000000000000000000000000000000000000000001111\
 1111111111111111111100000000000000111111111111111';
 
-function loadInitMap() {
+function loadInitMap()
+{
+	universe.mapWidth = 49;
+	universe.mapHeight = 39;
+
+	mapBuffer = new ArrayBuffer(universe.mapWidth * universe.mapHeight);
+	mapTiles = new Uint8Array(mapBuffer);
+
 	player.spawn(6, 7);
 	gravSource.push(new BlackHole(12, 34));
 	enemies.push(new Enemy(26, 7, ENEMY_BEHAVE_VERT));
@@ -47,14 +54,11 @@ function loadInitMap() {
 	enemies.push(new Enemy(41, 26, ENEMY_BEHAVE_HORIZ));
 	collectables.push(new Collectable(47, 35));
 
-	universe.mapWidth = 49;
-	universe.mapHeight = 39;
-
 	for (i = 0; i < init_map.length; ++i) {
 		var c = init_map.charAt(i);
 		var val = parseInt(c, 10);
 		if (!isNaN(val)) {
-			mapTiles.push(val);
+			mapTiles[i] = val;
 		}
 	}
 
