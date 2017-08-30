@@ -3,6 +3,12 @@ function getRandom(min, max) {
 }
 
 
+// This method doesn't have even distribution. That's okay.
+function getRandomInt(min, max) {
+    return Math_round(getRandom(min, max));
+}
+
+
 function getRandomColor(min, max) {
     return '#'
         + Math_floor(getRandom(min, max)).toString(16)
