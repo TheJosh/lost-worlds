@@ -58,6 +58,18 @@ function generateNewMap() {
 
 	player.spawn(px, py);
 
+	astarCreateGrid(universe.mapWidth, universe.mapHeight);
+
+	// Test the a-star searching
+	var destX = getRandomInt(10, universe.mapWidth - 20);
+	var destY = getRandomInt(10, universe.mapHeight - 20);
+	var res = astarSearch({ x: px, y: py }, { x: destX, y: destY });
+	setTile(px, py, 3);
+	for (var i = 0; i < res.length; ++i) {
+		setTile(res[i].x, res[i].y, 2);
+	}
+	setTile(destX, destY, 3);
+
 	postMapLoad();
 }
 
