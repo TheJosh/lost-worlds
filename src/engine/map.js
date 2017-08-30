@@ -31,6 +31,7 @@ function generateNewMap() {
 	var pois = [];
 	var i, x, y, r, px, py;
 
+	// Generate an even number of POIs (point of interest)
 	for (i = 0; i < 8; ++i) {
 		var x = getRandomInt(10, universe.mapWidth - 20);
 		var y = getRandomInt(10, universe.mapHeight - 20);
@@ -53,26 +54,31 @@ function generateNewMap() {
 		pois.push({ x: x, y: y });
 	}
 
-	while (pois.length >= 2) {
-		var a = pois.pop();
-		var b = pois.pop();
-		generateLine(a.x, a.y, b.x, b.y, 0);
+	// Draw lines between pairs of POIs
+	for (i = 0; i < pois.length; i += 2) {
+		generateLine(pois[i].x, pois[i].y, pois[i+1].x, pois[i+1].y, 0);
+	}
+
+	// Find 'orphans' POIs - unaccessable by the player
+	var orphans = [];
+	var coord = { x: px, y: py };
+	for (i = 1; i < pois.length; ++i) {
+		setTile(pois[i].x, pois[i].y, 3);
+		var path = astarSearch(coord, pois[i]);
+		if (path.length == 0) {
+			orphans.push(pois[i]);
+		}
+	}
+
+	// Draw a line from the player to each orphan in succession
+	// Player --> Orph1 --> Orph2 --> Orph3 --> etc
+	for (i = 0; i < orphans.length; ++i) {
+		generateLine(coord.x, coord.y, orphans[i].x, orphans[i].y, 0);
+		coord = orphans[i];
+		setTile(orphans[i].x, orphans[i].y, 2);
 	}
 
 	player.spawn(px, py);
-
-	astarCreateGrid(universe.mapWidth, universe.mapHeight);
-
-	// Test the a-star searching
-	var destX = getRandomInt(10, universe.mapWidth - 20);
-	var destY = getRandomInt(10, universe.mapHeight - 20);
-	var res = astarSearch({ x: px, y: py }, { x: destX, y: destY });
-	setTile(px, py, 3);
-	for (var i = 0; i < res.length; ++i) {
-		setTile(res[i].x, res[i].y, 2);
-	}
-	setTile(destX, destY, 3);
-
 	postMapLoad();
 }
 
