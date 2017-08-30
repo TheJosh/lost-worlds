@@ -27,15 +27,15 @@ function generateNewMap() {
 
 	var pois = [];
 
-	var spawnX = Math_floor(getRandom(10, universe.mapWidth - 20));
-	var spawnY = Math_floor(getRandom(10, universe.mapHeight - 20));
+	var spawnX = getRandomInt(10, universe.mapWidth - 20);
+	var spawnY = getRandomInt(10, universe.mapHeight - 20);
 	player.spawn(spawnX, spawnY);
 	generateCircle(spawnX, spawnY, 8, 0);
 	pois.push({ x: spawnX, y: spawnY });
 
 	for (var i = 0; i < 7; ++i) {
-		var x = Math_floor(getRandom(10, universe.mapWidth - 20));
-		var y = Math_floor(getRandom(10, universe.mapHeight - 20));
+		var x = getRandomInt(10, universe.mapWidth - 20);
+		var y = getRandomInt(10, universe.mapHeight - 20);
 		generateCircle(x, y, 8, 0);
 		pois.push({ x: x, y: y });
 	}
