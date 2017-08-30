@@ -47,7 +47,7 @@ enemy_behave_setup = [
     function(e) {
         e.dirX = 100;
         e.rot = Math_PI / 2;
-    },
+    }
 ];
 
 enemy_behave_update = [
@@ -64,7 +64,7 @@ enemy_behave_update = [
             e.dirX = -e.dirX;
             e.rot += Math_PI;
         });
-    },
+    }
 ];
 
 
