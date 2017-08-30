@@ -102,7 +102,12 @@ function generateLine(x0, y0, x1, y1, val) {
 	var err = dx - dy;
 
 	while (true) {
-		generateRect3x3(x0, y0, val);
+		var t = getRandomInt(2, 25);
+		if (t >= 4) {
+			generateRect3x3(x0, y0, val);
+		} else {
+			generateCircle(x0, y0, t + 2, val);
+		}
 
 		if ((x0 == x1) && (y0 == y1)) {
 			break;
