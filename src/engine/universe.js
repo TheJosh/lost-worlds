@@ -63,7 +63,7 @@ function newUniverse() {
     universe.colors[2] = getRandomColor(50, 200);
     universe.colors[3] = getRandomColor(50, 200);
 
-    loadMap();
+    generateNewMap();
 
     blackHoleAnim = -1;
 }
