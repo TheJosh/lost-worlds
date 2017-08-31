@@ -48,6 +48,11 @@ function initRender() {
 		ctx.lineTo(15, 30);
 		ctx.stroke();
 	});
+
+	// Major performance boost
+	ctx.imageSmoothingEnabled = false;
+	ctx.msImageSmoothingEnabled = false;
+	ctx.imageSmoothingEnabled = false;
 }
 
 
