@@ -15,6 +15,8 @@ function enteredBlackHole(blackHole) {
 
     player.x = blackHole.x;
     player.y = blackHole.y;
+
+    overlayWords.length = 0;
 }
 
 
