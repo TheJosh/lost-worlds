@@ -14,6 +14,7 @@ function Enemy(x, y, behaviour) {
     this.health = 3;
     this.damage = 5;
     this.behaviour = behaviour;
+    this.animTime = 0;
 
     if (enemy_behave_setup[behaviour]) {
         enemy_behave_setup[behaviour](this);
@@ -26,9 +27,15 @@ Enemy.prototype.render = function(ctx) {
         return;
     }
 
+    var frame = Math_floor(this.animTime / 0.25);
+
     ctx.translate(this.x, this.y);
     ctx.rotate(this.rot);
-    ctx.drawImage(bug, -9, -11);
+    ctx.drawImage(
+        bug,
+        frame * 18, 0, 18, 22,
+        -9, -11, 18, 22
+    );
     ctx.rotate(-this.rot);
     ctx.translate(-this.x, -this.y);
 };
@@ -36,6 +43,9 @@ Enemy.prototype.render = function(ctx) {
 
 Enemy.prototype.update = function(delta) {
     enemy_behave_update[this.behaviour](this, delta);
+
+    this.animTime += delta;
+    if (this.animTime > 0.5) this.animTime -= 0.5;
 };
 
 
