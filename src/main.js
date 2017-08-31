@@ -22,7 +22,6 @@ resizeRenderCanvas();
 BlackHole.setupParticles();
 player = new Player();
 loadInitMap();
-//generateNewMap();
 
 function postMapLoad() {
 	initUniverse();

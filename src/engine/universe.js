@@ -66,7 +66,28 @@ function newUniverse() {
     // Increase difficulty
     universe.numEnemies += 2;
 
+    cleanupExistingMap();
     generateNewMap();
 
     blackHoleAnim = -1;
+}
+
+
+function heavenUniverse() {
+    universeScale = 1.0;
+    universeRotDir = 0;
+    universeRot = 0;
+
+    universe.tileSize = 32;
+    universe.spinAmount = 10;
+    universe.spinLimit = 0;
+
+    universe.unitAccel = 200;
+    universe.unitMax = 300;
+    universe.unitDeccel = 1.2;
+
+    universe.colors[0] = '#fff';
+    universe.colors[1] = '#95EDEC';
+
+    generateHeavenMap();
 }

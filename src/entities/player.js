@@ -123,6 +123,11 @@ function Player() {
             this.health = 10;
 
             this.heartAnim = { x: this.x, y: this.y, alpha: 1.0 };
+
+            if (this.lives == 0) {
+                cleanupExistingMap();
+                heavenUniverse();
+            }
         }
 
         overlayWords.push({ x: player.x, y: player.y - 30, lift: 0, text: 'OUCH' });

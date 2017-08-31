@@ -11,13 +11,17 @@ function setTile(x, y, val) {
 }
 
 
-function generateNewMap() {
+function cleanupExistingMap()
+{
 	gravSource.length = 0;
 	enemies.length = 0;
 	collectables.length = 0;
 	bullets.length = 0;
 	overlayWords.length = 0;
+}
 
+
+function generateNewMap() {
 	if (universe.mapWidth != 100) {
 		universe.mapWidth = 100;
 		universe.mapHeight = 100;
@@ -101,6 +105,28 @@ function generateNewMap() {
 	}
 
 	player.spawn(px, py);
+	postMapLoad();
+}
+
+
+function generateHeavenMap() {
+	universe.mapWidth = 50;
+	universe.mapHeight = 50;
+
+	mapBuffer = new ArrayBuffer(universe.mapWidth * universe.mapHeight);
+	mapTiles = new Uint8Array(mapBuffer);
+	mapTiles.fill(1);
+
+	generateCircle(15, 25, 8, 0);
+	generateCircle(25, 25, 4, 0);
+	generateCircle(35, 25, 8, 0);
+
+	for (var i = 0; i < 4; ++i) {
+		generateCircle(getRandomInt(5, 45), getRandomInt(5, 45), 3, 0);
+	}
+	
+	player.spawn(25, 25);
+
 	postMapLoad();
 }
 
