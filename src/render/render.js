@@ -146,6 +146,10 @@ function drawHUD()
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 	ctx.drawImage(cachedCrosshair, mouse.x - 15, mouse.y - 15);
 
+	if (player.lives == 0) {
+		ctx.fillStyle = '#000';
+		ctx.fillText('Game over!', 20, 25);
+	} else {
 	for (var i = 0; i < player.lives; ++i) {
 		ctx.drawImage(
 			heart,
@@ -161,10 +165,6 @@ function drawHUD()
 			20 + (22 * i), 20, 18, 14
 		);
 	}
-
-	if (player.lives == 0) {
-		ctx.fillStyle = '#000';
-		ctx.fillText('Game over!', 20, 25);
 	}
 
 	ctx.drawImage(elec, 20, 50);
