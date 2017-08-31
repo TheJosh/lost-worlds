@@ -21,7 +21,8 @@ function tick(timestamp) {
 resizeRenderCanvas();
 BlackHole.setupParticles();
 player = new Player();
-loadInitMap();
+menu();
+
 
 function postMapLoad() {
 	initUniverse();

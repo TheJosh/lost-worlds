@@ -12,8 +12,6 @@ heart.src = 'heart.gif';
 function resizeRenderCanvas() {
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
-	canvas.onmouseenter = window.onmousemove;
-	canvas.style.cursor = 'none';
 }
 
 
@@ -29,8 +27,11 @@ function canvasCache(width, height, func) {
 
 
 function initRender() {
+	ctx.font = '12px monospace';
+	canvas.style.cursor = 'none';
+
 	cachedTiles = canvasCache(universe.mapWidth * universe.tileSize, universe.mapHeight * universe.tileSize, drawTiles);
-	
+
 	cachedCrosshair = canvasCache(30, 30, function(ctx, canv) {
 		var grad = ctx.createRadialGradient(15, 15, 0, 15, 15, 15);
 		grad.addColorStop(0.0, 'rgba(255,0,0,0)');
@@ -47,8 +48,6 @@ function initRender() {
 		ctx.lineTo(15, 30);
 		ctx.stroke();
 	});
-
-	ctx.font = '12px monospace';
 }
 
 
@@ -93,7 +92,6 @@ function render() {
 	}
 
 	drawHUD();
-	drawMenu();
 }
 
 
