@@ -17,18 +17,18 @@ window.onmouseup = function(e) {
 
 window.onkeydown = function(e) {
 	switch (e.key) {
-		case 'w': case 'ArrowUp': keys.y = -1; break;
-		case 's': case 'ArrowDown': keys.y = 1; break;
-		case 'a': case 'ArrowLeft': keys.x = -1; break;
-		case 'd': case 'ArrowRight': keys.x = 1; break;
+		case 'w': keys.y = -1; break;
+		case 's': keys.y = 1; break;
+		case 'a': keys.x = -1; break;
+		case 'd': keys.x = 1; break;
 	}
 };
 
 window.onkeyup = function(e) {
 	switch (e.key) {
-		case 'w': case 'ArrowUp':
-		case 's': case 'ArrowDown': keys.y = 0; break;
-		case 'a': case 'ArrowLeft':
-		case 'd': case 'ArrowRight': keys.x = 0; break;
+		case 'w':
+		case 's': keys.y = 0; break;
+		case 'a':
+		case 'd': keys.x = 0; break;
 	}
 };
