@@ -18,7 +18,7 @@ cat \
 closure-compiler --compilation_level ADVANCED_OPTIMIZATIONS build/all.js >build/a.js
 rm build/all.js
 
-echo "<title>Lost Worlds</title><style>body{margin:0;overflow:hidden}</style><canvas id=c></canvas><script src=a.js></script>" \
+echo "<title>Lost Worlds</title><meta charset=\"UTF-8\"><style>body{margin:0;overflow:hidden}</style><canvas id=c></canvas><script src=a.js></script>" \
 	>build/index.html
 
 pngcrush -q -brute src/player.png build/player.png
