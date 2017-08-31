@@ -22,7 +22,7 @@ var weapons = [
 function Player() {
     this.weapon = 2;
     this.health = 10;
-    this.lives = 5;
+    this.lives = 3;
     this.heartAnim = null;
     this.collected = 0;
 
