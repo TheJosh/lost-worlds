@@ -81,8 +81,9 @@ enemy_behave_update = [
 Enemy.prototype.takeDamage = function(bullet) {
     this.health -= bullet.strength;
 
-    if (this.health < 0) {
+    if (this.health < 0 && this.alive) {
         this.alive = false;
+        player.kills += 1;
     }
 
     this.x += bullet.dir.x * bullet.strength / 300;

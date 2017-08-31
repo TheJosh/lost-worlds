@@ -164,6 +164,9 @@ function drawHUD()
 
 	ctx.drawImage(elec, 20, 50);
 	ctx.fillText('\u00D7 ' + player.collected, 50, 61);
+
+	ctx.drawImage(bug,  0, 0, 18, 22,  20, 80, 18, 22);
+	ctx.fillText('\u00D7 ' + player.kills, 50, 92);
 }
 
 

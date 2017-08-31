@@ -25,6 +25,7 @@ function Player() {
     this.lives = 3;
     this.heartAnim = null;
     this.collected = 0;
+    this.kills = 0;
 
     var fireWait = 0;
     var invincWait = 0;
