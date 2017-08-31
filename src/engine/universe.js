@@ -63,6 +63,9 @@ function newUniverse() {
     universe.colors[2] = getRandomColor(50, 200);
     universe.colors[3] = getRandomColor(50, 200);
 
+    // Increase difficulty
+    universe.numEnemies += 2;
+
     generateNewMap();
 
     blackHoleAnim = -1;

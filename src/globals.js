@@ -34,6 +34,8 @@ var universe = {
 	mapWidth: 256,
 	mapHeight: 64,
 
+	numEnemies: 10,
+
 	colors: {
 		'0': '#87643E',
 		'1': '#221409',
