@@ -93,6 +93,7 @@ function render() {
 	}
 
 	drawHUD();
+	drawMenu();
 }
 
 
