@@ -150,21 +150,21 @@ function drawHUD()
 		ctx.fillStyle = '#000';
 		ctx.fillText('Game over!', 20, 25);
 	} else {
-	for (var i = 0; i < player.lives; ++i) {
-		ctx.drawImage(
-			heart,
-			0, 0, 18, 14,
-			20 + (22 * i), 20, 18, 14
-		);
-	}
+		for (var i = 0; i < player.lives; ++i) {
+			ctx.drawImage(
+				heart,
+				0, 0, 18, 14,
+				20 + (22 * i), 20, 18, 14
+			);
+		}
 
-	if (player.heartAnim && ~~(player.heartAnim.y) % 2 == 0) {
-		ctx.drawImage(
-			heart,
-			18, 0, 18, 14,
-			20 + (22 * i), 20, 18, 14
-		);
-	}
+		if (player.heartAnim && ~~(player.heartAnim.y) % 2 == 0) {
+			ctx.drawImage(
+				heart,
+				18, 0, 18, 14,
+				20 + (22 * i), 20, 18, 14
+			);
+		}
 	}
 
 	ctx.drawImage(elec, 20, 50);
