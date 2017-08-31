@@ -65,6 +65,9 @@ function generateNewMap() {
 			y += getRandomInt(-3, 3);
 			enemies.push(new Enemy(x, y, getRandomInt(0, 1)));
 
+		} else if (getRandomInt(1, 100) >= 98 && universe.numEnemies > 15) {
+			collectables.push(new Gun(10, 7, getRandomInt(0, 1)));
+
 		} else {
 			enemies.push(new Enemy(x, y, getRandomInt(0, 1)));
 		}
