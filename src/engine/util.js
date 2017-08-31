@@ -40,3 +40,20 @@ function pointInBounds(point, bounds) {
         point.y >= bounds.y1 && point.y <= bounds.y2
     );
 }
+
+
+function getTileFromCoords(coords)
+{
+    return {
+        x: Math_floor(coords.x / universe.tileSize),
+        y: Math_floor(coords.y / universe.tileSize)
+    };
+}
+
+function getCoordsFromTile(tile)
+{
+    return {
+        x: tile.x * universe.tileSize,
+        y: tile.y * universe.tileSize
+    };
+}

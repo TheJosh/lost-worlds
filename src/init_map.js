@@ -43,6 +43,7 @@ function loadInitMap()
 {
 	universe.mapWidth = 49;
 	universe.mapHeight = 39;
+	astarCreateGrid(universe.mapWidth, universe.mapHeight);
 
 	mapBuffer = new ArrayBuffer(universe.mapWidth * universe.mapHeight);
 	mapTiles = new Uint8Array(mapBuffer);

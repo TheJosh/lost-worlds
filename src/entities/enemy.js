@@ -1,5 +1,6 @@
 var ENEMY_BEHAVE_VERT = 0;
 var ENEMY_BEHAVE_HORIZ = 1;
+var ENEMY_BEHAVE_CHASE = 2;
 
 var bug = new Image();
 bug.src = 'bug.gif';
@@ -67,6 +68,7 @@ enemy_behave_update = [
             e.dirY = -e.dirY;
             e.rot += Math_PI;
         });
+        clasePlayerIfClose(e);
     },
     function(e, delta) {
         e.x += e.dirX * delta;
@@ -74,8 +76,39 @@ enemy_behave_update = [
             e.dirX = -e.dirX;
             e.rot += Math_PI;
         });
+        clasePlayerIfClose(e);
+    },
+    function(e, delta) {
+        var path = astarSearch(getTileFromCoords(e), getTileFromCoords(player));
+        if (path.length == 0) return;
+
+        var coords = getCoordsFromTile(path.pop());
+
+        var dirX = (coords.x - e.x);
+        var dirY = (coords.y - e.y);
+
+        e.rot = Math_atan2(dirY, dirX) + Math_PI/2;
+
+        dirX = (dirX == 0 ? 0 : (dirX > 0 ? 100 : -100));
+        e.x += dirX * delta;
+
+        dirY = (dirY == 0 ? 0 : (dirY > 0 ? 100 : -100));
+        e.y += dirY * delta;
+
+        checkCollide(e, 10);
     }
 ];
+
+
+function clasePlayerIfClose(enemy)
+{
+    var theshSq = 250 * 250;
+
+    var distSq = Math_pow(player.x - enemy.x, 2) + Math_pow(player.y - enemy.y, 2);
+    if (distSq < theshSq) {
+        enemy.behaviour = ENEMY_BEHAVE_CHASE;
+    }
+}
 
 
 Enemy.prototype.takeDamage = function(bullet) {

@@ -15,12 +15,6 @@ Collecting objects
 
 Weapon selection
 
-Increase difficulty with each black hole
- - min enemies += 2
-
-Enemies to target the player when within
-a given range
-
 Death animation
 
 Menu
