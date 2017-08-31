@@ -70,18 +70,6 @@ function loadInitMap()
 
 
 function setupTutorial() {
-	window.setTimeout(function() {
-		overlayWords.push({ x: player.x - 30, y: player.y - 30, lift: 0, text: 'W/A/S/D = move' });
-	}, 1000);
-
-	window.setTimeout(function() {
-		overlayWords.push({ x: player.x - 30, y: player.y - 30, lift: 0, text: 'Mouse = aim' });
-	}, 2500);
-
-	window.setTimeout(function() {
-		overlayWords.push({ x: player.x - 30, y: player.y - 30, lift: 0, text: 'Click = shoot' });
-	}, 3500);
-
 	var zone = window.setInterval(function() {
 		if (player.x >= 1000 && player.y >= 330) {
 			window.clearInterval(zone);
