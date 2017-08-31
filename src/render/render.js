@@ -162,6 +162,11 @@ function drawHUD()
 		);
 	}
 
+	if (player.lives == 0) {
+		ctx.fillStyle = '#000';
+		ctx.fillText('Game over!', 20, 25);
+	}
+
 	ctx.drawImage(elec, 20, 50);
 	ctx.fillText('\u00D7 ' + player.collected, 50, 61);
 
