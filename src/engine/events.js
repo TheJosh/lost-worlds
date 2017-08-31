@@ -1,7 +1,7 @@
 var keys = { x: 0, y: 0, fire: 0 };
 var mouse = { x: 0, y: 0 };
 
-function setupEvents() {
+
 window.onmousemove = function(e) {
 	mouse.x = e.clientX;
 	mouse.y = e.clientY;
@@ -32,4 +32,3 @@ window.onkeyup = function(e) {
 		case 'd': case 'ArrowRight': keys.x = 0; break;
 	}
 };
-}

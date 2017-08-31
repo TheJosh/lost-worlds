@@ -98,7 +98,6 @@ function menu()
 
 	function startGame() {
 		cancelAnimationFrame(raf);
-		setupEvents();
 		loadInitMap();
 	}
 }
