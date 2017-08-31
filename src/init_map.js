@@ -71,7 +71,7 @@ function loadInitMap()
 
 function setupTutorial() {
 	var zone = window.setInterval(function() {
-		if (player.x >= 1000 && player.y >= 330) {
+		if (player.x >= 1000 && player.y >= 300) {
 			window.clearInterval(zone);
 			setupTutorialTwo();
 		}
