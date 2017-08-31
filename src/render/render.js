@@ -162,9 +162,8 @@ function drawHUD()
 		);
 	}
 
-	for (var i = 0; i < player.collected; ++i) {
-		ctx.drawImage(elec, 20 + (22 * i), 50);
-	}
+	ctx.drawImage(elec, 20, 50);
+	ctx.fillText('\u00D7 ' + player.collected, 50, 61);
 }
 
 
