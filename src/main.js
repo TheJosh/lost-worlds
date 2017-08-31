@@ -29,6 +29,7 @@ function postMapLoad() {
 	initRender();
 
 	if (!running) {
+		lastTs = performance.now();
 		requestAnimationFrame(tick);
 	}
 
