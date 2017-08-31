@@ -67,6 +67,7 @@ function newUniverse() {
 
     // Increase difficulty
     universe.numEnemies += 2;
+    universe.weaponSpawnChance += 5;
 
     cleanupExistingMap();
     generateNewMap();

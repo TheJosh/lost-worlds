@@ -65,9 +65,6 @@ function generateNewMap() {
 			y += getRandomInt(-3, 3);
 			enemies.push(new Enemy(x, y, getRandomInt(0, 1)));
 
-		} else if (getRandomInt(1, 100) >= 98 && universe.numEnemies > 15) {
-			collectables.push(new Gun(10, 7, getRandomInt(0, 1)));
-
 		} else {
 			enemies.push(new Enemy(x, y, getRandomInt(0, 1)));
 		}
@@ -105,6 +102,19 @@ function generateNewMap() {
 		if (t == 0) {
 			enemies.push(new Enemy(x, y, getRandomInt(0, 1)));
 		}
+	}
+
+	// Spawn a weapon near the player. They'll feel so lucky!
+	if (getRandomInt(1, 100) >= (100 - universe.weaponSpawnChance)) {
+		var x, y, t;
+		do {
+			x = getRandomInt(px - 10, px + 10);
+			y = getRandomInt(py - 10, py + 10);
+			t = getTile(x, y);
+		} while (t != 0);
+
+		collectables.push(new Gun(x, y, getRandomInt(0, 1)));
+		universe.weaponSpawnChance = 2;
 	}
 
 	player.spawn(px, py);

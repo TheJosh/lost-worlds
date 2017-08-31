@@ -20,6 +20,7 @@ Gun.prototype.render = function(ctx) {
 
 Gun.prototype.touchPlayer = function() {
     this.alive = false;
+
     overlayWords.push({ x: player.x - 10, y: player.y - 30, lift: 0, text: weapons[this.type].name });
 
     if (player.availWeapons.indexOf(this.type) === -1) {
