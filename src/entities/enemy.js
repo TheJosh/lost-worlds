@@ -79,10 +79,17 @@ enemy_behave_update = [
         clasePlayerIfClose(e);
     },
     function(e, delta) {
-        var path = astarSearch(getTileFromCoords(e), getTileFromCoords(player));
-        if (path.length == 0) return;
+        e.pathAge += delta;
+        if (e.pathAge > 1) {
+            e.path = astarSearch(getTileFromCoords(player), getTileFromCoords(e));
+            e.pathAge = 0;
+        }
 
-        var coords = getCoordsFromTile(path.pop());
+        if (e.path.length == 0) {
+            return;
+        }
+
+        var coords = getCoordsFromTile(e.path[0]);
 
         var dirX = (coords.x - e.x);
         var dirY = (coords.y - e.y);
@@ -107,6 +114,7 @@ function clasePlayerIfClose(enemy)
     var distSq = Math_pow(player.x - enemy.x, 2) + Math_pow(player.y - enemy.y, 2);
     if (distSq < theshSq) {
         enemy.behaviour = ENEMY_BEHAVE_CHASE;
+        enemy.pathAge = 99999;
     }
 }
 
