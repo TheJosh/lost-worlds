@@ -146,8 +146,11 @@ function drawHUD()
 	ctx.drawImage(cachedCrosshair, mouse.x - 15, mouse.y - 15);
 
 	if (player.lives == 0) {
+		ctx.font = '40px serif';
 		ctx.fillStyle = '#000';
-		ctx.fillText('Game over!', 20, 25);
+		var metrics = ctx.measureText('GAME OVER');
+		ctx.fillText('GAME OVER', (canvas.width - metrics.width) / 2, 75);
+		ctx.font = '12px monospace';
 	} else {
 		for (var i = 0; i < player.lives; ++i) {
 			ctx.drawImage(
