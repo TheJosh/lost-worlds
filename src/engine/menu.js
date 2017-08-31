@@ -131,6 +131,7 @@ function menu()
 
 
 	function startGame() {
+		window.onclick = null;
 		cancelAnimationFrame(raf);
 		loadInitMap();
 	}
