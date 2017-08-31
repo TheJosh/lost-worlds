@@ -8,14 +8,14 @@ function menu()
 
 	var buttons = [
 		{
-			x: 225, y: 330,
+			x: 50, y: 400,
 			w: 250, h: 50,
 			b: '#555',
 			t: 'FULLSCREEN',
 			f: enterFullscreen
 		},
 		{
-			x: 225, y: 400,
+			x: 400, y: 400,
 			w: 250, h: 50,
 			b: '#333',
 			t: 'START',
@@ -26,6 +26,7 @@ function menu()
 	var menuGrad = ctx.createLinearGradient(0, 0, MENU_WIDTH, MENU_HEIGHT);
 	menuGrad.addColorStop(0, '#DAE9C9');
 	menuGrad.addColorStop(1, '#C8E3A8');
+
 
 	function render() {
 		var metrics;
@@ -48,6 +49,10 @@ function menu()
 		metrics = ctx.measureText('LOST WORLDS');
 		ctx.fillText('LOST WORLDS', (MENU_WIDTH - metrics.width) / 2, 75);
 
+		ctx.font = '16px sans';
+		ctx.fillText('Your player always points towards the mouse. Click to shoot.', 50, 125);
+		ctx.fillText('Movement is relative; W = forwards, S = backwards, A/D = strafe.', 50, 150);
+
 		ctx.font = '24px sans';
 		for (var i = 0; i < buttons.length; ++i) {
 			var btn = buttons[i];
@@ -57,6 +62,35 @@ function menu()
 			metrics = ctx.measureText(btn.t);
 			ctx.fillText(btn.t, btn.x + (btn.w - metrics.width) / 2, btn.y + btn.h / 2 + 10);
 		}
+
+		player.rot = Math_atan2(
+			(mouse.y - canvas.height/2-25), (mouse.x - canvas.width/2)
+		) + Math_PI;
+
+		ctx.setTransform(1, 0, 0, 1, 0, 0);
+		ctx.translate(canvas.width/2, canvas.height/2+25);
+
+		ctx.beginPath();
+		ctx.arc(0, 0, 100, 0, 2 * Math_PI);
+		ctx.fill();
+
+		player.render(ctx);
+
+		ctx.font = '16px monospace';
+		ctx.fillStyle = '#000';
+		ctx.rotate(player.rot - Math_PI/2);
+		ctx.fillText('W', -5, -30);
+		ctx.fillText('S', -5, 32);
+		ctx.fillText('A', -35, 0);
+		ctx.fillText('D', 22, 0);
+		
+		ctx.beginPath();
+		ctx.moveTo(0, -55);
+		ctx.lineTo(0, -80);
+		ctx.lineTo(-5, -75);
+		ctx.moveTo(5, -75);
+		ctx.lineTo(0, -80);
+		ctx.stroke();
 
 		raf = requestAnimationFrame(render);
 	}
