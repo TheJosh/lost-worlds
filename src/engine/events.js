@@ -21,6 +21,7 @@ window.onkeydown = function(e) {
 		case 's': keys.y = 1; break;
 		case 'a': keys.x = -1; break;
 		case 'd': keys.x = 1; break;
+		case 'g': player.changeWeapon(); break;
 	}
 };
 

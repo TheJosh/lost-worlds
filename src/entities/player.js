@@ -1,18 +1,16 @@
 var weapons = [
-    // Shotgun
     {
+        name: 'Shotgun',
         vel: 400,
         delay: 0.8
     },
-
-    // Rifle
     {
+        name: 'Machine gun',
         vel: 500,
         delay: 0.1
     },
-
-    // Pistol
     {
+        name: 'Pistol',
         vel: 700,
         delay: 0.4
     }
@@ -21,6 +19,7 @@ var weapons = [
 
 function Player() {
     this.weapon = 2;
+    this.availWeapons = [2];
     this.health = 10;
     this.lives = 3;
     this.heartAnim = null;
@@ -86,6 +85,15 @@ function Player() {
                 this.heartAnim = null;
             }
         }
+    };
+
+    this.changeWeapon = function() {
+        var index = player.availWeapons.indexOf(this.weapon);
+        index++;
+        if (index == player.availWeapons.length) {
+            index = 0;
+        }
+        this.weapon = player.availWeapons[index];
     };
 
     this.fire = function(delta) {
