@@ -53,7 +53,7 @@ function loadInitMap()
 	enemies.push(new Enemy(26, 7, ENEMY_BEHAVE_VERT));
 	enemies.push(new Enemy(30, 5, ENEMY_BEHAVE_VERT));
 	enemies.push(new Enemy(41, 26, ENEMY_BEHAVE_HORIZ));
-	collectables.push(new Collectable(47, 35));
+	collectables.push(new Collectable(37, 13));
 
 	for (i = 0; i < init_map.length; ++i) {
 		var c = init_map.charAt(i);
@@ -63,30 +63,10 @@ function loadInitMap()
 		}
 	}
 
-	setupTutorial();
+	// Tutorial
+	overlayWords.push(new Word(1200, 310, 'Collect electronics'));
+	overlayWords.push(new Word(1105, 365, 'Repair teleporters'));
+	overlayWords.push(new Word(1160, 494, 'Find a way home'));
 
 	postMapLoad();
-}
-
-
-function setupTutorial() {
-	var zone = window.setInterval(function() {
-		if (player.x >= 1000 && player.y >= 300) {
-			window.clearInterval(zone);
-			setupTutorialTwo();
-		}
-	}, 500);
-}
-
-
-function setupTutorialTwo() {
-	overlayWords.push(new Word(player.x - 40, player.y - 30, 'Collect electronics', wordsUpdate.lift));
-
-	window.setTimeout(function() {
-		overlayWords.push(new Word(player.x - 40, player.y - 30, 'Repair teleporter', wordsUpdate.lift));
-	}, 1000);
-
-	window.setTimeout(function() {
-		overlayWords.push(new Word(player.x - 40, player.y - 30, 'Find a way home', wordsUpdate.lift));
-	}, 2000);
 }
