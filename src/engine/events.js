@@ -19,7 +19,7 @@ window.onkeydown = function(e) {
 	switch (e.key) {
 		case 'w': keys.y = -1; break;
 		case 's': keys.y = 1; break;
-		case 'g': player.changeWeapon(); break;
+		case 'c': player.changeWeapon(); break;
 	}
 };
 
