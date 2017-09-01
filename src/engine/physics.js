@@ -90,17 +90,6 @@ function movePlayer_TopView(force, delta)
 	force.x += Math_cos(player.rot) * accel.y * delta;
 	force.y += Math_sin(player.rot) * accel.y * delta;
 
-	// Strafe
-	if (keys.x != 0) {
-		accel.x += (keys.x * universe.unitAccel * delta);
-		if (accel.x > universe.unitMax) accel.x = universe.unitMax;
-		if (accel.x < 0 - universe.unitMax) accel.x = 0 - universe.unitMax;
-	} else {
-		accel.x /= universe.unitDeccel;
-	}
-	force.x += Math_cos(player.rot - Math_PI/2) * accel.x * delta;
-	force.y += Math_sin(player.rot - Math_PI/2) * accel.x * delta;
-
 	player.vel = -accel.y;
 }
 

@@ -1,4 +1,4 @@
-var keys = { x: 0, y: 0, fire: 0 };
+var keys = { y: 0, fire: 0 };
 var mouse = { x: 0, y: 0 };
 
 
@@ -19,8 +19,6 @@ window.onkeydown = function(e) {
 	switch (e.key) {
 		case 'w': keys.y = -1; break;
 		case 's': keys.y = 1; break;
-		case 'a': keys.x = -1; break;
-		case 'd': keys.x = 1; break;
 		case 'g': player.changeWeapon(); break;
 	}
 };
@@ -29,7 +27,5 @@ window.onkeyup = function(e) {
 	switch (e.key) {
 		case 'w':
 		case 's': keys.y = 0; break;
-		case 'a':
-		case 'd': keys.x = 0; break;
 	}
 };

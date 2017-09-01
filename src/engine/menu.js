@@ -50,8 +50,8 @@ function menu()
 		ctx.fillText('LOST WORLDS', (MENU_WIDTH - metrics.width) / 2, 75);
 
 		ctx.font = '16px sans';
-		ctx.fillText('Your player always points towards the mouse. Click to shoot.', 50, 115);
-		ctx.fillText('Movement is relative; W = forwards, S = backwards, A/D = strafe.', 50, 140);
+		ctx.fillText('Your player always moves towards the mouse. Click to shoot.', 50, 115);
+		ctx.fillText('W = forwards   S = backwards', 50, 140);
 
 		ctx.font = '24px sans';
 		for (var i = 0; i < buttons.length; ++i) {
@@ -81,8 +81,6 @@ function menu()
 		ctx.rotate(player.rot - Math_PI/2);
 		ctx.fillText('W', -5, -30);
 		ctx.fillText('S', -5, 32);
-		ctx.fillText('A', -35, 0);
-		ctx.fillText('D', 22, 0);
 		
 		ctx.beginPath();
 		ctx.moveTo(0, -55);
