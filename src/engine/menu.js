@@ -50,8 +50,8 @@ function menu()
 		ctx.fillText('LOST WORLDS', (MENU_WIDTH - metrics.width) / 2, 75);
 
 		ctx.font = '16px sans';
-		ctx.fillText('Your player always moves towards the mouse. Click to shoot.', 50, 115);
-		ctx.fillText('W = forwards   S = backwards', 50, 140);
+		ctx.fillText('W = forwards   S = backwards   LMB = shoot   G = change weapon', 50, 115);
+		ctx.fillText('Your player moves forwards towards the mouse', 50, 140);
 
 		ctx.font = '24px sans';
 		for (var i = 0; i < buttons.length; ++i) {
