@@ -7,6 +7,12 @@ function tick(timestamp) {
 	var delta = timestamp - lastTs;
 	lastTs = timestamp;
 
+	// If the GC causes too much time delay, just throw the excess
+	// time away because the physics engine goes spaz on big deltas
+	if (delta > (2 * 16.66)) {
+		delta = (2 * 16.66);
+	}
+
 	if (blackHoleAnim < 0) {
 		physics(delta / 1000);
 	} else {
