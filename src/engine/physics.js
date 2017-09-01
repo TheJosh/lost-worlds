@@ -12,7 +12,9 @@ function physics(delta) {
 	}
 
 	for (var i = 0; i < overlayWords.length; ++i) {
-		overlayWords[i].update(overlayWords[i], delta);
+		if (overlayWords[i].update) {
+			overlayWords[i].update(overlayWords[i], delta);
+		}
 	}
 	for (var i = 0; i < enemies.length; ++i) {
 		if (enemies[i].alive) enemies[i].update(delta);
