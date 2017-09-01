@@ -138,7 +138,7 @@ function Player() {
             }
         }
 
-        overlayWords.push({ x: player.x, y: player.y - 30, lift: 0, text: 'OUCH' });
+        overlayWords.push(new Word(player.x, player.y - 30, 'OUCH', wordsUpdate.lift));
 
         invincWait = 1;
     };

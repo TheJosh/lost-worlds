@@ -80,13 +80,13 @@ function setupTutorial() {
 
 
 function setupTutorialTwo() {
-	overlayWords.push({ x: player.x - 40, y: player.y - 30, lift: 0, text: 'Collect electronics' });
+	overlayWords.push(new Word(player.x - 40, player.y - 30, 'Collect electronics', wordsUpdate.lift));
 
 	window.setTimeout(function() {
-		overlayWords.push({ x: player.x - 40, y: player.y - 30, lift: 0, text: 'Repair teleporter' });
+		overlayWords.push(new Word(player.x - 40, player.y - 30, 'Repair teleporter', wordsUpdate.lift));
 	}, 1000);
 
 	window.setTimeout(function() {
-		overlayWords.push({ x: player.x - 40, y: player.y - 30, lift: 0, text: 'Find a way home' });
+		overlayWords.push(new Word(player.x - 40, player.y - 30, 'Find a way home', wordsUpdate.lift));
 	}, 2000);
 }

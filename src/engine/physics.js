@@ -12,12 +12,8 @@ function physics(delta) {
 	}
 
 	for (var i = 0; i < overlayWords.length; ++i) {
-		overlayWords[i].lift += 20 * delta;
+		overlayWords[i].update(overlayWords[i], delta);
 	}
-	overlayWords = overlayWords.filter(function(b){
-		return b.lift < 50;
-	});
-
 	for (var i = 0; i < enemies.length; ++i) {
 		if (enemies[i].alive) enemies[i].update(delta);
 	}

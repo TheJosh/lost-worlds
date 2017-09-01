@@ -15,6 +15,6 @@ function Collectable(x, y) {
     this.touchPlayer = function() {
         this.alive = false;
         player.collected++;
-        overlayWords.push({ x: player.x, y: player.y - 30, lift: 0, text: 'YEAH' });
+        overlayWords.push(new Word(player.x, player.y - 30, 'YEAH', wordsUpdate.lift));
     };
 }
