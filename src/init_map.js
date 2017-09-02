@@ -64,9 +64,9 @@ function loadInitMap()
 	}
 
 	// Tutorial
-	overlayWords.push(new Word(1200, 310, 'Collect electronics'));
-	overlayWords.push(new Word(1105, 365, 'Repair teleporters'));
-	overlayWords.push(new Word(1160, 494, 'Find a way home'));
+	overlayWords.push(new WordStatic(1200, 310, 'Collect electronics'));
+	overlayWords.push(new WordStatic(1105, 365, 'Repair teleporters'));
+	overlayWords.push(new WordStatic(1160, 494, 'Find a way home'));
 
 	postMapLoad();
 }
