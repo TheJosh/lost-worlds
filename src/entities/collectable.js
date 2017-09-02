@@ -15,6 +15,6 @@ function Collectable(x, y) {
     this.touchPlayer = function() {
         this.alive = false;
         player.collected++;
-        overlayWords.push(new WordLift(player.x, player.y - 30, 'YEAH'));
+        overlayWords.push(new WordGrowCenter('YEAH'));
     };
 }
