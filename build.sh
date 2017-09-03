@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Deps:
-# apt-get install closure-compiler
+# apt-get install closure-compiler advancecomp pngcrush
 
 
 mkdir -p build
@@ -27,9 +27,7 @@ cp src/*.gif build
 
 rm -f build.zip
 
-echo "Would you like 50 more bytes? Remove this comment!" >archcomment
-zip -z -9 -q -j build.zip build/* <archcomment
-rm archcomment
+advzip -a -4 -i 100 build.zip build/*
 
 SIZE=$( ls -al build.zip | cut -d ' ' -f 5 )
 
