@@ -189,16 +189,12 @@ function drawTiles(ctx, canvas) {
 	ctx.fillStyle = universe.colors[1];
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+	ctx.fillStyle = universe.colors[0];
 	for (var y = 0; y < universe.mapHeight; ++y) {
 		for (var x = 0; x < universe.mapWidth; ++x) {
-			var tile = getTile(x, y);
-			switch (tile) {
-				case  0: ctx.fillStyle = universe.colors[0]; break;   // none
-				case  1: continue;
-				case  2: ctx.fillStyle = universe.colors[2]; break;   // steel
-				case  3: ctx.fillStyle = universe.colors[3]; break;   // lava
+			if (!getTile(x, y)) {
+				ctx.fillRect(x * universe.tileSize, y * universe.tileSize, universe.tileSize, universe.tileSize);
 			}
-			ctx.fillRect(x * universe.tileSize, y * universe.tileSize, universe.tileSize, universe.tileSize);
 		}
 	}
 }

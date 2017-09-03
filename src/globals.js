@@ -42,12 +42,7 @@ var universe = {
 
 	weaponSpawnChance: 2,
 
-	colors: {
-		'0': '#87643E',
-		'1': '#221409',
-		'2': '#D3D7DB',
-		'3': '#630E1B'
-	}
+	colors: ['#87643E', '#221409']
 };
 
 // Closure compiler will replace these vars with names like B and X
