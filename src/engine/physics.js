@@ -109,7 +109,7 @@ function applyGravityPull(force, delta)
 			continue;
 		}
 
-		var strength = 1.0 / (dist * dist) * 2000.0;
+		var strength = 1.0 / (dist * dist) * 1000.0;
 		force.x -= ((player.x - src.x) / 1.0 * strength);
 		force.y -= ((player.y - src.y) / 1.0 * strength);
 	}
