@@ -3,7 +3,7 @@ var ENEMY_BEHAVE_HORIZ = 1;
 var ENEMY_BEHAVE_CHASE = 2;
 
 var bug = new Image();
-bug.src = 'bug.gif';
+bug.src = 'b.gif';
 
 
 function Enemy(x, y, behaviour) {

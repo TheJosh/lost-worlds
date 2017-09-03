@@ -21,7 +21,7 @@ rm build/all.js
 echo "<title>Lost Worlds</title><meta charset=\"UTF-8\"><style>body{margin:0;overflow:hidden}</style><canvas id=c></canvas><script src=a.js></script>" \
 	>build/index.html
 
-pngcrush -q -brute src/player.png build/player.png
+pngcrush -q -brute src/p.png build/p.png
 
 cp src/*.gif build
 

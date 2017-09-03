@@ -1,5 +1,5 @@
 var elec = new Image();
-elec.src = 'elec.gif';
+elec.src = 'e.gif';
 
 
 function Collectable(x, y) {

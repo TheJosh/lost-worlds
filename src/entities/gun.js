@@ -1,5 +1,5 @@
 var guns = new Image();
-guns.src = 'guns.gif';
+guns.src = 'g.gif';
 
 
 function Gun(x, y, type) {

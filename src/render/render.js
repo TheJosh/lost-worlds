@@ -6,7 +6,7 @@ var cachedTiles;
 var cachedCrosshair;
 
 var heart = new Image();
-heart.src = 'heart.gif';
+heart.src = 'h.gif';
 
 
 function resizeRenderCanvas() {

@@ -34,7 +34,7 @@ function Player() {
 
 
     var img = new Image();
-    img.src = 'player.png';
+    img.src = 'p.png';
 
     this.spawn = function(x, y) {
         this.x = x * universe.tileSize;
