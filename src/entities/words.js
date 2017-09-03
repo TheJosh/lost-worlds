@@ -13,9 +13,9 @@ WordLift.prototype.update = function(word, delta) {
 };
 
 WordLift.prototype.render = function(word, ctx) {
-    if (word.alive) {
-        ctx.fillText(word.text, word.x, word.y);
-    }
+    if (!word.alive) return;
+    ctx.fillStyle = '#08621E';
+    ctx.fillText(word.text, word.x, word.y);
 };
 
 
@@ -23,15 +23,18 @@ function WordStatic(x, y, text) {
     this.x = x;
     this.y = y;
     this.text = text;
-    this.alive = true;
 }
 
-WordStatic.prototype.render = WordLift.prototype.render;
+WordStatic.prototype.render = function(word, ctx) {
+    ctx.fillStyle = '#fff';
+    ctx.fillText(word.text, word.x, word.y);
+};
 
 
 
-function WordGrowCenter(text) {
+function WordGrowCenter(text, color) {
     this.text = text;
+    this.color = color;
     this.alive = true;
     this.age = 0;
 }
@@ -49,6 +52,7 @@ WordGrowCenter.prototype.render = function(word, ctx) {
 
     ctx.font = fontSize + 'px monospace';
     ctx.globalAlpha = opacity;
+    ctx.fillStyle = word.color;
 
     var metrics = ctx.measureText(word.text);
     ctx.fillText(word.text, (canvas.width - metrics.width) / 2 - offset.x, (canvas.height - fontSize) / 2 - offset.y);

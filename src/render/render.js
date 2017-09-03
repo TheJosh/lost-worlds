@@ -157,6 +157,7 @@ function drawHUD()
 		ctx.fillText('GAME OVER', (canvas.width - metrics.width) / 2, 75);
 		ctx.font = '12px monospace';
 	} else {
+		ctx.fillStyle = '#fff';
 		for (var i = 0; i < player.lives; ++i) {
 			ctx.drawImage(
 				heart,

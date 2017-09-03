@@ -15,6 +15,6 @@ function Collectable(x, y) {
     this.touchPlayer = function() {
         this.alive = false;
         player.collected++;
-        overlayWords.push(new WordGrowCenter('+1'));
+        overlayWords.push(new WordGrowCenter('+1', '#08621E'));
     };
 }

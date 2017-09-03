@@ -138,7 +138,7 @@ function Player() {
             }
         }
 
-        overlayWords.push(new WordGrowCenter('-1'));
+        overlayWords.push(new WordGrowCenter('-1', '#620A08'));
 
         invincWait = 1;
     };
