@@ -26,7 +26,7 @@ function WordStatic(x, y, text) {
 }
 
 WordStatic.prototype.render = function(word, ctx) {
-    ctx.fillStyle = '#fff';
+    ctx.fillStyle = Color_White;
     ctx.fillText(word.text, word.x, word.y);
 };
 

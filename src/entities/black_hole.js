@@ -12,8 +12,8 @@ function BlackHole(x, y) {
         ctx.translate(this.x, this.y);
 
         var part, pos;
-        ctx.strokeStyle = '#fff';
-        ctx.fillStyle = '#fff';
+        ctx.strokeStyle = Color_White;
+        ctx.fillStyle = Color_White;
         for (i = 0; i < black_hole_particles.length; ++i) {
             part = black_hole_particles[i];
 
@@ -35,7 +35,7 @@ function BlackHole(x, y) {
         }
 
         ctx.globalAlpha = 1.0;
-        ctx.fillStyle = '#000';
+        ctx.fillStyle = Color_Black;
         ctx.beginPath();
         ctx.arc(0, 0, 40, 0, 2 * Math_PI);
         ctx.fill();

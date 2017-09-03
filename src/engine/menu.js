@@ -45,7 +45,7 @@ function menu()
 		ctx.shadowBlur = 0;
 
 		ctx.font = '40px serif';
-		ctx.fillStyle = '#000';
+		ctx.fillStyle = Color_Black;
 		metrics = ctx.measureText('LOST WORLDS');
 		ctx.fillText('LOST WORLDS', (MENU_WIDTH - metrics.width) / 2, 75);
 
@@ -58,7 +58,7 @@ function menu()
 			var btn = buttons[i];
 			ctx.fillStyle = btn.b;
 			ctx.fillRect(btn.x, btn.y, btn.w, btn.h);
-			ctx.fillStyle = '#fff';
+			ctx.fillStyle = Color_White;
 			metrics = ctx.measureText(btn.t);
 			ctx.fillText(btn.t, btn.x + (btn.w - metrics.width) / 2, btn.y + btn.h / 2 + 10);
 		}
@@ -77,7 +77,7 @@ function menu()
 		player.render(ctx);
 
 		ctx.font = '16px monospace';
-		ctx.fillStyle = '#000';
+		ctx.fillStyle = Color_Black;
 		ctx.rotate(player.rot - Math_PI/2);
 		ctx.fillText('W', -5, -30);
 		ctx.fillText('S', -5, 32);

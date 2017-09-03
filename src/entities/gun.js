@@ -21,7 +21,7 @@ Gun.prototype.render = function(ctx) {
 Gun.prototype.touchPlayer = function() {
     this.alive = false;
 
-    overlayWords.push(new WordGrowCenter(weapons[this.type].name.toUpperCase(), '#fff'));
+    overlayWords.push(new WordGrowCenter(weapons[this.type].name.toUpperCase(), Color_White));
 
     if (player.availWeapons.indexOf(this.type) === -1) {
         player.availWeapons.push(this.type);

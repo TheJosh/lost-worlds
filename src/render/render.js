@@ -91,7 +91,7 @@ function render() {
 
 	if (blackOverlay > 0.01) {
 		ctx.setTransform(1, 0, 0, 1, 0, 0);
-		ctx.fillStyle = '#000';
+		ctx.fillStyle = Color_Black;
 		ctx.globalAlpha = blackOverlay;
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 	}
@@ -134,7 +134,7 @@ function drawEntities()
 		if (collectables[i].alive) collectables[i].render(ctx);
 	}
 
-	ctx.fillStyle = '#000';
+	ctx.fillStyle = Color_Black;
 	for (i = 0; i < bullets.length; ++i) {
 		bullets[i].render(ctx);
 	}
@@ -144,7 +144,7 @@ function drawEntities()
 function drawHUD()
 {
 	ctx.globalAlpha = 1;
-	ctx.fillStyle = '#fff';
+	ctx.fillStyle = Color_White;
 	for (i = 0; i < overlayWords.length; ++i) {
 		overlayWords[i].render(overlayWords[i], ctx);
 	}
@@ -154,13 +154,13 @@ function drawHUD()
 
 	if (player.lives == 0) {
 		ctx.font = '40px serif';
-		ctx.fillStyle = '#000';
+		ctx.fillStyle = Color_Black;
 		var metrics = ctx.measureText('GAME OVER');
 		ctx.fillText('GAME OVER', (canvas.width - metrics.width) / 2, 75);
 		ctx.font = '12px monospace';
 	}
 
-	ctx.fillStyle = '#fff';
+	ctx.fillStyle = Color_White;
 	for (i = 0; i < player.lives; ++i) {
 		ctx.drawImage(
 			heart,
