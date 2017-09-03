@@ -15,13 +15,14 @@ cat \
 	src/main.js \
 	> build/all.js
 
-closure-compiler --compilation_level ADVANCED_OPTIMIZATIONS build/all.js >build/a.js
+closure-compiler --compilation_level ADVANCED_OPTIMIZATIONS --jscomp_off globalThis build/all.js >build/a.js
 rm build/all.js
 
 echo "<title>Lost Worlds</title><meta charset=\"UTF-8\"><style>body{margin:0;overflow:hidden}</style><canvas id=c></canvas><script src=a.js></script>" \
 	>build/index.html
 
 pngcrush -q -brute src/p.png build/p.png
+advpng -z -i 100 -4 build/*.png
 
 cp src/*.gif build
 
