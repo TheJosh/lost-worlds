@@ -125,6 +125,7 @@ Enemy.prototype.takeDamage = function(bullet) {
     if (this.health < 0 && this.alive) {
         this.alive = false;
         player.kills += 1;
+        overlayWords.push(new WordLift(this.x, this.y, '+1'));
     }
 
     this.x += bullet.dir.x * bullet.strength / 300;

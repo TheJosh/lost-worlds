@@ -7,9 +7,9 @@ function WordLift(x, y, text) {
 }
 
 WordLift.prototype.update = function(word, delta) {
-    word.y -= 20 * delta;
+    word.y -= 100 * delta;
     word.age += delta;
-    if (word.age > 5) word.alive = false;
+    if (word.age > 1) word.alive = false;
 };
 
 WordLift.prototype.render = function(word, ctx) {
