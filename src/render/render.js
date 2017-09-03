@@ -114,6 +114,8 @@ function drawBG()
 
 function drawEntities()
 {
+	var i;
+
 	if (player !== null) {
 		player.render(ctx);
 	}
