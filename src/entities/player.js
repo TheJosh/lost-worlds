@@ -138,7 +138,7 @@ function Player() {
             }
         }
 
-        overlayWords.push(new WordLift(player.x, player.y - 30, 'OUCH'));
+        overlayWords.push(new WordGrowCenter('-1'));
 
         invincWait = 1;
     };
