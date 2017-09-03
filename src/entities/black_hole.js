@@ -14,7 +14,7 @@ function BlackHole(x, y) {
         var part, pos;
         ctx.strokeStyle = '#fff';
         ctx.fillStyle = '#fff';
-        for (var i = 0; i < black_hole_particles.length; ++i) {
+        for (i = 0; i < black_hole_particles.length; ++i) {
             part = black_hole_particles[i];
 
             pos = getRotVel(part.rot, part.dist + 37);
@@ -47,7 +47,7 @@ function BlackHole(x, y) {
 
 
 BlackHole.setupParticles = function() {
-    for (var i = 0; i < 250; ++i) {
+    for (i = 0; i < 250; ++i) {
         black_hole_particles.push({
             rot: getRandom(0, Math_PI * 2),
             dist: getRandom(0, 98)
@@ -57,7 +57,7 @@ BlackHole.setupParticles = function() {
 
 
 BlackHole.updateParticles = function(delta) {
-    for (var i = 0; i < black_hole_particles.length; ++i) {
+    for (i = 0; i < black_hole_particles.length; ++i) {
         var p = black_hole_particles[i];
 
         p.rot += (1.0 / p.dist * 70) * delta;    // spin

@@ -118,22 +118,22 @@ function drawEntities()
 		player.render(ctx);
 	}
 
-	for (var i = 0; i < gravSource.length; ++i) {
+	for (i = 0; i < gravSource.length; ++i) {
 		if (pointInBounds(gravSource[i], renderBounds)) {
 			gravSource[i].render(ctx);
 		}
 	}
 
-	for (var i = 0; i < enemies.length; ++i) {
+	for (i = 0; i < enemies.length; ++i) {
 		if (enemies[i].alive) enemies[i].render(ctx);
 	}
 
-	for (var i = 0; i < collectables.length; ++i) {
+	for (i = 0; i < collectables.length; ++i) {
 		if (collectables[i].alive) collectables[i].render(ctx);
 	}
 
 	ctx.fillStyle = '#000';
-	for (var i = 0; i < bullets.length; ++i) {
+	for (i = 0; i < bullets.length; ++i) {
 		bullets[i].render(ctx);
 	}
 }
@@ -143,7 +143,7 @@ function drawHUD()
 {
 	ctx.globalAlpha = 1;
 	ctx.fillStyle = '#fff';
-	for (var i = 0; i < overlayWords.length; ++i) {
+	for (i = 0; i < overlayWords.length; ++i) {
 		overlayWords[i].render(overlayWords[i], ctx);
 	}
 
@@ -158,7 +158,7 @@ function drawHUD()
 		ctx.font = '12px monospace';
 	} else {
 		ctx.fillStyle = '#fff';
-		for (var i = 0; i < player.lives; ++i) {
+		for (i = 0; i < player.lives; ++i) {
 			ctx.drawImage(
 				heart,
 				0, 0, 18, 14,

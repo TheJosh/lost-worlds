@@ -54,7 +54,7 @@ function menu()
 		ctx.fillText('Your player moves forwards towards the mouse', 50, 140);
 
 		ctx.font = '24px sans';
-		for (var i = 0; i < buttons.length; ++i) {
+		for (i = 0; i < buttons.length; ++i) {
 			var btn = buttons[i];
 			ctx.fillStyle = btn.b;
 			ctx.fillRect(btn.x, btn.y, btn.w, btn.h);
@@ -98,7 +98,7 @@ function menu()
 		var clickX = e.clientX - (canvas.width - MENU_WIDTH) / 2;
 		var clickY = e.clientY - (canvas.height - MENU_HEIGHT) / 2;
 
-		for (var i = 0; i < buttons.length; ++i) {
+		for (i = 0; i < buttons.length; ++i) {
 			var btn = buttons[i];
 			if (clickX >= btn.x && clickY >= btn.y && clickX <= (btn.x + btn.w) && clickY <= (btn.y + btn.h)) {
 				btn.f(btn);
