@@ -18,13 +18,14 @@ var weapons = [
 
 
 function Player() {
-    this.weapon = 2;
     this.availWeapons = [2];
-    this.health = 10;
     this.lives = 3;
     this.heartAnim = null;
     this.collected = 0;
     this.kills = 0;
+
+    var weapon = 2;
+    var health = 10;
 
     var fireWait = 0;
     var invincWait = 0;
@@ -49,7 +50,7 @@ function Player() {
 
         ctx.drawImage(
             img,
-            this.weapon * 52, 0, 52, 31,
+            weapon * 52, 0, 52, 31,
             -HALF_PLAYER_SIZE - 22, -HALF_PLAYER_SIZE, 52, 31
         );
 
@@ -78,22 +79,22 @@ function Player() {
             }
         }
 
-        if (this.heartAnim) {
-            this.heartAnim.y -= 10 * delta;
-            this.heartAnim.alpha -= 0.2 * delta;
-            if (this.heartAnim.alpha < 0.1) {
-                this.heartAnim = null;
+        if (player.heartAnim) {
+            player.heartAnim.y -= 10 * delta;
+            player.heartAnim.alpha -= 0.2 * delta;
+            if (player.heartAnim.alpha < 0.1) {
+                player.heartAnim = null;
             }
         }
     };
 
     this.changeWeapon = function() {
-        var index = player.availWeapons.indexOf(this.weapon);
+        var index = player.availWeapons.indexOf(weapon);
         index++;
         if (index == player.availWeapons.length) {
             index = 0;
         }
-        this.weapon = player.availWeapons[index];
+        weapon = player.availWeapons[index];
     };
 
     this.fire = function(delta) {
@@ -105,34 +106,34 @@ function Player() {
         var x = this.x - (Math_cos(this.rot) * aheadPx) - (Math_cos(this.rot - Math_PI / 2) * sidePx);
         var y = this.y - (Math_sin(this.rot) * aheadPx) - (Math_sin(this.rot - Math_PI / 2) * sidePx);
 
-        if (this.weapon == 0) {
+        if (weapon == 0) {
             // Shotgun gets 4x extra bullets
             for (i = -2; i <= 2; ++i) {
                 bullets.push(
-                    new Bullet(x, y, this.rot + Math_PI + (i * 0.1), weapons[this.weapon].vel + player.vel)
+                    new Bullet(x, y, this.rot + Math_PI + (i * 0.1), weapons[weapon].vel + player.vel)
                 );
             }
         } else {
             bullets.push(
-                new Bullet(x, y, this.rot + Math_PI, weapons[this.weapon].vel + player.vel)
+                new Bullet(x, y, this.rot + Math_PI, weapons[weapon].vel + player.vel)
             );
         }
 
-        fireWait = weapons[this.weapon].delay;
+        fireWait = weapons[weapon].delay;
     };
 
 
     this.takeDamage = function(enemy) {
         if (invincWait > 0) return;
 
-        this.health -= enemy.damage;
-        if (this.health <= 0) {
-            this.lives--;
-            this.health = 10;
+        health -= enemy.damage;
+        if (health <= 0) {
+            player.lives--;
+            health = 10;
 
-            this.heartAnim = { x: this.x, y: this.y, alpha: 1.0 };
+            player.heartAnim = { x: player.x, y: player.y, alpha: 1.0 };
 
-            if (this.lives == 0) {
+            if (player.lives == 0) {
                 cleanupExistingMap();
                 heavenUniverse();
             }
