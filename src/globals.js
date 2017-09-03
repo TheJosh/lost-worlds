@@ -35,6 +35,9 @@ var universe = {
 	mapHeight: 64,
 
 	numEnemies: 10,
+	enemyChaseDist: 250,
+	enemySpeed: 100,
+
 	weaponSpawnChance: 2,
 
 	colors: {

@@ -52,11 +52,11 @@ Enemy.prototype.update = function(delta) {
 
 enemy_behave_setup = [
     function(e) {
-        e.dirY = 100;
+        e.dirY = universe.enemySpeed;
         e.rot = Math_PI;
     },
     function(e) {
-        e.dirX = 100;
+        e.dirX = universe.enemySpeed;
         e.rot = Math_PI / 2;
     }
 ];
@@ -96,10 +96,10 @@ enemy_behave_update = [
 
         e.rot = Math_atan2(dirY, dirX) + Math_PI/2;
 
-        dirX = (dirX == 0 ? 0 : (dirX > 0 ? 100 : -100));
+        dirX = (dirX == 0 ? 0 : (dirX > 0 ? universe.enemySpeed : -universe.enemySpeed));
         e.x += dirX * delta;
 
-        dirY = (dirY == 0 ? 0 : (dirY > 0 ? 100 : -100));
+        dirY = (dirY == 0 ? 0 : (dirY > 0 ? universe.enemySpeed : -universe.enemySpeed));
         e.y += dirY * delta;
 
         checkCollide(e, 10);
@@ -109,12 +109,12 @@ enemy_behave_update = [
 
 function clasePlayerIfClose(enemy)
 {
-    var theshSq = 250 * 250;
+    var theshSq = universe.enemyChaseDist * universe.enemyChaseDist;
 
     var distSq = Math_pow(player.x - enemy.x, 2) + Math_pow(player.y - enemy.y, 2);
     if (distSq < theshSq) {
         enemy.behaviour = ENEMY_BEHAVE_CHASE;
-        enemy.pathAge = 99999;
+        enemy.pathAge = 2;
     }
 }
 

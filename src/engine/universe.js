@@ -66,7 +66,13 @@ function newUniverse() {
     universe.colors[3] = getRandomColor(50, 200);
 
     // Increase difficulty
-    universe.numEnemies += 2;
+    if (universe.numEnemies < 30) {
+        universe.numEnemies += 2;
+    }
+    if (universe.enemySpeed < 150) {
+        universe.enemySpeed += 5;
+        universe.enemyChaseDist += 5;
+    }
     universe.weaponSpawnChance += 5;
 
     cleanupExistingMap();
