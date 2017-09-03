@@ -77,7 +77,12 @@ function generateNewMap() {
 		generateLine(pois[i].x, pois[i].y, pois[i+1].x, pois[i+1].y, 0);
 	}
 
-	// Find 'orphans' POIs - unaccessable by the player
+	// Ensure all black holes are passable
+	for (i = 0; i < gravSource.length; ++i) {
+		generateCircle(gravSource[i].x, gravSource[i].y, 15, 0);
+	}
+
+	// Find 'orphan' POIs - unaccessable by the player
 	var orphans = [];
 	var coord = { x: px, y: py };
 	for (i = 1; i < pois.length; ++i) {
