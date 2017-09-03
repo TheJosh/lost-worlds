@@ -116,9 +116,9 @@ function Player() {
                 cleanupExistingMap();
                 heavenUniverse();
             }
-        }
 
-        overlayWords.push(new WordGrowCenter('-1', '#620A08'));
+            overlayWords.push(new WordGrowCenter('-1', '#620A08'));
+        }
 
         invincWait = 1;
     };
