@@ -167,14 +167,6 @@ function drawHUD()
 				20 + (22 * i), 20, 18, 14
 			);
 		}
-
-		if (player.heartAnim && ~~(player.heartAnim.y) % 2 == 0) {
-			ctx.drawImage(
-				heart,
-				18, 0, 18, 14,
-				20 + (22 * i), 20, 18, 14
-			);
-		}
 	}
 
 	ctx.drawImage(elec, 20, 50);

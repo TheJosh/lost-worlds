@@ -20,7 +20,6 @@ var weapons = [
 function Player() {
     this.availWeapons = [2];
     this.lives = 3;
-    this.heartAnim = null;
     this.collected = 0;
     this.kills = 0;
 
@@ -56,16 +55,6 @@ function Player() {
 
         ctx.rotate(-player.rot - walkWobbleRot);
         ctx.translate(-player.x, -player.y);
-
-        if (player.heartAnim) {
-            ctx.globalAlpha = player.heartAnim.alpha;
-            ctx.drawImage(
-                heart,
-                18, 0, 18, 14,
-                player.heartAnim.x, player.heartAnim.y, 18, 14
-            );
-            ctx.globalAlpha = 1.0;
-        }
     };
 
     this.update = function(delta) {
@@ -76,14 +65,6 @@ function Player() {
             walkWobbleRot += walkWobbleDir;
             if (Math_abs(walkWobbleRot) > 0.05) {
                 walkWobbleDir = -walkWobbleDir;
-            }
-        }
-
-        if (player.heartAnim) {
-            player.heartAnim.y -= 10 * delta;
-            player.heartAnim.alpha -= 0.2 * delta;
-            if (player.heartAnim.alpha < 0.1) {
-                player.heartAnim = null;
             }
         }
     };
@@ -130,8 +111,6 @@ function Player() {
         if (health <= 0) {
             player.lives--;
             health = 10;
-
-            player.heartAnim = { x: player.x, y: player.y, alpha: 1.0 };
 
             if (player.lives == 0) {
                 cleanupExistingMap();
