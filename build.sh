@@ -26,6 +26,8 @@ advpng -z -i 100 -4 build/*.png
 
 cp src/*.gif build
 
+cp src/*.mp3 build
+
 rm -f build.zip
 
 advzip -a -4 -i 100 build.zip build/*
