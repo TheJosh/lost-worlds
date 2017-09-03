@@ -23,13 +23,13 @@ function enteredBlackHole(blackHole) {
 function blackHoleAnimation(delta) {
     blackHoleAnim += delta;
 
-    if (blackHoleAnim < 5) {
+    if (blackHoleAnim < 3) {
         BlackHole.updateParticles(delta);
 
         universeScale += 12 * delta;
         universeRot += universeRotDir * delta;
         universeRotDir += 10;
-        blackOverlay += 0.2 * delta;
+        blackOverlay += 0.5 * delta;
 
     } else {
         blackOverlay -= 0.5 * delta;
