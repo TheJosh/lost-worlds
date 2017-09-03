@@ -158,15 +158,15 @@ function drawHUD()
 		var metrics = ctx.measureText('GAME OVER');
 		ctx.fillText('GAME OVER', (canvas.width - metrics.width) / 2, 75);
 		ctx.font = '12px monospace';
-	} else {
-		ctx.fillStyle = '#fff';
-		for (i = 0; i < player.lives; ++i) {
-			ctx.drawImage(
-				heart,
-				0, 0, 18, 14,
-				20 + (22 * i), 20, 18, 14
-			);
-		}
+	}
+
+	ctx.fillStyle = '#fff';
+	for (i = 0; i < player.lives; ++i) {
+		ctx.drawImage(
+			heart,
+			0, 0, 18, 14,
+			20 + (22 * i), 20, 18, 14
+		);
 	}
 
 	ctx.drawImage(elec, 20, 50);
