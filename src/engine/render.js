@@ -159,7 +159,6 @@ function drawHUD()
 		ctx.fillText('GAME OVER', (canvas.width - metrics.width) / 2, 75);
 	}
 
-	ctx.fillStyle = Color_White;
 	for (i = 0; i < player.lives; ++i) {
 		ctx.drawImage(
 			heart,
@@ -167,6 +166,9 @@ function drawHUD()
 			20 + (22 * i), 20, 18, 14
 		);
 	}
+
+	ctx.fillStyle = Color_White;
+	ctx.font = '12px monospace';
 
 	ctx.drawImage(elec, 20, 50);
 	ctx.fillText('\u00D7 ' + player.collected, 50, 61);
