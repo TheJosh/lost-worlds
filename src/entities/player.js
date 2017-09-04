@@ -94,10 +94,14 @@ function Player() {
                     new Bullet(x, y, this.rot + Math_PI + (i * 0.1), weapons[weapon].vel + player.vel)
                 );
             }
+            (new Audio('a.mp3')).play();
         } else {
             bullets.push(
                 new Bullet(x, y, this.rot + Math_PI, weapons[weapon].vel + player.vel)
             );
+            var p = new Audio('c.mp3');
+            p.playbackRate = (weapon == 2 ? 0.8 : 2.0);
+            p.play();
         }
 
         fireWait = weapons[weapon].delay;
