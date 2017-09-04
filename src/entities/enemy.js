@@ -125,6 +125,7 @@ Enemy.prototype.takeDamage = function(bullet) {
     if (this.health < 0 && this.alive) {
         this.alive = false;
         player.kills += 1;
+        (new Audio('7.mp3')).play();
         overlayWords.push(new WordLift(this.x, this.y, '+1'));
     }
 
