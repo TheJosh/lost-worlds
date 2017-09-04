@@ -53,6 +53,7 @@ function generateNewMap() {
 
 		} else if (gravSource.length < 2 && r >= 15*15) {
 			// Create gravity source - only if far enough from the player
+			generateCircle(x, y, 15, 0);
 			gravSource.push(new BlackHole(x, y));
 
 		} else if (collectables.length < 1 && r >= 20*20) {
@@ -72,11 +73,6 @@ function generateNewMap() {
 	// Draw lines between pairs of POIs
 	for (i = 0; i < pois.length; i += 2) {
 		generateLine(pois[i].x, pois[i].y, pois[i+1].x, pois[i+1].y, 0);
-	}
-
-	// Ensure all black holes are passable
-	for (i = 0; i < gravSource.length; ++i) {
-		generateCircle(gravSource[i].x, gravSource[i].y, 15, 0);
 	}
 
 	// Find 'orphan' POIs - unaccessable by the player
