@@ -5,6 +5,7 @@
 
 
 mkdir -p build
+rm build/*
 
 cat \
 	src/globals.js \
@@ -33,9 +34,8 @@ rm -f build.zip
 advzip -a -4 -i 100 build.zip build/*
 
 SIZE=$( ls -al build.zip | cut -d ' ' -f 5 )
+REMAIN=$( expr 13312 - $SIZE )
 
-echo "Total size: $SIZE bytes"
+echo "Used:   $SIZE bytes"
+echo "Spare:  $REMAIN bytes"
 
-if [ $SIZE -gt 13312 ]; then
-	echo "TOO BIG!"
-fi
