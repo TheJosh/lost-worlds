@@ -7,14 +7,14 @@ function Gun(x, y, type) {
     this.y = y * universe.tileSize;
     this.type = type;
     this.alive = true;
-    this.hitDistSq = 25 * 25;
+    this.hitDistSq = 40 * 40;
 }
 
 Gun.prototype.render = function(ctx) {
     ctx.drawImage(
         guns,
         this.type * 18, 0, 18, 8,
-        this.x, this.y, 18*2, 8*2
+        this.x-18, this.y-18, 18*2, 8*2
     );
 };
 
