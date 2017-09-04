@@ -89,7 +89,7 @@ function Player() {
 
         if (weapon == 0) {
             // Shotgun gets 4x extra bullets
-            for (i = -2; i <= 2; ++i) {
+            for (var i = -2; i <= 2; ++i) {
                 bullets.push(
                     new Bullet(x, y, this.rot + Math_PI + (i * 0.1), weapons[weapon].vel + player.vel)
                 );

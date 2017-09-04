@@ -11,15 +11,15 @@ function physics(delta) {
 		blackOverlay -= 0.5 * delta;
 	}
 
-	for (i = 0; i < overlayWords.length; ++i) {
+	for (var i = 0; i < overlayWords.length; ++i) {
 		if (overlayWords[i].update) {
 			overlayWords[i].update(overlayWords[i], delta);
 		}
 	}
-	for (i = 0; i < enemies.length; ++i) {
+	for (var i = 0; i < enemies.length; ++i) {
 		if (enemies[i].alive) enemies[i].update(delta);
 	}
-	for (i = 0; i < bullets.length; ++i) {
+	for (var i = 0; i < bullets.length; ++i) {
 		bullets[i].update(delta);
 	}
 
@@ -41,7 +41,7 @@ function physics(delta) {
 
 		checkCollide(player, HALF_PLAYER_SIZE);
 
-		for (i = 0; i < enemies.length; ++i) {
+		for (var i = 0; i < enemies.length; ++i) {
 			if (!enemies[i].alive) continue;
 			var distSq = Math_pow(player.x - enemies[i].x, 2) + Math_pow(player.y - enemies[i].y, 2);
 			if (distSq < enemies[i].hitDistSq) {
@@ -49,7 +49,7 @@ function physics(delta) {
 			}
 		}
 
-		for (i = 0; i < collectables.length; ++i) {
+		for (var i = 0; i < collectables.length; ++i) {
 			if (!collectables[i].alive) continue;
 			var distSq = Math_pow(player.x - collectables[i].x, 2) + Math_pow(player.y - collectables[i].y, 2);
 			if (distSq < collectables[i].hitDistSq) {
@@ -96,7 +96,7 @@ function applyGravityPull(force, delta)
 {
 	var maxDist = universe.tileSize * 14;
 
-	for (i = 0; i < gravSource.length; ++i) {
+	for (var i = 0; i < gravSource.length; ++i) {
 		var src = gravSource[i];
 		var dist = Math_sqrt(Math_pow(player.x - src.x, 2) + Math_pow(player.y - src.y, 2));
 

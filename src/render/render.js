@@ -120,22 +120,22 @@ function drawEntities()
 		player.render(ctx);
 	}
 
-	for (i = 0; i < gravSource.length; ++i) {
+	for (var i = 0; i < gravSource.length; ++i) {
 		if (pointInBounds(gravSource[i], renderBounds)) {
 			gravSource[i].render(ctx);
 		}
 	}
 
-	for (i = 0; i < enemies.length; ++i) {
+	for (var i = 0; i < enemies.length; ++i) {
 		if (enemies[i].alive) enemies[i].render(ctx);
 	}
 
-	for (i = 0; i < collectables.length; ++i) {
+	for (var i = 0; i < collectables.length; ++i) {
 		if (collectables[i].alive) collectables[i].render(ctx);
 	}
 
 	ctx.fillStyle = Color_Black;
-	for (i = 0; i < bullets.length; ++i) {
+	for (var i = 0; i < bullets.length; ++i) {
 		bullets[i].render(ctx);
 	}
 }
@@ -145,7 +145,7 @@ function drawHUD()
 {
 	ctx.globalAlpha = 1;
 	ctx.fillStyle = Color_White;
-	for (i = 0; i < overlayWords.length; ++i) {
+	for (var i = 0; i < overlayWords.length; ++i) {
 		overlayWords[i].render(overlayWords[i], ctx);
 	}
 
@@ -157,7 +157,6 @@ function drawHUD()
 		ctx.fillStyle = Color_Black;
 		var metrics = ctx.measureText('GAME OVER');
 		ctx.fillText('GAME OVER', (canvas.width - metrics.width) / 2, 75);
-		ctx.font = '12px monospace';
 	}
 
 	ctx.fillStyle = Color_White;

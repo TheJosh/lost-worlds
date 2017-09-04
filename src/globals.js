@@ -20,8 +20,6 @@ var collectables = [];
 var bullets = [];
 var overlayWords = [];
 
-var i;
-
 
 var universe = {
 	tileSize: 32,

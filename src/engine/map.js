@@ -33,7 +33,7 @@ function generateNewMap() {
 	mapTiles.fill(1);
 
 	var pois = [];
-	var x, y, r, px, py;
+	var i, x, y, r, px, py;
 
 	// Generate an even number of POIs (point of interest)
 	for (i = 0; i < 8; ++i) {
@@ -139,7 +139,7 @@ function generateHeavenMap() {
 	generateCircle(25, 25, 4, 0);
 	generateCircle(35, 25, 8, 0);
 
-	for (i = 0; i < 4; ++i) {
+	for (var i = 0; i < 4; ++i) {
 		generateCircle(getRandomInt(5, 45), getRandomInt(5, 45), 3, 0);
 	}
 	
@@ -169,12 +169,11 @@ function generateCircle(originX, originY, radius, val)
 
 function generateRect3x3(x, y, val)
 {
-	--x; --y;
-	var j = 9;
-	while (j-- != 0) {
+	--x; --y; i = 9;
+	while (i-- != 0) {
 		setTile(x, y, val);
 		x++;
-		if (j % 3 == 0) { x -= 3; ++y; }
+		if (i % 3 == 0) { x -= 3; ++y; }
 	}
 }
 

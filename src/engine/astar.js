@@ -52,7 +52,7 @@ function astarSearch(start, end)
     while(openList.length > 0) {
         // Grab the lowest f(x) to process next
         var lowInd = 0;
-        for (i = 0; i < openList.length; i++) {
+        for (var i = 0; i < openList.length; i++) {
             if (openList[i].f < openList[lowInd].f) {
                 lowInd = i;
             }
@@ -75,7 +75,7 @@ function astarSearch(start, end)
         currentNode.closed = true;
 
         var neighbors = astarNeighbors(grid, currentNode);
-        for (i = 0; i < neighbors.length; i++) {
+        for (var i = 0; i < neighbors.length; i++) {
             var neighbor = neighbors[i];
 
             if (neighbor.closed || astarIsWall(neighbor)) {
