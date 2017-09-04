@@ -25,6 +25,7 @@ function tick(timestamp) {
 }
 
 resizeRenderCanvas();
+preloadSounds();
 BlackHole.setupParticles();
 player = new Player();
 menu();
@@ -40,4 +41,12 @@ function postMapLoad() {
 	}
 
 	running = true;
+}
+
+
+function preloadSounds() {
+	var sounds = '47acx';
+	for (i = 0; i < sounds.length; ++i) {
+		new Audio(sounds.charAt(i) + '.mp3');
+	}
 }
