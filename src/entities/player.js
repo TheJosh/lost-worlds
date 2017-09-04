@@ -121,6 +121,7 @@ function Player() {
                 heavenUniverse();
             }
 
+            (new Audio('4.mp3')).play();
             overlayWords.push(new WordGrowCenter('-1', '#620A08'));
         }
 
