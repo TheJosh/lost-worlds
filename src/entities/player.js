@@ -43,6 +43,10 @@ function Player() {
         this.vel = 0;
     };
 
+    this.setWeapon = function(i) {
+        weapon = i;
+    };
+
     this.render = function(ctx) {
         ctx.translate(player.x, player.y);
         ctx.rotate(player.rot + walkWobbleRot);

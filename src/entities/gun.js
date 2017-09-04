@@ -26,4 +26,6 @@ Gun.prototype.touchPlayer = function() {
     if (player.availWeapons.indexOf(this.type) === -1) {
         player.availWeapons.push(this.type);
     }
+
+    player.setWeapon(this.type);
 };
