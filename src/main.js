@@ -26,6 +26,7 @@ function tick(timestamp) {
 
 resizeRenderCanvas();
 preloadSounds();
+astarCreateGrid(100, 100);
 BlackHole.setupParticles();
 player = new Player();
 menu();

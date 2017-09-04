@@ -31,8 +31,8 @@ var universe = {
 	unitMax: 500,     // pixels/second
 	unitDeccel: 1.2,
 
-	mapWidth: 256,
-	mapHeight: 64,
+	mapWidth: 49,
+	mapHeight: 39,
 
 	numEnemies: 10,
 	enemyChaseDist: 250,

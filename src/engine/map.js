@@ -22,11 +22,8 @@ function cleanupExistingMap()
 
 
 function generateNewMap() {
-	if (universe.mapWidth != 100) {
-		universe.mapWidth = 100;
-		universe.mapHeight = 100;
-		astarCreateGrid(universe.mapWidth, universe.mapHeight);
-	}
+	universe.mapWidth = 100;
+	universe.mapHeight = 100;
 
 	mapBuffer = new ArrayBuffer(universe.mapWidth * universe.mapHeight);
 	mapTiles = new Uint8Array(mapBuffer);
