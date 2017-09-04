@@ -10,7 +10,6 @@ rm build/*
 cat \
 	src/globals.js \
 	src/init_map.js \
-	src/render/*.js \
 	src/engine/*.js \
 	src/entities/*.js \
 	src/main.js \
