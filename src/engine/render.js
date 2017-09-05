@@ -48,16 +48,16 @@ function initRender() {
 		ctx.lineTo(15, 30);
 		ctx.stroke();
 	});
-
-	// Major performance boost
-	ctx.imageSmoothingEnabled = false;
-	ctx.msImageSmoothingEnabled = false;
-	ctx.imageSmoothingEnabled = false;
 }
 
 
 function render() {
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+	// Major performance boost + makes levels look correct
+	ctx.imageSmoothingEnabled = false;
+	ctx.msImageSmoothingEnabled = false;
+	ctx.imageSmoothingEnabled = false;
 
 	ctx.globalAlpha = 1.0;
 	ctx.fillStyle = universe.colors[1];
