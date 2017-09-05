@@ -83,13 +83,9 @@ window.ontouchmove = function(e) {
 			mouse.x = (canvas.width / 2) - (x * 2);
 			mouse.y = (canvas.height / 2) - (y * 2);
 
-		} else if (touchId.move === t.identifier) {
-			// Move - virtual joystick
-			var y = canvas.height - t.clientY - 100;
-			if (y > 25) {
+			var distSq = (x * x) + (y * y);
+			if (distSq > (25 * 25)) {
 				keys.y = -1;
-			} else if (y < -25) {
-				keys.y = 1;
 			} else {
 				keys.y = 0;
 			}
