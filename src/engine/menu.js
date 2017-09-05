@@ -50,8 +50,13 @@ function menu()
 		ctx.fillText('LOST WORLDS', (MENU_WIDTH - metrics.width) / 2, 75);
 
 		ctx.font = '16px sans';
-		ctx.fillText('W = forwards   S = backwards   LMB = shoot   C = change weapon', 50, 115);
-		ctx.fillText('Your player moves forwards towards the mouse', 50, 140);
+		if (hasTouchEvents) {
+			ctx.fillText('Move right virtual-joystick to aim + move player', 50, 115);
+			ctx.fillText('Hold left virtual-joystick to fire. Tap small one to change weapon', 50, 140);
+		} else {
+			ctx.fillText('W = forwards   S = backwards   LMB = shoot   C = change weapon', 50, 115);
+			ctx.fillText('Your player moves forwards towards the mouse', 50, 140);
+		}
 
 		ctx.font = '24px sans';
 		for (var i = 0; i < buttons.length; ++i) {
@@ -89,6 +94,12 @@ function menu()
 		ctx.moveTo(5, -75);
 		ctx.lineTo(0, -80);
 		ctx.stroke();
+
+		if (hasTouchEvents) {
+			ctx.setTransform(1, 0, 0, 1, 0, 0);
+			ctx.fillStyle = Color_White;
+			drawVirtualJoysticks();
+		}
 
 		raf = requestAnimationFrame(render);
 	}

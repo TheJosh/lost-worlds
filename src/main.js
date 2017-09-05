@@ -24,12 +24,13 @@ function tick(timestamp) {
 	requestAnimationFrame(tick);
 }
 
+
 resizeRenderCanvas();
 preloadSounds();
 astarCreateGrid(100, 100);
 BlackHole.setupParticles();
 player = new Player();
-loadInitMap();//menu();
+menu();
 
 
 function postMapLoad() {

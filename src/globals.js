@@ -20,6 +20,8 @@ var collectables = [];
 var bullets = [];
 var overlayWords = [];
 
+var hasTouchEvents = ('ontouchstart' in window);
+
 
 var universe = {
 	tileSize: 32,

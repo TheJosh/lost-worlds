@@ -1,7 +1,6 @@
 var keys = { y: 0, fire: 0 };
 var mouse = { x: 0, y: 0 };
 var touchId = { fire: null, aim: null };
-var hasTouchEvents = ('createTouch' in document);
 
 
 if (!hasTouchEvents) {
