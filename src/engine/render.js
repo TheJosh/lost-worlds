@@ -27,7 +27,6 @@ function canvasCache(width, height, func) {
 
 
 function initRender() {
-	ctx.font = '12px monospace';
 	canvas.style.cursor = 'none';
 
 	cachedTiles = canvasCache(universe.mapWidth, universe.mapHeight, drawTiles);
@@ -59,7 +58,10 @@ function render() {
 	ctx.msImageSmoothingEnabled = false;
 	ctx.imageSmoothingEnabled = false;
 
+	// Reset env
+	ctx.font = '12px monospace';
 	ctx.globalAlpha = 1.0;
+
 	ctx.fillStyle = universe.colors[1];
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -197,12 +199,13 @@ function drawHUD()
 		ctx.beginPath();
 		ctx.arc(canvas.width - 100, canvas.height - 100, 50, 0, Math_PI * 2);
 		ctx.fill();
-	}
 
-	ctx.fillText(touchId.fire + '  ' + touchId.aim, 100, 200);
-	ctx.fillText(mouse.x + '  ' + mouse.y, 100, 250);
-	ctx.fillText(keys.y + '   ' + keys.fire, 100, 300);
-	ctx.fillText(player.x + '  ' + player.y, 100, 350);
+		ctx.fillStyle = Color_Black;
+		ctx.fillText('C', 176, canvas.height - 95);
+		ctx.font = '28px monospace';
+		ctx.fillText('F', 90, canvas.height - 90);
+		ctx.fillText('M', canvas.width - 110, canvas.height - 90);
+	}
 }
 
 
