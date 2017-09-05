@@ -73,9 +73,9 @@ window.ontouchmove = function(e) {
 			var y = canvas.height - t.clientY - 100;
 			console.log(y);
 			if (y > 25) {
-				keys.y = 1;
-			} else if (y < -25) {
 				keys.y = -1;
+			} else if (y < -25) {
+				keys.y = 1;
 			} else {
 				keys.y = 0;
 			}
