@@ -30,7 +30,7 @@ function initRender() {
 	ctx.font = '12px monospace';
 	canvas.style.cursor = 'none';
 
-	cachedTiles = canvasCache(universe.mapWidth * universe.tileSize, universe.mapHeight * universe.tileSize, drawTiles);
+	cachedTiles = canvasCache(universe.mapWidth, universe.mapHeight, drawTiles);
 
 	cachedCrosshair = canvasCache(30, 30, function(ctx, canv) {
 		var grad = ctx.createRadialGradient(15, 15, 0, 15, 15, 15);
