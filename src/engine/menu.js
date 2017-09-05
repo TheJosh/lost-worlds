@@ -84,9 +84,12 @@ function menu()
 		ctx.font = '16px monospace';
 		ctx.fillStyle = Color_Black;
 		ctx.rotate(player.rot - Math_PI/2);
-		ctx.fillText('W', -5, -30);
-		ctx.fillText('S', -5, 32);
-		
+
+		if (!hasTouchEvents) {
+			ctx.fillText('W', -5, -30);
+			ctx.fillText('S', -5, 32);
+		}
+
 		ctx.beginPath();
 		ctx.moveTo(0, -55);
 		ctx.lineTo(0, -80);
