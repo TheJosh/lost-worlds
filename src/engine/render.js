@@ -102,6 +102,10 @@ function render() {
 	}
 
 	drawHUD();
+
+	if (hasTouchEvents) {
+		drawVirtualJoysticks();
+	}
 }
 
 
@@ -185,27 +189,27 @@ function drawHUD()
 
 	ctx.drawImage(bug,  0, 0, 18, 22,  20, 80, 18, 22);
 	ctx.fillText('\u00D7 ' + player.kills, 50, 92);
+}
 
 
-	if (hasTouchEvents) {
-		ctx.beginPath();
-		ctx.arc(100, canvas.height - 100, 50, 0, Math_PI * 2);
-		ctx.fill();
+function drawVirtualJoysticks() {
+	ctx.beginPath();
+	ctx.arc(100, canvas.height - 100, 50, 0, Math_PI * 2);
+	ctx.fill();
 
-		ctx.beginPath();
-		ctx.arc(180, canvas.height - 100, 25, 0, Math_PI * 2);
-		ctx.fill();
+	ctx.beginPath();
+	ctx.arc(180, canvas.height - 100, 25, 0, Math_PI * 2);
+	ctx.fill();
 
-		ctx.beginPath();
-		ctx.arc(canvas.width - 100, canvas.height - 100, 50, 0, Math_PI * 2);
-		ctx.fill();
+	ctx.beginPath();
+	ctx.arc(canvas.width - 100, canvas.height - 100, 50, 0, Math_PI * 2);
+	ctx.fill();
 
-		ctx.fillStyle = Color_Black;
-		ctx.fillText('C', 176, canvas.height - 95);
-		ctx.font = '28px monospace';
-		ctx.fillText('F', 90, canvas.height - 90);
-		ctx.fillText('M', canvas.width - 110, canvas.height - 90);
-	}
+	ctx.fillStyle = Color_Black;
+	ctx.fillText('C', 176, canvas.height - 95);
+	ctx.font = '28px monospace';
+	ctx.fillText('F', 90, canvas.height - 90);
+	ctx.fillText('M', canvas.width - 110, canvas.height - 90);
 }
 
 
