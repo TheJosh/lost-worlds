@@ -106,7 +106,7 @@ function drawBG()
 
 	ctx.drawImage(
 		cachedTiles,
-		renderBounds.x1, renderBounds.y1, renderBounds.size, renderBounds.size,
+		renderBounds.x1/universe.tileSize, renderBounds.y1/universe.tileSize, renderBounds.size/universe.tileSize, renderBounds.size/universe.tileSize,
 		renderBounds.x1, renderBounds.y1, renderBounds.size, renderBounds.size
 	);
 }
@@ -197,7 +197,7 @@ function drawTiles(ctx, canvas) {
 	for (var y = 0; y < universe.mapHeight; ++y) {
 		for (var x = 0; x < universe.mapWidth; ++x) {
 			if (!getTile(x, y)) {
-				ctx.fillRect(x * universe.tileSize, y * universe.tileSize, universe.tileSize, universe.tileSize);
+				ctx.fillRect(x, y, 1, 1);
 			}
 		}
 	}
