@@ -29,7 +29,7 @@ preloadSounds();
 astarCreateGrid(100, 100);
 BlackHole.setupParticles();
 player = new Player();
-menu();
+loadInitMap();//menu();
 
 
 function postMapLoad() {

@@ -181,11 +181,12 @@ function drawHUD()
 		ctx.beginPath();
 		ctx.arc(100, canvas.height - 100, 50, 0, Math_PI * 2);
 		ctx.fill();
-		
-		ctx.fillText(touchId.move + '  ' + touchId.aim, 100, 200);
-		ctx.fillText(mouse.x + '  ' + mouse.y, 100, 250);
-		ctx.fillText(keys.y, 100, 300);
 	}
+
+	ctx.fillText(touchId.move + '  ' + touchId.aim, 100, 200);
+	ctx.fillText(mouse.x + '  ' + mouse.y, 100, 250);
+	ctx.fillText(keys.y, 100, 300);
+	ctx.fillText(player.x + '  ' + player.y, 100, 350);
 }
 
 
