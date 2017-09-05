@@ -1,6 +1,6 @@
 var keys = { y: 0, fire: 0 };
 var mouse = { x: 0, y: 0 };
-var touchId = { move: null, aim: null };
+var touchId = { fire: null, aim: null };
 var hasTouchEvents = ('createTouch' in document);
 
 
@@ -37,7 +37,7 @@ window.onkeyup = function(e) {
 function determineTouchType(t) {
 	if (t.clientY > (canvas.height - 150) && t.clientY < (canvas.height - 50)) {
 		if (t.clientX > 50 && t.clientX < 150) {
-			return 'move';
+			return 'fire';
 		} else if (t.clientX > (canvas.width - 150) && t.clientX < (canvas.width - 50)) {
 			return 'aim';
 		}
@@ -49,9 +49,8 @@ window.ontouchstart = function(e) {
 	if (!type) return;
 
 	touchId[type] = e.changedTouches[0].identifier;
-	
-	// Tapping the move joystick fires the weapon
-	if (type == 'move') {
+
+	if (type == 'fire') {
 		keys.fire = 1;
 	}
 };
@@ -63,7 +62,11 @@ window.ontouchend = function(e) {
 		}
 	}
 
-	if (touchId.move === null) {
+	if (touchId.fire === null) {
+		keys.fire = 0;
+	}
+
+	if (touchId.aim === null) {
 		keys.y = 0;
 	}
 };

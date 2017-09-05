@@ -195,9 +195,9 @@ function drawHUD()
 		ctx.fill();
 	}
 
-	ctx.fillText(touchId.move + '  ' + touchId.aim, 100, 200);
+	ctx.fillText(touchId.fire + '  ' + touchId.aim, 100, 200);
 	ctx.fillText(mouse.x + '  ' + mouse.y, 100, 250);
-	ctx.fillText(keys.y, 100, 300);
+	ctx.fillText(keys.y + '   ' + keys.fire, 100, 300);
 	ctx.fillText(player.x + '  ' + player.y, 100, 350);
 }
 
