@@ -4,6 +4,7 @@ var touchId = { fire: null, aim: null };
 var hasTouchEvents = ('createTouch' in document);
 
 
+if (!hasTouchEvents) {
 window.onmousemove = function(e) {
 	mouse.x = e.clientX;
 	mouse.y = e.clientY;
@@ -31,7 +32,7 @@ window.onkeyup = function(e) {
 		case 's': keys.y = 0; break;
 	}
 };
-
+} else {
 
 
 function determineTouchType(t) {
@@ -102,3 +103,4 @@ window.ontouchmove = function(e) {
 		}
 	}
 };
+}
