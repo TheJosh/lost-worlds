@@ -35,16 +35,25 @@ window.onkeyup = function(e) {
 
 
 function determineTouchType(t) {
-	if (t.clientX > 50 && t.clientX < 150 && t.clientY > (canvas.height - 150) && t.clientY < (canvas.height - 50)) {
-		return 'move';
-	} else {
-		return 'aim';
+	if (t.clientY > (canvas.height - 150) && t.clientY < (canvas.height - 50)) {
+		if (t.clientX > 50 && t.clientX < 150) {
+			return 'move';
+		} else if (t.clientX > (canvas.width - 150) && t.clientX < (canvas.width - 50)) {
+			return 'aim';
+		}
 	}
 }
 
 window.ontouchstart = function(e) {
 	var type = determineTouchType(e.changedTouches[0]);
+	if (!type) return;
+
 	touchId[type] = e.changedTouches[0].identifier;
+	
+	// Tapping the move joystick fires the weapon
+	if (type == 'move') {
+		keys.fire = 1;
+	}
 };
 
 window.ontouchend = function(e) {
@@ -53,7 +62,10 @@ window.ontouchend = function(e) {
 			touchId[type] = null;
 		}
 	}
-	if (touchId.move === null) keys.y = 0;
+
+	if (touchId.move === null) {
+		keys.y = 0;
+	}
 };
 
 
@@ -64,14 +76,16 @@ window.ontouchmove = function(e) {
 		var t = e.changedTouches.item(i);
 
 		if (touchId.aim === t.identifier) {
-			// Aim
-			mouse.x = t.clientX;
-			mouse.y = t.clientY;
-			
+			// Aim - virtual joystick
+			var x = canvas.width - t.clientX - 100;
+			var y = canvas.height - t.clientY - 100;
+
+			mouse.x = (canvas.width / 2) - (x * 2);
+			mouse.y = (canvas.height / 2) - (y * 2);
+
 		} else if (touchId.move === t.identifier) {
 			// Move - virtual joystick
 			var y = canvas.height - t.clientY - 100;
-			console.log(y);
 			if (y > 25) {
 				keys.y = -1;
 			} else if (y < -25) {

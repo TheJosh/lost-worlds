@@ -109,6 +109,10 @@ function Player() {
         }
 
         fireWait = weapons[weapon].delay;
+
+        if (hasTouchEvents) {
+            keys.fire = 0;
+        }
     };
 
 

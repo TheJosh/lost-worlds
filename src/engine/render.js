@@ -189,6 +189,10 @@ function drawHUD()
 		ctx.beginPath();
 		ctx.arc(100, canvas.height - 100, 50, 0, Math_PI * 2);
 		ctx.fill();
+
+		ctx.beginPath();
+		ctx.arc(canvas.width - 100, canvas.height - 100, 50, 0, Math_PI * 2);
+		ctx.fill();
 	}
 
 	ctx.fillText(touchId.move + '  ' + touchId.aim, 100, 200);
