@@ -84,7 +84,10 @@ function render() {
 	renderBounds.y1 = Math_round(player.y - (maxExtent / 2));
 	renderBounds.x2 = Math_round(player.x + (maxExtent / 2));
 	renderBounds.y2 = Math_round(player.y + (maxExtent / 2));
-	renderBounds.size = maxExtent;
+	renderBounds.x1 = Math.max(renderBounds.x1, 0);
+	renderBounds.y1 = Math.max(renderBounds.y1, 0);
+	renderBounds.x2 = Math.min(renderBounds.x2, universe.mapWidth * universe.tileSize);
+	renderBounds.y2 = Math.min(renderBounds.y2, universe.mapHeight * universe.tileSize);
 
 	drawBG();
 	drawEntities();
@@ -104,10 +107,15 @@ function drawBG()
 {
 	if (!cachedTiles) return;
 
+	var width = renderBounds.x2 - renderBounds.x1;
+	var height = renderBounds.y2 - renderBounds.y1;
+
 	ctx.drawImage(
 		cachedTiles,
-		renderBounds.x1/universe.tileSize, renderBounds.y1/universe.tileSize, renderBounds.size/universe.tileSize, renderBounds.size/universe.tileSize,
-		renderBounds.x1, renderBounds.y1, renderBounds.size, renderBounds.size
+		renderBounds.x1/universe.tileSize, renderBounds.y1/universe.tileSize,
+		width/universe.tileSize, height/universe.tileSize,
+		renderBounds.x1, renderBounds.y1,
+		width, height
 	);
 }
 
