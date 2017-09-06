@@ -1,18 +1,20 @@
 function Bullet(x, y, rot, vel) {
     this.x = x;
     this.y = y;
+    this.rot = rot;
+    this.vel = vel;
     this.dir = getRotVel(rot, vel);
     this.alive = true;
     this.strength = 1.0;
+    this.hitCount = 0;
+}
 
-    var hitCount = 0;
-
-    this.render = function(ctx) {
+    Bullet.prototype.render = function(ctx) {
         ctx.globalAlpha = this.strength;
         ctx.fillRect(this.x - 2, this.y - 2, 4, 4);
     };
 
-    this.update = function(delta) {
+    Bullet.prototype.update = function(delta) {
         this.x += this.dir.x * delta;
         this.y += this.dir.y * delta;
 
@@ -21,11 +23,11 @@ function Bullet(x, y, rot, vel) {
         }
 
         checkCollideTiny(this, function() {
-            if (hitCount++ > 3) this.alive = false;
+            if (this.hitCount++ > 3) this.alive = false;
             if (Math_random() > 0.7) this.alive = false;
 
-            rot += getRandom(0, Math_PI * 2);
-            this.dir = getRotVel(rot, vel);
+            this.rot += getRandom(0, Math_PI * 2);
+            this.dir = getRotVel(this.rot, this.vel);
             this.strength -= 0.1;
         });
 
@@ -34,4 +36,3 @@ function Bullet(x, y, rot, vel) {
             this.alive = false;
         }
     };
-}
