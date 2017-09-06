@@ -7,16 +7,16 @@ function Collectable(x, y) {
     this.y = y * universe.tileSize;
     this.alive = true;
     this.hitDistSq = 25 * 25;
-
-    this.render = function(ctx) {
-        ctx.shadowBlur = 10;
-        ctx.drawImage(elec, this.x, this.y);
-        ctx.shadowBlur = 0;
-    };
-
-    this.touchPlayer = function() {
-        this.alive = false;
-        player.collected++;
-        overlayWords.push(new WordGrowCenter('+1', '#08621E'));
-    };
 }
+
+Collectable.prototype.render = function(ctx) {
+    ctx.shadowBlur = 10;
+    ctx.drawImage(elec, this.x, this.y);
+    ctx.shadowBlur = 0;
+};
+
+Collectable.prototype.touchPlayer = function() {
+    this.alive = false;
+    overlayWords.push(new WordGrowCenter('+1', '#08621E'));
+    player.collected++;
+};

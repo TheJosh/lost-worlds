@@ -13,6 +13,6 @@ Heart.prototype.render = function(ctx) {
 
 Heart.prototype.touchPlayer = function() {
     this.alive = false;
-    player.lives += 1;
     overlayWords.push(new WordGrowCenter('+1', '#08621E'));
+    player.lives++;
 };
