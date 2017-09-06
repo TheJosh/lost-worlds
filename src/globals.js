@@ -2,6 +2,9 @@
 var PLAYER_SIZE = 30;
 var HALF_PLAYER_SIZE = 15;
 
+var SCORE_KILL = 5;
+var SCORE_COLLECT = 25;
+
 var canvas = document.getElementById('c');
 
 var player = null;

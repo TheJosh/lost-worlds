@@ -22,6 +22,7 @@ function Player() {
     this.lives = 3;
     this.collected = 0;
     this.kills = 0;
+    this.score = 0;
 
     var weapon = 2;
     var health = 10;

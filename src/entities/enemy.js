@@ -126,7 +126,7 @@ Enemy.prototype.takeDamage = function(bullet) {
         this.alive = false;
         player.kills += 1;
         (new Audio('7.mp3')).play();
-        overlayWords.push(new WordLift(this.x, this.y, '+1'));
+        overlayWords.push(new WordLift(this.x, this.y, '+' + SCORE_KILL));
     }
 
     this.x += bullet.dir.x * bullet.strength / 300;

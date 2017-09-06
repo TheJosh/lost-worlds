@@ -17,6 +17,6 @@ Collectable.prototype.render = function(ctx) {
 
 Collectable.prototype.touchPlayer = function() {
     this.alive = false;
-    overlayWords.push(new WordGrowCenter('+1', '#08621E'));
+    overlayWords.push(new WordGrowCenter('+' + SCORE_COLLECT, '#08621E'));
     player.collected++;
 };

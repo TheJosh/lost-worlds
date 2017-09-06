@@ -63,6 +63,11 @@ function physics(delta) {
 			player.fire(delta);
 		}
 	}
+
+	var desiredScore = (player.collected * SCORE_COLLECT + player.kills * SCORE_KILL);
+	if (player.score < desiredScore) {
+		player.score += 20 * delta;
+	}
 }
 
 
