@@ -102,7 +102,12 @@ function render() {
 	}
 
 	drawHUD();
-	drawScore();
+
+	if (player.lives == 0) {
+		drawFinishedScore();
+	} else {
+		drawScore();
+	}
 
 	if (hasTouchEvents) {
 		drawVirtualJoysticks();
@@ -166,22 +171,15 @@ function drawHUD()
 
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 	ctx.drawImage(cachedCrosshair, mouse.x - 15, mouse.y - 15);
-
-	if (player.lives == 0) {
-		ctx.font = '40px serif';
-		ctx.fillStyle = Color_Black;
-		var metrics = ctx.measureText('GAME OVER');
-		ctx.fillText('GAME OVER', (canvas.width - metrics.width) / 2, 75);
-	}
-
-	for (i = 0; i < player.lives; ++i) {
-		ctx.drawImage(heart, 20 + (22 * i), 20);
-	}
 }
 
 
 function drawScore()
 {
+	for (i = 0; i < player.lives; ++i) {
+		ctx.drawImage(heart, 20 + (22 * i), 20);
+	}
+
 	ctx.fillStyle = Color_White;
 	ctx.font = '12px monospace';
 
@@ -192,6 +190,15 @@ function drawScore()
 	ctx.fillText('\u00D7 ' + player.kills, 50, 92);
 
 	ctx.fillText(Math_floor(player.score) + ' pts', 20, 130);
+}
+
+
+function drawFinishedScore()
+{
+	ctx.font = '40px serif';
+	ctx.fillStyle = Color_Black;
+	var metrics = ctx.measureText('GAME OVER');
+	ctx.fillText('GAME OVER', (canvas.width - metrics.width) / 2, 75);
 }
 
 
