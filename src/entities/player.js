@@ -17,6 +17,9 @@ var weapons = [
 ];
 
 
+var HALF_PLAYER_SIZE = 15;
+
+
 function Player() {
     this.availWeapons = [2];
     this.lives = 3;
