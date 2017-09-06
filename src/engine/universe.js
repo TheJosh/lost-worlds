@@ -102,4 +102,17 @@ function heavenUniverse() {
     universe.colors = [Color_White, '#95EDEC'];
 
     generateHeavenMap();
+
+    // Done on a delay so the player will have a chance to stop shooting
+    window.setTimeout(setupReloadEvents, 2000);
+}
+
+
+function setupReloadEvents() {
+    window.onclick = function() {
+        location.reload();
+    };
+    window.ontouchstart = function() {
+        location.reload();
+    };
 }
