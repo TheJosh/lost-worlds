@@ -37,6 +37,9 @@ if (!hasTouchEvents) {
 
 } else {
 	// MOBILE EVENTS
+	setupTouchEvents();
+}
+
 
 	function determineTouchType(t) {
 		if (t.clientY > (canvas.height - 150) && t.clientY < (canvas.height - 50)) {
@@ -50,6 +53,8 @@ if (!hasTouchEvents) {
 		}
 	}
 
+
+function setupTouchEvents() {
 	window.ontouchstart = function(e) {
 		var type = determineTouchType(e.changedTouches[0]);
 		if (!type) return;
