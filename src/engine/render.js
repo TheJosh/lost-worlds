@@ -54,9 +54,8 @@ function render() {
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 
 	// Major performance boost + makes levels look correct
-	ctx.imageSmoothingEnabled = false;
-	ctx.msImageSmoothingEnabled = false;
-	ctx.imageSmoothingEnabled = false;
+	ctx['imageSmoothingEnabled'] = false;
+	ctx['msImageSmoothingEnabled'] = false;
 
 	// Reset env
 	ctx.font = '12px monospace';
