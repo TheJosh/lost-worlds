@@ -111,7 +111,12 @@ function generateNewMap() {
 			t = getTile(x, y);
 		} while (t != 0);
 
-		collectables.push(new Gun(x, y, getRandomInt(0, 1)));
+		if (getRandomInt(1, 10) > 5) {
+			collectables.push(new Gun(x, y, getRandomInt(0, 1)));
+		} else {
+			collectables.push(new Heart(x, y));
+		}
+
 		universe.weaponSpawnChance = 2;
 	}
 
