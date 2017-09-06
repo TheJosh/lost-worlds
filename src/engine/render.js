@@ -94,15 +94,13 @@ function render() {
 
 	drawBG();
 	drawEntities();
+	drawHUD();
 
 	if (blackOverlay > 0.01) {
-		ctx.setTransform(1, 0, 0, 1, 0, 0);
 		ctx.fillStyle = Color_Black;
 		ctx.globalAlpha = blackOverlay;
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 	}
-
-	drawHUD();
 
 	if (player.lives == 0) {
 		drawFinishedScore();
