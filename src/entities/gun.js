@@ -22,7 +22,6 @@ Gun.prototype.touchPlayer = function() {
     this.alive = false;
 
     overlayWords.push(new WordGrowCenter(weapons[this.type].name.toUpperCase(), Color_White));
-    overlayWords.push(new WordStatic(this.x - 40, this.y, 'C = change weapon'));
 
     if (player.availWeapons.indexOf(this.type) === -1) {
         player.availWeapons.push(this.type);
