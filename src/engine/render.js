@@ -62,14 +62,17 @@ function render() {
 	ctx.globalAlpha = 1.0;
 	ctx.shadowColor = Color_White;
 
+	// Fill background
 	ctx.fillStyle = universe.colors[1];
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+	// Rotation and scaling
 	ctx.translate(canvas.width/2, canvas.height/2);
 	ctx.rotate(universeRot * Math.PI / 180);
 	ctx.scale(universeScale, universeScale);
 	ctx.translate(0 - canvas.width/2, 0 - canvas.height/2);
 
+	// Center world around the player
 	offset.x = Math_round(
 		0 - player.x + (canvas.width / 2)
 	);
