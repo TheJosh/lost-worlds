@@ -16,8 +16,6 @@ function enteredBlackHole(blackHole) {
     player.x = blackHole.x;
     player.y = blackHole.y;
 
-    overlayWords.length = 0;
-
     var snd = new Audio('x.mp3');
     snd.playbackRate = 0.5;
     snd.play();
