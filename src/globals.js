@@ -7,7 +7,7 @@ var SCORE_COLLECT = 25;
 
 var canvas = document.getElementById('c');
 
-var player = null;
+var player;
 
 var universeRot = 0;
 var universeRotDir = 0.0;

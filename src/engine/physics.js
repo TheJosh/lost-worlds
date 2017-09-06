@@ -31,7 +31,6 @@ function physics(delta) {
 		return b.alive;
 	});
 
-	if (player) {
 		var force = { x: 0.0, y: 0.0 }
 		movePlayer_TopView(force, delta);
 		applyGravityPull(force, delta);
@@ -62,7 +61,6 @@ function physics(delta) {
 		if (keys.fire) {
 			player.fire(delta);
 		}
-	}
 
 	var desiredScore = (player.collected * SCORE_COLLECT + player.kills * SCORE_KILL);
 	if (player.score < desiredScore) {
