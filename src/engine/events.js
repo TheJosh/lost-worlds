@@ -41,17 +41,17 @@ if (!hasTouchEvents) {
 }
 
 
-	function determineTouchType(t) {
-		if (t.clientY > (canvas.height - 150) && t.clientY < (canvas.height - 50)) {
-			if (t.clientX > 50 && t.clientX < 150) {
-				return 'fire';
-			} else if (t.clientX > 160 && t.clientX < 210) {
-				return 'weapon';
-			} else if (t.clientX > (canvas.width - 150) && t.clientX < (canvas.width - 50)) {
-				return 'aim';
-			}
+function determineTouchType(t) {
+	if (t.clientY > (canvas.height - 150) && t.clientY < (canvas.height - 50)) {
+		if (t.clientX > 50 && t.clientX < 150) {
+			return 'fire';
+		} else if (t.clientX > 160 && t.clientX < 210) {
+			return 'weapon';
+		} else if (t.clientX > (canvas.width - 150) && t.clientX < (canvas.width - 50)) {
+			return 'aim';
 		}
 	}
+}
 
 
 function setupTouchEvents() {
