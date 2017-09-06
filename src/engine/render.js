@@ -195,10 +195,22 @@ function drawScore()
 
 function drawFinishedScore()
 {
-	ctx.font = '40px serif';
+	var ctr = function(txt, y) {
+		var metrics = ctx.measureText(txt);
+		ctx.fillText(txt, (canvas.width - metrics.width) / 2, y);
+	};
+
 	ctx.fillStyle = Color_Black;
-	var metrics = ctx.measureText('GAME OVER');
-	ctx.fillText('GAME OVER', (canvas.width - metrics.width) / 2, 75);
+
+	ctx.font = '40px serif';
+	ctr('GAME OVER', 75);
+
+	ctx.font = '20px sans';
+	ctr('Collected ' + player.collected + ' circuit board' + (player.collected == 1 ? '' : 's'), 150);
+	ctr('Killed ' + player.kills + ' bug' + (player.kills == 1 ? '' : 's'), 180);
+	
+	ctx.font = '26px sans';
+	ctr((player.collected * SCORE_COLLECT + player.kills * SCORE_KILL) + ' points', 230);
 }
 
 
