@@ -117,8 +117,6 @@ function render() {
 
 function drawBG()
 {
-	if (!cachedTiles) return;
-
 	var width = renderBounds.x2 - renderBounds.x1;
 	var height = renderBounds.y2 - renderBounds.y1;
 
@@ -140,22 +138,22 @@ function drawEntities()
 		player.render(ctx);
 	}
 
-	for (var i = 0; i < gravSource.length; ++i) {
+	for (i = 0; i < gravSource.length; ++i) {
 		if (pointInBounds(gravSource[i], renderBounds)) {
 			gravSource[i].render(ctx);
 		}
 	}
 
-	for (var i = 0; i < enemies.length; ++i) {
+	for (i = 0; i < enemies.length; ++i) {
 		if (enemies[i].alive) enemies[i].render(ctx);
 	}
 
-	for (var i = 0; i < collectables.length; ++i) {
+	for (i = 0; i < collectables.length; ++i) {
 		if (collectables[i].alive) collectables[i].render(ctx);
 	}
 
 	ctx.fillStyle = Color_Black;
-	for (var i = 0; i < bullets.length; ++i) {
+	for (i = 0; i < bullets.length; ++i) {
 		bullets[i].render(ctx);
 	}
 }

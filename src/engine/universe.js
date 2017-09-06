@@ -109,10 +109,7 @@ function heavenUniverse() {
 
 
 function setupReloadEvents() {
-    window.onclick = function() {
-        location.reload();
-    };
-    window.ontouchstart = function() {
+    window.ontouchstart = window.onclick = function() {
         location.reload();
     };
 }
