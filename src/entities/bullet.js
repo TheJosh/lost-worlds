@@ -6,7 +6,6 @@ function Bullet(x, y, rot, vel) {
     this.dir = getRotVel(rot, vel);
     this.alive = true;
     this.strength = 1.0;
-    this.hitCount = 0;
 }
 
 
@@ -25,9 +24,6 @@ Bullet.prototype.update = function(delta) {
     }
 
     checkCollideTiny(this, function() {
-        if (this.hitCount++ > 3) this.alive = false;
-        if (Math_random() > 0.7) this.alive = false;
-
         this.rot += getRandom(0, Math_PI * 2);
         this.dir = getRotVel(this.rot, this.vel);
         this.strength -= 0.1;

@@ -128,7 +128,4 @@ Enemy.prototype.takeDamage = function(bullet) {
         (new Audio('7.mp3')).play();
         overlayWords.push(new WordLift(this.x, this.y, '+' + SCORE_KILL));
     }
-
-    this.x += bullet.dir.x * bullet.strength / 300;
-    this.y += bullet.dir.y * bullet.strength / 300;
 };
