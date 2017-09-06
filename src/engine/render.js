@@ -70,13 +70,13 @@ function render() {
 	ctx.scale(universeScale, universeScale);
 	ctx.translate(0 - canvas.width/2, 0 - canvas.height/2);
 
-		offset.x = Math_round(
-			0 - player.x + (canvas.width / 2)
-		);
-		offset.y = Math_round(
-			0 - player.y + (canvas.height / 2)
-		);
-		ctx.translate(offset.x, offset.y);
+	offset.x = Math_round(
+		0 - player.x + (canvas.width / 2)
+	);
+	offset.y = Math_round(
+		0 - player.y + (canvas.height / 2)
+	);
+	ctx.translate(offset.x, offset.y);
 
 	// Only entities fully within these bounds should be rendered
 	var maxExtent = (canvas.width ? canvas.width : canvas.height) * 1.2;
@@ -132,7 +132,7 @@ function drawEntities()
 {
 	var i;
 
-		player.render(ctx);
+	player.render(ctx);
 
 	for (i = 0; i < gravSource.length; ++i) {
 		if (pointInBounds(gravSource[i], renderBounds)) {

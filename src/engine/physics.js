@@ -31,36 +31,36 @@ function physics(delta) {
 		return b.alive;
 	});
 
-		var force = { x: 0.0, y: 0.0 }
-		movePlayer_TopView(force, delta);
-		applyGravityPull(force, delta);
-		
-		player.x += force.x;
-		player.y += force.y;
+	var force = { x: 0.0, y: 0.0 }
+	movePlayer_TopView(force, delta);
+	applyGravityPull(force, delta);
+	
+	player.x += force.x;
+	player.y += force.y;
 
-		checkCollide(player, HALF_PLAYER_SIZE);
+	checkCollide(player, HALF_PLAYER_SIZE);
 
-		for (var i = 0; i < enemies.length; ++i) {
-			if (!enemies[i].alive) continue;
-			var distSq = Math_pow(player.x - enemies[i].x, 2) + Math_pow(player.y - enemies[i].y, 2);
-			if (distSq < enemies[i].hitDistSq) {
-				player.takeDamage(enemies[i]);
-			}
+	for (var i = 0; i < enemies.length; ++i) {
+		if (!enemies[i].alive) continue;
+		var distSq = Math_pow(player.x - enemies[i].x, 2) + Math_pow(player.y - enemies[i].y, 2);
+		if (distSq < enemies[i].hitDistSq) {
+			player.takeDamage(enemies[i]);
 		}
+	}
 
-		for (var i = 0; i < collectables.length; ++i) {
-			if (!collectables[i].alive) continue;
-			var distSq = Math_pow(player.x - collectables[i].x, 2) + Math_pow(player.y - collectables[i].y, 2);
-			if (distSq < collectables[i].hitDistSq) {
-				collectables[i].touchPlayer();
-			}
+	for (var i = 0; i < collectables.length; ++i) {
+		if (!collectables[i].alive) continue;
+		var distSq = Math_pow(player.x - collectables[i].x, 2) + Math_pow(player.y - collectables[i].y, 2);
+		if (distSq < collectables[i].hitDistSq) {
+			collectables[i].touchPlayer();
 		}
+	}
 
-		player.update(delta);
+	player.update(delta);
 
-		if (keys.fire) {
-			player.fire(delta);
-		}
+	if (keys.fire) {
+		player.fire(delta);
+	}
 
 	var desiredScore = (player.collected * SCORE_COLLECT + player.kills * SCORE_KILL);
 	if (player.score < desiredScore) {
