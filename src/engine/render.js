@@ -173,11 +173,7 @@ function drawHUD()
 	}
 
 	for (i = 0; i < player.lives; ++i) {
-		ctx.drawImage(
-			heart,
-			0, 0, 18, 14,
-			20 + (22 * i), 20, 18, 14
-		);
+		ctx.drawImage(heart, 20 + (22 * i), 20);
 	}
 
 	ctx.fillStyle = Color_White;
