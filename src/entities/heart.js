@@ -6,7 +6,9 @@ function Heart(x, y) {
 }
 
 Heart.prototype.render = function(ctx) {
+    ctx.shadowBlur = 10;
     ctx.drawImage(heart, this.x, this.y);
+    ctx.shadowBlur = 0;
 };
 
 Heart.prototype.touchPlayer = function() {

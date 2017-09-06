@@ -60,6 +60,7 @@ function render() {
 	// Reset env
 	ctx.font = '12px monospace';
 	ctx.globalAlpha = 1.0;
+	ctx.shadowColor = Color_White;
 
 	ctx.fillStyle = universe.colors[1];
 	ctx.fillRect(0, 0, canvas.width, canvas.height);

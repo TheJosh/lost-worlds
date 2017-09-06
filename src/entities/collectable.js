@@ -9,7 +9,9 @@ function Collectable(x, y) {
     this.hitDistSq = 25 * 25;
 
     this.render = function(ctx) {
+        ctx.shadowBlur = 10;
         ctx.drawImage(elec, this.x, this.y);
+        ctx.shadowBlur = 0;
     };
 
     this.touchPlayer = function() {
