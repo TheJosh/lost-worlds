@@ -209,10 +209,8 @@ function drawVirtualJoysticks() {
 }
 
 
-function drawTiles(ctx, canvas) {
-	ctx.fillStyle = universe.colors[1];
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+function drawTiles(ctx, canvas)
+{
 	ctx.fillStyle = universe.colors[0];
 	for (var y = 0; y < universe.mapHeight; ++y) {
 		for (var x = 0; x < universe.mapWidth; ++x) {
