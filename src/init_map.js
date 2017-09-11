@@ -41,6 +41,9 @@ var init_map = '\
 
 function loadInitMap()
 {
+	universe = startingUniverse;
+	totalGameTime = 0;
+
 	mapBuffer = new ArrayBuffer(universe.mapWidth * universe.mapHeight);
 	mapTiles = new Uint8Array(mapBuffer);
 
