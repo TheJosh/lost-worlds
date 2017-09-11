@@ -45,6 +45,7 @@ function Player() {
         this.y = y * universe.tileSize;
         this.rot = 0;
         this.vel = 0;
+        invincWait = 5;
     };
 
     this.setWeapon = function(i) {
