@@ -75,6 +75,10 @@ function Player() {
                 walkWobbleDir = -walkWobbleDir;
             }
         }
+
+        if (health < 10) {
+            health += 0.5 * delta;
+        }
     };
 
     this.changeWeapon = function() {
