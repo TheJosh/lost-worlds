@@ -78,11 +78,11 @@ function setupTouchEvents() {
 			}
 		}
 
-		if (touchId.fire === null) {
+		if (touchId['fire'] === null) {
 			keys.fire = 0;
 		}
 
-		if (touchId.aim === null) {
+		if (touchId['aim'] === null) {
 			keys.y = 0;
 		}
 	};
@@ -93,7 +93,7 @@ function setupTouchEvents() {
 		for (i = 0; i < e.changedTouches.length; ++i) {
 			var t = e.changedTouches.item(i);
 
-			if (touchId.aim === t.identifier) {
+			if (touchId['aim'] === t.identifier) {
 				// Aim - virtual joystick
 				var x = canvas.width - t.clientX - 100;
 				var y = canvas.height - t.clientY - 100;
