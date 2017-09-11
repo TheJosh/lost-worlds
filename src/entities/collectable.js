@@ -6,13 +6,11 @@ function Collectable(x, y) {
     this.x = x * universe.tileSize;
     this.y = y * universe.tileSize;
     this.alive = true;
-    this.hitDistSq = 25 * 25;
+    this.hitDistSq = 35 * 35;
 }
 
 Collectable.prototype.render = function(ctx) {
-    ctx.shadowBlur = 10;
     ctx.drawImage(elec, this.x, this.y);
-    ctx.shadowBlur = 0;
 };
 
 Collectable.prototype.touchPlayer = function() {
