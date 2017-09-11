@@ -22,6 +22,8 @@ var overlayWords = [];
 var hasTouchEvents = ('ontouchstart' in window);
 
 
+var universe = {};
+
 var startingUniverse = {
 	tileSize: 32,
 

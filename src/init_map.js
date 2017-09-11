@@ -41,8 +41,13 @@ var init_map = '\
 
 function loadInitMap()
 {
-	universe = startingUniverse;
+	for (param in startingUniverse) {
+		universe[param] = startingUniverse[param];
+	}
+
 	totalGameTime = 0;
+	window.onclick = null;
+	player = new Player();
 
 	mapBuffer = new ArrayBuffer(universe.mapWidth * universe.mapHeight);
 	mapTiles = new Uint8Array(mapBuffer);

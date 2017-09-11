@@ -107,7 +107,7 @@ function heavenUniverse() {
 
 
 function setupReloadEvents() {
-    window.ontouchstart = window.onclick = function() {
-        location.reload();
+    window.onclick = function() {
+        loadInitMap();
     };
 }
