@@ -87,10 +87,10 @@ function render() {
 	renderBounds.y1 = Math_round(player.y - (maxExtent / 2));
 	renderBounds.x2 = Math_round(player.x + (maxExtent / 2));
 	renderBounds.y2 = Math_round(player.y + (maxExtent / 2));
-	renderBounds.x1 = Math.max(renderBounds.x1, 0);
-	renderBounds.y1 = Math.max(renderBounds.y1, 0);
-	renderBounds.x2 = Math.min(renderBounds.x2, universe.mapWidth * universe.tileSize);
-	renderBounds.y2 = Math.min(renderBounds.y2, universe.mapHeight * universe.tileSize);
+	renderBounds.x1 = Math_max(renderBounds.x1, 0);
+	renderBounds.y1 = Math_max(renderBounds.y1, 0);
+	renderBounds.x2 = Math_min(renderBounds.x2, universe.mapWidth * universe.tileSize);
+	renderBounds.y2 = Math_min(renderBounds.y2, universe.mapHeight * universe.tileSize);
 
 	drawBG();
 	drawEntities();

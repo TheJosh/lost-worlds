@@ -180,8 +180,8 @@ function generateRect3x3(x, y, val)
  * Bresenham's line algorithm
  */
 function generateLine(x0, y0, x1, y1, val) {
-	var dx = Math.abs(x1 - x0);
-	var dy = Math.abs(y1 - y0);
+	var dx = Math_abs(x1 - x0);
+	var dy = Math_abs(y1 - y0);
 	var sx = (x0 < x1) ? 1 : -1;
 	var sy = (y0 < y1) ? 1 : -1;
 	var err = dx - dy;

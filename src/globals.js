@@ -57,6 +57,8 @@ var Math_atan2 = Math.atan2;
 var Math_pow = Math.pow;
 var Math_sqrt = Math.sqrt;
 var Math_abs = Math.abs;
+var Math_max = Math.max;
+var Math_min = Math.min;
 
 var Color_Black = '#000';
 var Color_White = '#fff';
