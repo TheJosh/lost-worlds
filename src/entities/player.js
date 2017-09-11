@@ -45,7 +45,7 @@ function Player() {
         this.y = y * universe.tileSize;
         this.rot = 0;
         this.vel = 0;
-        invincWait = 5;
+        invincWait = 3;
     };
 
     this.setWeapon = function(i) {
@@ -78,7 +78,7 @@ function Player() {
         }
 
         if (health < 10) {
-            health += 0.5 * delta;
+            health += 0.1 * delta;
         }
     };
 
