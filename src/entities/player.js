@@ -130,7 +130,7 @@ function Player() {
             }
 
             (new Audio('4.mp3')).play();
-            overlayWords.push(new WordGrowCenter('-1', '#620A08'));
+            overlayWords.push(new WordGrowCenter('DEAD', '#620A08'));
         }
 
         invincWait = 1;
