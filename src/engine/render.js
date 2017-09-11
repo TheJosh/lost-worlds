@@ -203,10 +203,11 @@ function drawFinishedScore()
 	ctx.font = '20px sans';
 	ctr('Collected ' + player.collected + ' circuit board' + (player.collected == 1 ? '' : 's'), 150);
 	ctr('Killed ' + player.kills + ' bug' + (player.kills == 1 ? '' : 's'), 180);
-	ctr('CLICK ANYWHERE TO START OVER', 300);
+	ctr('Survived ' + totalGameTime.toFixed(1) + ' seconds', 210);
+	ctr('CLICK ANYWHERE TO START OVER', 350);
 
 	ctx.font = '26px sans';
-	ctr((player.collected * SCORE_COLLECT + player.kills * SCORE_KILL) + ' points', 230);
+	ctr((player.collected * SCORE_COLLECT + player.kills * SCORE_KILL) + ' points', 260);
 }
 
 

@@ -1,7 +1,12 @@
 var accel = { x: 0, y: 0 };
+var totalGameTime = 0;
 
+function physics(delta)
+{
+	if (player.lives > 0) {
+		totalGameTime += delta;
+	}
 
-function physics(delta) {
 	universeRot += universeRotDir * delta;
 	if (universe.spinLimit > 0.2 && Math_abs(universeRot) >= universe.spinLimit) {
 		universeRotDir = 0 - universeRotDir;
