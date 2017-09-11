@@ -82,7 +82,7 @@ function movePlayer_TopView(force, delta)
 			(mouse.y - canvas.height/2), (mouse.x - canvas.width/2)
 		) + Math_PI;
 		
-		player.rot -= (universeRot * Math.PI / 180);
+		player.rot -= (universeRot * Math_PI / 180);
 	}
 
 	// Forwards and backwards
