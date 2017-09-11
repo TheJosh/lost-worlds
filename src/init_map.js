@@ -63,6 +63,7 @@ function loadInitMap()
 	overlayWords.push(new WordStatic(470, 110, '... somewhere deep underground near the Large Hadron Collider...'));
 	overlayWords.push(new WordStatic(600, 280, '... something has gone terribly wrong...'));
 	overlayWords.push(new WordStatic(1250, 90, '<-- Watch out'));
+	overlayWords.push(new WordStatic(1252, 405, 'Score big points'));
 	overlayWords.push(new WordStatic(1225, 425, '<-- Collect electronics'));
 	overlayWords.push(new WordStatic(530, 1050, '<-- Try to not get lost'));
 	overlayWords.push(new WordStatic(560, 1070, 'in the multiverse'));
