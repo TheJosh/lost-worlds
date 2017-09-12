@@ -100,6 +100,7 @@ function render() {
 		ctx.fillStyle = Color_Black;
 		ctx.globalAlpha = blackOverlay;
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
+		ctx.globalAlpha = 1.0;
 	}
 
 	if (player.lives == 0) {
