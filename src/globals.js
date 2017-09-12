@@ -19,7 +19,7 @@ var collectables = [];
 var bullets = [];
 var overlayWords = [];
 
-var hasTouchEvents = ('ontouchstart' in window);
+var hasTouchEvents = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 
 var universe = {};
