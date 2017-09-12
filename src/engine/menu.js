@@ -6,22 +6,21 @@ function menu()
 {
 	var raf = requestAnimationFrame(render);
 
-	var buttons = [
-		{
+	var buttons = [];
+	buttons.push({
 			x: 50, y: 400,
 			w: 250, h: 50,
 			b: '#555',
 			t: 'FULLSCREEN',
 			f: enterFullscreen
-		},
-		{
+	});
+	buttons.push({
 			x: 400, y: 400,
 			w: 250, h: 50,
 			b: '#333',
 			t: 'START',
 			f: startGame
-		}
-	];
+	});
 
 	var menuGrad = ctx.createLinearGradient(0, 0, MENU_WIDTH, MENU_HEIGHT);
 	menuGrad.addColorStop(0, '#DAE9C9');
