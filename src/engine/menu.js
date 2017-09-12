@@ -119,7 +119,7 @@ function menu()
 	}
 
 
-	window.onclick = function(e) {
+	canvas.onclick = function(e) {
 		var clickX = e.clientX - (canvas.width - MENU_WIDTH) / 2;
 		var clickY = e.clientY - (canvas.height - MENU_HEIGHT) / 2;
 
