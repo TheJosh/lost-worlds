@@ -107,14 +107,12 @@ function Player() {
                     new Bullet(x, y, this.rot + Math_PI + (i * 0.1), weapons[weapon].vel + player.vel)
                 );
             }
-            (new Audio('a.mp3')).play();
+            playSound('a', 1.0);
         } else {
             bullets.push(
                 new Bullet(x, y, this.rot + Math_PI, weapons[weapon].vel + player.vel)
             );
-            var p = new Audio('c.mp3');
-            p.playbackRate = (weapon == 2 ? 0.8 : 2.0);
-            p.play();
+            playSound('c', weapon == 2 ? 0.8 : 2.0);
         }
 
         fireWait = weapons[weapon].delay;
@@ -134,7 +132,7 @@ function Player() {
                 heavenUniverse();
             }
 
-            (new Audio('4.mp3')).play();
+            playSound('4', 1.0);
             overlayWords.push(new WordGrowCenter('DEAD', '#620A08'));
         } else {
             overlayWords.push(new WordLift(this.x, this.y, 'OUCH', '#620A08'));
