@@ -97,7 +97,7 @@ function heavenUniverse() {
     universe.unitMax = 300;
     universe.unitDeccel = 1.2;
 
-    universe.colors = [Color_White, '#95EDEC'];
+    universe.colors = ['#f8f8f8', '#95EDEC'];
 
     generateHeavenMap();
 

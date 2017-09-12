@@ -212,6 +212,8 @@ function drawFinishedScore()
 
 
 function drawVirtualJoysticks() {
+	ctx.fillStyle = Color_White;
+
 	ctx.beginPath();
 	ctx.arc(100, canvas.height - 100, 50, 0, Math_PI * 2);
 	ctx.arc(180, canvas.height - 100, 25, 0, Math_PI * 2);
@@ -219,6 +221,7 @@ function drawVirtualJoysticks() {
 	ctx.fill();
 
 	ctx.fillStyle = Color_Black;
+	ctx.font = '12px monospace';
 	ctx.fillText('C', 176, canvas.height - 95);
 	ctx.font = '28px monospace';
 	ctx.fillText('F', 90, canvas.height - 90);
