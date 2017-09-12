@@ -67,6 +67,13 @@ function loadInitMap()
 		}
 	}
 
+	// The opening map is one row taller than the data
+	// to workaround a bug in the physics collisions don't
+	// work on the bottom row of the map
+	for ( ; i < mapTiles.length; ++i) {
+		mapTiles[i] = 1;
+	}
+
 	// Tutorial
 	overlayWords.push(new WordStatic(470, 110, '... somewhere deep underground near the Large Hadron Collider...'));
 	overlayWords.push(new WordStatic(600, 280, '... something has gone terribly wrong...'));

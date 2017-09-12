@@ -35,7 +35,7 @@ var startingUniverse = {
 	unitDeccel: 1.2,
 
 	mapWidth: 49,
-	mapHeight: 39,
+	mapHeight: 40,
 
 	numEnemies: 10,
 	enemyChaseDist: 250,
