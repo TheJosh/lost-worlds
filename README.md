@@ -1,11 +1,11 @@
-# lost-worlds
+# Lost worlds
 This is my 2017 submission to js13kGames competition.
 
 It's a top-view action/adventure game. Collect electronics for points, avoid hitting the bugs!
 
 Controls are listed on the welcome menu.
 
-Supports desktop/tablet/mobile.
+Supports desktop/tablet/mobile. Note that audio only works on Desktop.
 
 Tested on:
 - Firefox/Windows
