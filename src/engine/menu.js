@@ -7,6 +7,14 @@ function menu()
 	var raf = requestAnimationFrame(render);
 
 	var buttons = [];
+	buttons.push({
+		x: 225, y: 300,
+		w: 250, h: 50,
+		b: '#333',
+		t: 'START',
+		f: startGame
+	});
+
 	if (canvas.webkitRequestFullscreen
 		|| canvas.mozRequestFullScreen
 		|| canvas.msRequestFullscreen
@@ -19,14 +27,9 @@ function menu()
 			t: 'FULLSCREEN',
 			f: enterFullscreen
 		});
+		buttons[0].x = 400;
 	}
-	buttons.push({
-		x: 400, y: 300,
-		w: 250, h: 50,
-		b: '#333',
-		t: 'START',
-		f: startGame
-	});
+	
 
 	var menuGrad = ctx.createRadialGradient(MENU_WIDTH/2, MENU_HEIGHT/2, 0, MENU_WIDTH/2, MENU_HEIGHT/2, MENU_WIDTH);
 	menuGrad.addColorStop(0, '#DAE9C9');
