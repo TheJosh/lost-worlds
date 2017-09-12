@@ -126,6 +126,6 @@ Enemy.prototype.takeDamage = function(bullet) {
         this.alive = false;
         player.kills += 1;
         (new Audio('7.mp3')).play();
-        overlayWords.push(new WordLift(this.x, this.y, '+' + SCORE_KILL));
+        overlayWords.push(new WordLift(this.x, this.y, '+' + SCORE_KILL, '#08621E'));
     }
 };

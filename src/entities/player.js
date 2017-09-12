@@ -136,6 +136,8 @@ function Player() {
 
             (new Audio('4.mp3')).play();
             overlayWords.push(new WordGrowCenter('DEAD', '#620A08'));
+        } else {
+            overlayWords.push(new WordLift(this.x, this.y, 'OUCH', '#620A08'));
         }
 
         invincWait = 1;

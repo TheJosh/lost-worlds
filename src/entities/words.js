@@ -1,7 +1,8 @@
-function WordLift(x, y, text) {
+function WordLift(x, y, text, color) {
     this.x = x;
     this.y = y;
     this.text = text;
+    this.color = color;
     this.alive = true;
     this.age = 0;
 }
@@ -14,7 +15,7 @@ WordLift.prototype.update = function(word, delta) {
 
 WordLift.prototype.render = function(word, ctx) {
     if (!word.alive) return;
-    ctx.fillStyle = '#08621E';
+    ctx.fillStyle = this.color;
     ctx.fillText(word.text, word.x, word.y);
 };
 
