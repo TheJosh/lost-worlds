@@ -135,8 +135,13 @@ function generateHeavenMap() {
 
 	mapBuffer = new ArrayBuffer(universe.mapWidth * universe.mapHeight);
 	mapTiles = new Uint8Array(mapBuffer);
-	mapTiles.fill(1);
 
+	// Set whole map to "walls"
+	for (i = 0; i < mapTiles.length; ++i) {
+		mapTiles[i] = 1;
+	}
+
+	// Create some clouds
 	generateCircle(15, 25, 8, 0);
 	generateCircle(25, 25, 4, 0);
 	generateCircle(35, 25, 8, 0);
