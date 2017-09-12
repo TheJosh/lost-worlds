@@ -27,10 +27,14 @@ function generateNewMap() {
 
 	mapBuffer = new ArrayBuffer(universe.mapWidth * universe.mapHeight);
 	mapTiles = new Uint8Array(mapBuffer);
-	mapTiles.fill(1);
 
 	var pois = [];
 	var i, x, y, r, px, py;
+
+	// Set whole map to "walls"
+	for (i = 0; i < mapTiles.length; ++i) {
+		mapTiles[i] = 1;
+	}
 
 	// Generate an even number of POIs (point of interest)
 	for (i = 0; i < 8; ++i) {
