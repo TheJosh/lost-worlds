@@ -7,19 +7,25 @@ function menu()
 	var raf = requestAnimationFrame(render);
 
 	var buttons = [];
-	buttons.push({
+	if (canvas.webkitRequestFullscreen
+		|| canvas.mozRequestFullScreen
+		|| canvas.msRequestFullscreen
+		|| canvas.requestFullscreen
+	) {
+		buttons.push({
 			x: 50, y: 400,
 			w: 250, h: 50,
 			b: '#555',
 			t: 'FULLSCREEN',
 			f: enterFullscreen
-	});
+		});
+	}
 	buttons.push({
-			x: 400, y: 400,
-			w: 250, h: 50,
-			b: '#333',
-			t: 'START',
-			f: startGame
+		x: 400, y: 400,
+		w: 250, h: 50,
+		b: '#333',
+		t: 'START',
+		f: startGame
 	});
 
 	var menuGrad = ctx.createLinearGradient(0, 0, MENU_WIDTH, MENU_HEIGHT);
