@@ -82,7 +82,7 @@ function render() {
 	ctx.translate(offset.x, offset.y);
 
 	// Only entities fully within these bounds should be rendered
-	var maxExtent = (canvas.width ? canvas.width : canvas.height) * 1.2;
+	var maxExtent = Math_max(canvas.width, canvas.height) * 1.2;
 	renderBounds.x1 = Math_round(player.x - (maxExtent / 2));
 	renderBounds.y1 = Math_round(player.y - (maxExtent / 2));
 	renderBounds.x2 = Math_round(player.x + (maxExtent / 2));
