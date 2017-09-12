@@ -1,5 +1,5 @@
 var MENU_WIDTH = 700;
-var MENU_HEIGHT = 500;
+var MENU_HEIGHT = 400;
 
 
 function menu()
@@ -13,7 +13,7 @@ function menu()
 		|| canvas.requestFullscreen
 	) {
 		buttons.push({
-			x: 50, y: 400,
+			x: 50, y: 300,
 			w: 250, h: 50,
 			b: '#555',
 			t: 'FULLSCREEN',
@@ -21,16 +21,16 @@ function menu()
 		});
 	}
 	buttons.push({
-		x: 400, y: 400,
+		x: 400, y: 300,
 		w: 250, h: 50,
 		b: '#333',
 		t: 'START',
 		f: startGame
 	});
 
-	var menuGrad = ctx.createLinearGradient(0, 0, MENU_WIDTH, MENU_HEIGHT);
+	var menuGrad = ctx.createRadialGradient(MENU_WIDTH/2, MENU_HEIGHT/2, 0, MENU_WIDTH/2, MENU_HEIGHT/2, MENU_WIDTH);
 	menuGrad.addColorStop(0, '#DAE9C9');
-	menuGrad.addColorStop(1, '#C8E3A8');
+	menuGrad.addColorStop(1, '#7FB83A');
 
 
 	function render() {
@@ -46,21 +46,24 @@ function menu()
 		ctx.fillStyle = menuGrad;
 		ctx.shadowColor = '#333';
 		ctx.shadowBlur = 10;
+		ctx.fillRect(0, -120, MENU_WIDTH, 100);
 		ctx.fillRect(0, 0, MENU_WIDTH, MENU_HEIGHT);
 		ctx.shadowBlur = 0;
 
-		ctx.font = '40px serif';
-		ctx.fillStyle = Color_Black;
+		ctx.font = '52px serif';
 		metrics = ctx.measureText('LOST WORLDS');
-		ctx.fillText('LOST WORLDS', (MENU_WIDTH - metrics.width) / 2, 75);
+		ctx.fillStyle = Color_White;
+		ctx.fillText('LOST WORLDS', (MENU_WIDTH - metrics.width) / 2 + 1, -49);
+		ctx.fillStyle = Color_Black;
+		ctx.fillText('LOST WORLDS', (MENU_WIDTH - metrics.width) / 2, -50);
 
 		ctx.font = '16px sans';
 		if (hasTouchEvents) {
-			ctx.fillText('Move right virtual-joystick to aim + move player', 50, 115);
-			ctx.fillText('Hold left virtual-joystick to fire. Tap small one to change weapon', 50, 140);
+			ctx.fillText('Move right virtual-joystick to aim + move player', 50, 45);
+			ctx.fillText('Hold left virtual-joystick to fire. Tap small one to change weapon', 50, 70);
 		} else {
-			ctx.fillText('W = forwards   S = backwards   LMB = shoot   C = change weapon', 50, 115);
-			ctx.fillText('Your player moves forwards towards the mouse', 50, 140);
+			ctx.fillText('W = forwards   S = backwards   LMB = shoot   C = change weapon', 50, 45);
+			ctx.fillText('Your player moves forwards towards the mouse', 50, 70);
 		}
 
 		ctx.font = '24px sans';
@@ -78,10 +81,10 @@ function menu()
 		) + Math_PI;
 
 		ctx.setTransform(1, 0, 0, 1, 0, 0);
-		ctx.translate(canvas.width/2, canvas.height/2+25);
+		ctx.translate(canvas.width/2, canvas.height/2 - 20);
 
 		ctx.beginPath();
-		ctx.arc(0, 0, 100, 0, 2 * Math_PI);
+		ctx.arc(0, 0, 90, 0, 2 * Math_PI);
 		ctx.fill();
 
 		player.render(ctx);
