@@ -13,7 +13,7 @@ function Enemy(x, y, behaviour) {
     this.alive = true;
     this.hitDistSq = 25 * 25;
     this.health = 3;
-    this.damage = 5;
+    this.damage = 6;
     this.behaviour = behaviour;
     this.animTime = 0;
 
