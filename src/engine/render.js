@@ -204,7 +204,7 @@ function drawFinishedScore()
 	ctr('Collected ' + player.collected + ' circuit board' + (player.collected == 1 ? '' : 's'), 150);
 	ctr('Killed ' + player.kills + ' bug' + (player.kills == 1 ? '' : 's'), 180);
 	ctr('Survived ' + totalGameTime.toFixed(1) + ' seconds', 210);
-	ctr('CLICK ANYWHERE TO START OVER', 350);
+	ctr('CLICK ANYWHERE TO START OVER', canvas.height - 100);
 
 	ctx.font = '26px sans';
 	ctr((player.collected * SCORE_COLLECT + player.kills * SCORE_KILL) + ' points', 260);

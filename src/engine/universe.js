@@ -107,7 +107,7 @@ function heavenUniverse() {
 
 
 function setupReloadEvents() {
-    window.onclick = function() {
+    canvas.onclick = function() {
         loadInitMap();
     };
 }

@@ -46,7 +46,7 @@ function loadInitMap()
 	}
 
 	totalGameTime = 0;
-	window.onclick = null;
+	canvas.onclick = null;
 	player = new Player();
 
 	mapBuffer = new ArrayBuffer(universe.mapWidth * universe.mapHeight);
